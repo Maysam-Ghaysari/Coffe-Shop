@@ -1,0 +1,75 @@
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 25px rgba(255, 255, 255, 0.15);
+  line-height: 1.9;
+  font-size: 16px;
+  color: rgba(31, 25, 25, 0.95);
+  text-align: justify;
+  animation: fadeUp 0.8s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* پس زمینه نوری ملایم */
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: -1;
+}
+.container::before {
+  top: -150px;
+  left: -150px;
+  background: rgba(0, 200, 255, 0.25);
+}
+.container::after {
+  bottom: -150px;
+  right: -150px;
+  background: rgba(255, 0, 150, 0.25);
+}
+
+/* تیترها و تاکیدها */
+.container strong {
+  color: #00c8ff;
+  font-weight: bold;
+}
+
+/* پاراگراف‌ها */
+.container p {
+  margin-bottom: 1.6rem;
+}
+
+/* لینک‌ها */
+.container a {
+  color: #00c8ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.container a:hover {
+  text-decoration: underline;
+  color: #ff0080;
+}
+
+/* انیمیشن ورود */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

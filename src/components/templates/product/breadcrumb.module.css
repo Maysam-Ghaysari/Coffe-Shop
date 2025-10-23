@@ -1,0 +1,37 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.breadcrumb a:hover {
+  color: #0056b3;
+}
+
+.breadcrumb span {
+  color: #999;
+}
+
+.breadcrumb p {
+  color: #222;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 📱 رسپانسیو */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.85rem;
+    gap: 0.3rem;
+  }
+}

@@ -1,0 +1,55 @@
+.gallery {
+  width: 36%;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* اسلایدر اصلی */
+.gallery-slider {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* اسلایدر کوچک (thumbnails) */
+.gallery-slider-2 {
+  display: flex;
+  gap: 8px;
+}
+
+.gallery-slider-2 img {
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: border 0.2s ease-in-out;
+}
+
+.gallery-slider-2 img:hover {
+  border: 2px solid #007bff;
+}
+
+/* 📱 رسپانسیو */
+@media (max-width: 1024px) {
+  .gallery {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    width: 100%;
+  }
+
+  .gallery-slider-2 {
+    gap: 5px;
+  }
+
+  .gallery-slider-2 img {
+    border-radius: 6px;
+  }
+}

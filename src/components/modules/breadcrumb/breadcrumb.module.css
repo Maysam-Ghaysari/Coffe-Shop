@@ -1,0 +1,56 @@
+.breadcrumb {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 100px 20px 50px;
+  background: linear-gradient(to bottom, #f9f9fb, #f1f1f3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* عنوان اصلی */
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* مسیر ناوبری */
+.path {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 0.95rem;
+  color: #444;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* لینک‌ها */
+.path a {
+  text-decoration: none;
+  color: #0071e3; /* آبی اپل */
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.path a:hover {
+  color: #005bb5;
+}
+
+/* جداکننده */
+.separator {
+  color: #666;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+/* مرحله فعال (صفحه جاری) */
+.active_step {
+  font-weight: 600;
+  color: #111;
+}

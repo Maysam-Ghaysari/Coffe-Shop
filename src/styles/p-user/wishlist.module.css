@@ -1,0 +1,125 @@
+/* عنوان صفحه */
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 2rem 0;
+  color: #fff;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* کانتینر محصولات */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+/* کارت محصول */
+.product_card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 25px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.35s ease;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* افکت رنگی روی کارت */
+.product_card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(255, 0, 200, 0.3),
+    rgba(0, 200, 255, 0.3),
+    rgba(0, 255, 150, 0.3),
+    rgba(255, 200, 0, 0.3),
+    rgba(255, 0, 200, 0.3)
+  );
+  animation: rotate 8s linear infinite;
+  z-index: 0;
+}
+
+.product_card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1;
+}
+
+/* محتوای کارت */
+.product_card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.product_card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* نام محصول */
+.product_card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: #fff;
+}
+
+/* امتیاز */
+.product_card .score {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+/* قیمت */
+.product_card .price {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00e6ff;
+  text-shadow: 0 0 8px rgba(0, 230, 255, 0.6);
+}
+
+/* متن خالی */
+.empty {
+ width: 100%;
+  border-radius:20px;
+  background: linear-gradient(135deg, #ffffff, #3ea28b);
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  color: #000;
+}
+
+/* انیمیشن چرخش گرادیان */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

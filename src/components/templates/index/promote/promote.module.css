@@ -1,0 +1,209 @@
+
+/* === General Layout === */
+.readable {
+  padding: 4rem 0; /* Add vertical spacing */
+  background-color: var(--bg-light);
+  direction: rtl; /* Set RTL direction for the whole component */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; /* Space between the two main rows */
+}
+
+.main {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+
+/* === First Row: Main Promotion & Club === */
+.main:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.main section {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.main section span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-bottom: 0.5rem;
+}
+
+.main section p {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  line-height: 1.7;
+}
+
+.main section > img { /* The image inside the first section */
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  width: 150px;
+  height: auto;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+.main section:hover > img {
+  transform: scale(1.1);
+}
+
+.club {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: white;
+  text-align: center;
+}
+
+.club span {
+  color: white;
+  font-size: 1.8rem;
+}
+.club p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* === Second Row: "Why Coffee Set" Section === */
+.main:last-of-type > img {
+  flex: 1;
+  max-width: 50%;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  object-fit: cover;
+}
+
+.why_coffee {
+  flex: 1;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  align-items: flex-start; /* Align content to the start (right) */
+}
+
+.why_coffee .logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.why_coffee .title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-text);
+  margin-bottom: 1rem;
+}
+
+.why_coffee p {
+  color: var(--secondary-text);
+  line-height: 2;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.why_coffee div { /* Button container */
+  display: flex;
+  gap: 1rem;
+}
+
+.why_coffee button {
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--primary-text);
+  background-color: var(--primary-text);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.why_coffee button:hover {
+  background-color: #1e2b38;
+  transform: translateY(-2px);
+}
+
+.why_coffee .red_btn {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.why_coffee .red_btn:hover {
+  background-color: #a5281b;
+}
+
+
+/* === Responsive Design === */
+
+/* Tablet view */
+@media (max-width: 992px) {
+  .main:first-of-type,
+  .main:last-of-type {
+    /* Stack elements vertically */
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  
+  .main:last-of-type > img {
+    max-width: 100%;
+    order: 2; /* Move image below the text on mobile */
+  }
+
+  .why_coffee {
+    order: 1;
+  }
+  
+  .why_coffee .title {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 576px) {
+  .readable {
+    padding: 2rem 0;
+  }
+  .container {
+    gap: 2rem;
+  }
+  .main section {
+    padding: 1.5rem;
+  }
+  .main section > img {
+    display: none; /* Hide the small image on mobile to save space */
+  }
+  .main section span {
+    font-size: 1.3rem;
+  }
+  .club span {
+    font-size: 1.5rem;
+  }
+  .why_coffee .title {
+    font-size: 1.8rem;
+  }
+  .why_coffee div { /* Button container */
+    flex-direction: column;
+    width: 100%;
+  }
+  .why_coffee button {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,47 @@
+.contents {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 160px;
+  text-align: right;
+  padding-top: 25px;
+  color: black;
+  direction: rtl;
+  padding-bottom: 5rem;
+}
+
+.contents hr {
+  border-top-color: rgb(0 0 0 / 23%);
+  margin: 20px 0px;
+}
+
+.main {
+   gap: 50px;
+  display: flex;
+  flex-direction: row-reverse; 
+}
+ 
+  
+.container {
+  overflow: auto;
+}
+
+
+@media (max-width: 992px) {
+  .main {
+    flex-direction: column;
+    gap: 30px; 
+  }
+
+  .contents {
+    margin-top: 100px;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contents {
+    margin-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

@@ -1,0 +1,139 @@
+
+/* === 2. کانتینر اصلی === */
+.totals {
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  width: 100%; /* Full width on mobile (default) */
+  height: fit-content; /* Adjusts height based on content */
+}
+
+/* On desktop, it becomes a fixed-width sidebar */
+@media (min-width: 992px) {
+  .totals {
+    width: 380px;
+    flex-shrink: 0; /* Prevents it from shrinking in a flex container */
+  }
+}
+
+/* === 3. استایل بخش‌های داخلی === */
+.totals_title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.subtotal,
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.subtotal p,
+.total p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.motor {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.address {
+  margin-bottom: 0.5rem;
+}
+
+.address p {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.address span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.change_address {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+}
+.change_address:hover {
+  text-decoration: underline;
+}
+
+.address_details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border: 1px solid #ced4da;
+}
+
+.address_details input,
+.address_details button {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+.address_details input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.address_details button {
+  background-color: var(--text-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.address_details button:hover {
+  background-color: #111;
+}
+
+.total {
+  font-size: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--text-primary);
+  font-weight: 700;
+}
+
+.checkout_btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+  display: block; /* To make the link take full width */
+  text-decoration: none;
+}
+.checkout_btn:hover {
+  background-color: #1e7e34;
+}

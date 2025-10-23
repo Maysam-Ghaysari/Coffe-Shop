@@ -1,0 +1,123 @@
+
+.stepper_bg {
+  width: 100%;
+  background-color: #f8f9fa; /* A light, neutral background */
+  padding: 2rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.stepper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  direction: rtl; /* For correct right-to-left flow */
+}
+
+/* === Common Styles for Steps (both Links and Paragraphs) === */
+.stepper a,
+.stepper p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between the number and text */
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px; /* Creates a pill shape */
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  border: 2px solid transparent;
+}
+
+/* === Step Numbers (using ::before pseudo-element) === */
+.stepper a::before,
+.stepper p::before {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+/* Adding the number content to each step */
+.stepper > *:nth-child(1)::before { content: '1'; }
+.stepper > *:nth-child(3)::before { content: '2'; }
+.stepper > *:nth-child(5)::before { content: '3'; }
+
+
+/* === Styling for Inactive/Future Steps (p tags) === */
+.stepper p {
+  color: #adb5bd; /* Light gray text for inactive steps */
+  background-color: #e9ecef;
+}
+.stepper p::before {
+  background-color: #ced4da;
+  color: #fff;
+}
+
+
+/* === Styling for Completed Steps (a tags that are not active) === */
+.stepper a {
+  color: #495057;
+  background-color: #dee2e6; /* A slightly darker gray for completed steps */
+  cursor: pointer;
+}
+.stepper a:hover {
+  background-color: #ced4da;
+}
+.stepper a::before {
+  background-color: #868e96;
+  color: #fff;
+}
+
+
+/* === Styling for the CURRENTLY ACTIVE Step === */
+.active_step,
+.active_step:hover {
+  background-color: #007bff; /* A strong primary color for the active step */
+  color: white;
+  border-color: #0056b3;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.25);
+}
+.active_step::before {
+  background-color: white !important; /* White circle for the number */
+  color: #007bff !important; /* Primary color for the number text */
+}
+
+
+/* === Styling for the Arrow Separators === */
+.stepper svg {
+  color: #ced4da; /* Neutral color for separators */
+  font-size: 1.5rem;
+  flex-shrink: 0; /* Prevents arrows from shrinking */
+}
+
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .stepper {
+    gap: 0.75rem;
+  }
+  .stepper a,
+  .stepper p {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stepper {
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: center;
+  }
+  .stepper svg {
+    display: none; /* Hide arrows on small screens to save space */
+  }
+}

@@ -1,0 +1,67 @@
+.box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 160px;
+}
+
+.box:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 70px rgba(0, 200, 255, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.box span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a8880;
+}
+
+.box div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.box p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.box_chart_icon {
+  font-size: 1.8rem;
+  color: #ff4d6d;
+  transition: all 0.3s ease;
+}
+
+.box:hover .box_chart_icon {
+  color: #00c8ff;
+  transform: scale(1.2);
+}
+
+/* واکنش‌گرا */
+@media (max-width: 768px) {
+  .box {
+    padding: 15px 20px;
+  }
+  .box span {
+    font-size: 1.6rem;
+  }
+  .box_chart_icon {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,52 @@
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2),
+              inset 0 0 15px rgba(255, 255, 255, 0.1);
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 200, 255, 0.35);
+}
+
+.ticket div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.department {
+  font-size: 0.85rem;
+  color: rgba(9, 5, 5, 0.6);
+}
+
+.no_answer {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ff0000; /* رنگ برای پاسخ داده شده */
+}
+
+.no_answer:empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* واکنش‌گرا */
+@media (max-width: 768px) {
+  .ticket {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,83 @@
+.content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 45%;
+  color: #000;
+}
+
+.content_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.content_details p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.content_details a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.content_details a:hover {
+  color: #ff4081;
+}
+
+.order_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* هر سفارش کارت شیشه‌ای */
+.order_card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 50px rgba(0, 200, 255, 0.4);
+}
+
+/* پیام خالی */
+.empty {
+  text-align: center;
+  color: #000;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+/* واکنش‌گرا */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .content_details p {
+    font-size: 1.2rem;
+  }
+}

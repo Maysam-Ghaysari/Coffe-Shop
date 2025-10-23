@@ -1,0 +1,59 @@
+.comments {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* ستون کامنت‌ها */
+.user_comments {
+  flex: 2;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.user_comments .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+/* فرم */
+.form_bg {
+  flex: 1.2;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 20px; /* برای ثابت موندن فرم هنگام اسکرول دسکتاپ */
+  height: fit-content;
+}
+
+/* استایل عمومی برای متن و کامنت‌ها */
+.user_comments p,
+.form_bg p {
+  line-height: 1.7;
+  color: #555;
+}
+
+/* رسپانسیو */
+@media (max-width: 1024px) {
+  .comments {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .comments {
+    flex-direction: column;
+  }
+
+  .form_bg {
+    position: relative;
+    top: unset;
+    width: 100%;
+  }
+}

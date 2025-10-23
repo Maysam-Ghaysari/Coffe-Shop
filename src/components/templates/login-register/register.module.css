@@ -1,0 +1,163 @@
+/* کانتینر اصلی */
+.form_container {
+  background: linear-gradient(135deg, #101010, #1f1f1f);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* نورهای پس زمینه */
+.form_container::before,
+.form_container::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+}
+.form_container::before {
+  top: -100px;
+  left: -100px;
+  background: rgba(255, 0, 150, 0.4);
+}
+.form_container::after {
+  bottom: -100px;
+  right: -100px;
+  background: rgba(0, 200, 255, 0.4);
+}
+
+/* باکس فرم */
+.form {
+  display: grid;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  padding: 25px 35px;
+  width: 380px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* گروه اینپوت با لیبل شناور */
+.input_group {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.input_group .input {
+  width: 100%;
+  padding: 13px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  direction: rtl;
+  transition: all 0.3s ease;
+}
+
+.input_group .input:focus {
+  outline: none;
+  border-color: #00c8ff;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.4);
+}
+
+/* لیبل شناور */
+.floating_label {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* وقتی کاربر تایپ کرد یا فوکوس شد */
+.input_group .input:focus + .floating_label,
+.input_group .input:not(:placeholder-shown) + .floating_label {
+  top: -14px;
+  right: 7px;
+  font-size: 12px;
+   background: rgba(121, 114, 114, 0.9);
+
+  padding: 0 6px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+/* دکمه‌ها */
+.btn {
+  margin-top: 1rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(12px);
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 200, 255, 0.45);
+}
+
+/* لینک برگشت */
+.back_to_login {
+  margin-top: 1rem;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+.back_to_login:hover {
+  color: #00c8ff;
+}
+
+/* دکمه لغو */
+.redirect_to_home {
+  margin-top: 1rem;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+.redirect_to_home:hover {
+  color: #ff006e;
+}

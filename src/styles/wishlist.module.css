@@ -1,0 +1,140 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+  color: #000;
+}
+
+/* افکت نورهای رنگی بک‌گراند */
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: 0;
+}
+.container::before {
+  top: -120px;
+  left: -120px;
+  background: rgba(255, 0, 150, 0.35);
+}
+.container::after {
+  bottom: -120px;
+  right: -120px;
+  background: rgba(0, 200, 255, 0.35);
+}
+
+/* تیتر صفحه */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+/* بخش محصولات */
+.main section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+/* محصولات به سبک شیشه‌ای */
+.product {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.product:hover {
+  box-shadow: 0 20px 70px rgba(0, 200, 255, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* حالت خالی لیست علاقه‌مندی‌ها */
+.wishlist_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  padding: 50px 40px;
+  text-align: center;
+  color: #000;
+  gap: 20px;
+}
+
+.wishlist_empty svg {
+  font-size: 4rem;
+  color: #ff4d6d;
+}
+
+.wishlist_empty p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.wishlist_empty span {
+  font-size: 1rem;
+  color: #000;
+}
+
+.wishlist_empty a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  color: #00c8ff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.wishlist_empty a:hover {
+  background: rgba(0, 200, 255, 0.25);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 200, 255, 0.45);
+}
+
+/* واکنش‌گرا */
+@media (max-width: 900px) {
+  .main section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .main section {
+    grid-template-columns: 1fr;
+  }
+}

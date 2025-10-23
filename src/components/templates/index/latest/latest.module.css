@@ -1,0 +1,91 @@
+/* === استایل‌های پایه برای دسکتاپ === */
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  padding: 0 20px; /* اضافه کردن پدینگ برای فضاسازی در لبه‌ها */
+}
+
+.title {
+  color: black;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  text-align: center;
+  margin-top: 1.7rem;
+  align-items: center;
+  gap: 20px; /* اضافه کردن فاصله برای جلوگیری از چسبندگی در حالت ریسپانسیو */
+}
+
+.title p {
+  color: #114639;
+  font-size: 36px;
+  white-space: nowrap; /* جلوگیری از شکستن عنوان */
+}
+
+.title span {
+  color: gray;
+}
+
+.link {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap; /* جلوگیری از شکستن متن لینک */
+}
+
+.products {
+  display: grid;
+  /* در دسکتاپ ۴ ستون مساوی داریم */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  padding: 20px 0;
+}
+
+
+/* === Media Queries برای ریسپانسیو === */
+
+/* تبلت‌های بزرگ و لپ‌تاپ‌های کوچک (تا ۱۲۰۰ پیکسل) */
+@media (max-width: 1200px) {
+  .products {
+    /* تبدیل به گرید ۳ ستونه */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* تبلت‌ها (تا ۹۹۲ پیکسل) */
+@media (max-width: 992px) {
+  .title p {
+    font-size: 30px; /* کاهش اندازه فونت عنوان */
+  }
+  .products {
+    /* تبدیل به گرید ۲ ستونه */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* کاهش فاصله بین محصولات */
+  }
+}
+
+/* موبایل‌های بزرگ (تا ۷۶۸ پیکسل) */
+@media (max-width: 768px) {
+  .title {
+    /* عنوان و لینک زیر هم قرار می‌گیرند */
+    flex-direction: column;
+    align-items: flex-end; /* همه چیز در راستا (راست) قرار می‌گیرد */
+    gap: 15px;
+  }
+  .title p {
+    font-size: 26px;
+  }
+}
+
+/* موبایل‌های کوچک (تا ۵۷۶ پیکسل) */
+@media (max-width: 576px) {
+  .products {
+    /* تبدیل به گرید تک ستونه */
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 0 15px; /* کاهش پدینگ در موبایل */
+  }
+}

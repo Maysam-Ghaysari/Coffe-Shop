@@ -1,0 +1,185 @@
+
+/* --- Title Styles --- */
+.title {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically align items */
+  position: relative;
+  font-size: 30px;
+  z-index: 1;
+  font-weight: 500;
+  margin-bottom: 2rem; /* Add some space below the title */
+}
+
+/* This pseudo-element creates the line through the title */
+.title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-bottom: 2px solid #e0e0e0;
+  z-index: -1;
+}
+
+.title span {
+  background: #fff;
+  padding: 0 20px;
+  margin-right: 2rem; /* Pushes the line away from the start of the title */
+}
+
+.title a {
+  background-color: #ffffff;
+  color: #711d1c;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: 2px solid #08a0a3;
+  text-decoration: none;
+  white-space: nowrap; /* Prevent link text from wrapping */
+  flex-shrink: 0; /* Prevent the link from shrinking */
+}
+
+/* --- Form Layout & Elements --- */
+.content {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 1rem;
+  /* Two equal columns for desktop */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.group,
+.uploader {
+  display: flex;
+  gap: 8px; /* Consistent gap */
+  flex-direction: column;
+}
+
+.container input,
+.container textarea,
+.group select {
+  width: 100%;
+  padding: 12px 15px;
+  resize: none;
+  background-color: white;
+  margin-top: 4px;
+  outline: 0;
+  color: black;
+  border-radius: 20px;
+  border: 2px solid #08a0a3;
+  box-shadow: 0 7px 15px rgba(1, 141, 176, 0.1);
+  font-size: 1rem;
+}
+
+.container textarea {
+  margin-bottom: 1rem;
+}
+
+.uploader {
+  border-radius: 20px;
+  background: #f8f9fa;
+  border: 2px dashed #08a0a3;
+  text-align: center;
+  padding: 40px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploader input {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  width: auto;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.btn {
+  width: max-content;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #08a0a3;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: #067c7e;
+}
+
+.btn svg {
+  font-size: 18px;
+}
+
+
+/*
+ * ============================================
+ * Responsive Styles
+ * ============================================
+ */
+@media (max-width: 768px) {
+  /* --- Adjust main layout to a single column --- */
+  .content {
+    grid-template-columns: 1fr; /* Switch to a single column */
+    gap: 20px;
+  }
+
+  /* --- Adjust padding for more space --- */
+  .container {
+    padding: 0 15px;
+  }
+
+  /* --- Stack title and link vertically --- */
+  .title {
+    flex-direction: column;
+    align-items: flex-start; /* Align to the start (right in RTL) */
+    gap: 15px;
+    font-size: 24px; /* Smaller font size */
+  }
+
+  /* Adjust the decorative line for the new layout */
+  .title:after {
+    display: none; /* Hide the line on mobile for a cleaner look */
+  }
+
+  .title span {
+    margin-right: 0;
+    padding: 0 10px 0 0; /* Adjust padding */
+  }
+
+  .title a {
+    left: auto; /* Reset position */
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+  .container input,
+  .container textarea,
+  .group select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

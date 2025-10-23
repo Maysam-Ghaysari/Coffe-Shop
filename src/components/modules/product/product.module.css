@@ -1,0 +1,168 @@
+
+.card {
+  width: 100%;
+  max-width: 310px; /* اندازه ثابت در دسکتاپ، اما در موبایل کوچک می‌شود */
+  border: 1px solid #eef2f6;
+  border-radius: 16px; /* کمی گردتر برای ظاهر مدرن */
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px_15px_rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  direction: rtl;
+  margin: 1rem; /* فاصله در گرید */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* === Image & Hover Container === */
+.details_container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* برای حفظ نسبت مربع */
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+.details_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .details_container img {
+  transform: scale(1.1) rotate(2deg); /* افکت بزرگنمایی و چرخش جزئی */
+}
+
+/* === Glassmorphism Elements on Hover === */
+.icons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.card:hover .icons {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.icons a, .icons div {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  /* --- Glass Effect --- */
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.icons a:hover, .icons div:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+  color: var(--accent-color);
+}
+
+.tooltip {
+  position: absolute;
+  right: calc(100% + 10px);
+  white-space: nowrap;
+  background-color: var(--text-primary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.icons a:hover .tooltip, .icons div:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* === Add to Cart Button (Glass Effect) === */
+.details_container button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 4;
+
+  /* --- Glass Effect --- */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
+}
+
+.details_container button:hover {
+  color: var(--accent-color);
+}
+
+.card:hover .details_container button {
+  transform: translateY(0);
+}
+
+/* === Product Details (Bottom Section) === */
+.details {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: right;
+}
+
+.details a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.details a:hover {
+  color: var(--accent-color);
+}
+
+.details div { /* Stars */
+  display: flex;
+  gap: 3px;
+  color: var(--star-color);
+}
+
+.details span { /* Price */
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
