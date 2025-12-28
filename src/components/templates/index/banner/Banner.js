@@ -17,26 +17,16 @@ function Banner() {
       <Swiper 
       className={styles.mySwiper}
         loop={true}
-        autoplay={{ delay: 1000 }}
+        autoplay={{ delay: 1500 }}
         modules={[Navigation, Autoplay]}
       >
         <SwiperSlide>
           <div className={styles.slideWrapper}>
             <Image 
-              src="/images/Banner/slide4.jpg"
+              src="/images/Banner/slide1.jpg"
               alt="Slide 1"
               fill
               priority
-            />
-          </div>
-        </SwiperSlide>
-{/* 
-        <SwiperSlide>
-          <div className={styles.slideWrapper}>
-            <Image
-              src="/images/Banner/slide2.jpg"
-              alt="Slide 2"
-              fill
             />
           </div>
         </SwiperSlide>
@@ -45,11 +35,21 @@ function Banner() {
           <div className={styles.slideWrapper}>
             <Image
               src="/images/Banner/slide3.jpg"
+              alt="Slide 2"
+              fill
+            />
+          </div>
+        </SwiperSlide>
+
+        {/* <SwiperSlide>
+          <div className={styles.slideWrapper}>
+            <Image
+              src="/images/Banner/slide3.jpg"
               alt="Slide 3"
               fill
             />
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>  */}
       </Swiper>
     </div>
   );
