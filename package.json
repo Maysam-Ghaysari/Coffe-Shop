@@ -27,13 +27,5 @@
     "sweetalert": "^2.1.2",
     "swiper": "^11.2.10",
     "tailwindcss": "^4.1.12"
-  },
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "main": "next.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@next/swc-win32-x64-msvc": "^13.0.4"
   }
 }
