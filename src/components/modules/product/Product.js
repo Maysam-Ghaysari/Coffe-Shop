@@ -4,7 +4,6 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { CiSearch, CiHeart } from "react-icons/ci";
 
 const Card = ({ name, price, img,score,_id }) => {
-  console.log('ldjh',{name})
 const safeScore = Math.max(0, Math.min(5, Number(score) || 0));
 
 

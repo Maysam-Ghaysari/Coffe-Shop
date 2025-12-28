@@ -1,8 +1,7 @@
 /* === استایل‌های پایه برای دسکتاپ === */
 .container {
-  max-width: 1222px;
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 0 20px; /* اضافه کردن پدینگ برای فضاسازی در لبه‌ها */
 }
 
 .title {
@@ -17,14 +16,12 @@
   gap: 20px; /* اضافه کردن فاصله برای جلوگیری از چسبندگی در حالت ریسپانسیو */
 }
 
-.title p {
-  color: #114639;
-  font-size: 36px;
-  white-space: nowrap; /* جلوگیری از شکستن عنوان */
-}
+
 
 .title span {
-  color: gray;
+  color: #114639;
+  font-size: 30px;
+  padding: 30px;
 }
 
 .link {
@@ -77,15 +74,39 @@
   .title p {
     font-size: 26px;
   }
+  .products {
+        margin-right: 40px;
+
+  }
 }
 
 /* موبایل‌های کوچک (تا ۵۷۶ پیکسل) */
 @media (max-width: 576px) {
   .products {
     /* تبدیل به گرید تک ستونه */
-    grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
+        margin-right: 40px;
+
+
   }
-  .container {
-    padding: 0 15px; /* کاهش پدینگ در موبایل */
+
+}
+@media (max-width: 480px){
+  .products {
+    /* تبدیل به گرید تک ستونه */
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 30px;
+        gap: 10px;
   }
+  
+  .title{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    flex-direction: row-reverse;
+  }
+  .container{
+   
+  }
+ 
 }

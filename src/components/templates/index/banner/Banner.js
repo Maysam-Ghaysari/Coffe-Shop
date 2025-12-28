@@ -1,44 +1,57 @@
 "use client";
 import React from "react";
-// Import Swiper React components
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import styles from "./Banner.module.css";
 
-// Import Swiper styles
+// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
-// import required modules
+// Swiper modules
 import { Navigation, Autoplay } from "swiper/modules";
 
 function Banner() {
   return (
-    <Swiper
-      rewind={true}
-      navigation={true}
-      loop={true}
-      autoplay={{ delay: 1500 }}
-      modules={[Navigation, Autoplay]}
-      className="mySwiper home-slider"
-    >
-      <SwiperSlide>
-        <img
-          src="https://set-coffee.com/wp-content/uploads/2023/12/slide.jpg"
-          alt="Slide"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src="https://set-coffee.com/wp-content/uploads/2021/10/winter-slie.jpg"
-          alt="Slide"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src="https://set-coffee.com/wp-content/uploads/2022/06/fall.jpg"
-          alt="Slide"
-        />
-      </SwiperSlide>
-    </Swiper>
+    <div className={styles.bannerContainer}>
+      <Swiper 
+      className={styles.mySwiper}
+        loop={true}
+        autoplay={{ delay: 1000 }}
+        modules={[Navigation, Autoplay]}
+      >
+        <SwiperSlide>
+          <div className={styles.slideWrapper}>
+            <Image 
+              src="/images/Banner/slide4.jpg"
+              alt="Slide 1"
+              fill
+              priority
+            />
+          </div>
+        </SwiperSlide>
+{/* 
+        <SwiperSlide>
+          <div className={styles.slideWrapper}>
+            <Image
+              src="/images/Banner/slide2.jpg"
+              alt="Slide 2"
+              fill
+            />
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className={styles.slideWrapper}>
+            <Image
+              src="/images/Banner/slide3.jpg"
+              alt="Slide 3"
+              fill
+            />
+          </div>
+        </SwiperSlide> */}
+      </Swiper>
+    </div>
   );
 }
 

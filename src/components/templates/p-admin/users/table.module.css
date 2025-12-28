@@ -1,150 +1,192 @@
+/* ================================================= 
+   ۱. تنظیمات عنوان و کانتینر اصلی
+   ================================================= */
+
 .title {
-  margin-top: 30px;
-  text-align: right;
-  text-transform: uppercase;
-  position: relative;
-  font-size: 30px;
-  z-index: 1;
-  font-weight: 500;
-}
-
-.title:before {
-  border-top: 2px solid #dfdfdf;
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: 52%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 95%;
-  z-index: -1;
-}
-
-.title span {
-  background: #fff;
-  padding: 0 15px;
-  margin-right: 4rem;
-}
-
-.title:before {
-  border-top: none;
-}
-
-.title:after {
-  border-bottom: 1px solid #711d1c;
-  -webkit-box-shadow: 0 1px 0 0 #711d1c;
-  -moz-box-shadow: 0 1px 0 0 #711d1c;
-  box-shadow: 0 1px 0 0 #711d1c;
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: 51%;
-  left: 0;
-  right: 0;
-  width: 95%;
-  z-index: -1;
-}
-
-.table {
-  width: 100%;
-}
-
-.table tbody tr {
-  background-color: rgb(255, 255, 255);
-}
-
-.table {
-  width: 100%;
-  background-color: #f2f7fd;
-}
-
-.table th {
-  border: none;
-  color: #000000;
-  text-align: center;
-}
-
-.table tr {
-  vertical-align: middle;
-}
-
-.table td,
-.table th {
-  padding: 8px 22px;
-  text-align: center;
-}
-
-.delete_btn {
-  font-size: 13px;
-  background: #711d1c;
-  padding: 0.4rem 0.7rem;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  width: -webkit-fill-available;
-}
-
-.edit_btn,
-.btn {
-  font-size: 13px;
-  background: #000000;
-  padding: 0.4rem 0.7rem;
-  cursor: pointer;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  width: -webkit-fill-available;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #eee;
 }
 
 .table_container {
-  padding: 40px 25px;
+  overflow-x: auto; /* اسکرول افقی برای دسکتاپ در صورت لزوم */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 15px;
 }
 
-.answer_contact {
-  color: rgb(0, 0, 0);
-  background-color: blue !important;
+/* ================================================= 
+   ۲. استایل جدول (Desktop Default)
+   ================================================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* حداقل عرض برای نمایش راحت ستون‌ها */
 }
 
-.no_answer_contact {
-  color: white;
-  background-color: red !important;
-}
-.answer_comment {
-  color: rgb(255, 255, 255);
-  background-color: blue !important;
+.table thead tr {
+  background-color: #f8f9fa;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: right;
 }
 
-.no_answer_comment {
-  color: white;
-  background-color: red !important;
+.table th,
+.table td {
+  padding: 12px 10px;
+  border: 1px solid #eee;
+  text-align: center;
+  font-size: 0.85rem;
+  vertical-align: middle;
 }
-.check,
-.no_check {
-  font-size: 13px;
-  background: #000000;
-  padding: 0.4rem 0.7rem;
-  width: -webkit-fill-available;
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* ----- استایل نقش‌ها و دکمه‌ها ----- */
+
+.role_user {
+    background-color: #e6f7ff;
+    color: #007bff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.role_admin {
+    background-color: #fffbe6;
+    color: #faad14;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.edit_btn,
+.delete_btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  border: 0;
-  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.edit_btn {
+  background-color: #007bff;
   color: white;
 }
-.no_check {
-  background: #711d1c;
+.edit_btn:hover {
+  background-color: #0056b3;
 }
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.empty {
+
+.delete_btn {
+  background-color: #dc3545;
   color: white;
-  background-color: #711d1c;
-  padding: 0.7rem 2rem;
-  width: max-content;
-  margin: 15rem auto;
-  font-size: 1.7rem;
-  border-radius: 5px;
+}
+.delete_btn:hover {
+  background-color: #c82333;
+}
+
+/* ================================================= 
+   ۳. ریسپانسیو (تبدیل به لیست کارتی برای موبایل)
+   ================================================= */
+
+@media (max-width: 768px) {
+  .table_container {
+    overflow-x: hidden;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .table {
+    display: block;
+    min-width: 100%;
+  }
+
+  .table thead {
+    display: none; /* حذف هدر جدول */
+  }
+
+  .table tbody {
+    display: block;
+  }
+
+  .table tr {
+    display: flex;
+    flex-direction: column; /* هر ردیف (آیتم) به یک کارت تبدیل می‌شود */
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 0.9rem;
+  }
+
+  /* حذف جداکننده برای آخرین سطر اطلاعاتی */
+  .table td:nth-child(4) { 
+      border-bottom: none;
+  }
+  
+  /* گروه‌بندی دکمه‌ها در یک سطر جدا */
+  .table td:nth-child(5), /* ویرایش */
+  .table td:nth-child(6), /* تغییر سطح */
+  .table td:nth-child(7), /* حذف */
+  .table td:nth-child(8) { /* بن */
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-bottom: none;
+    padding-top: 5px;
+  }
+  
+  .table td:last-child {
+      border-bottom: none;
+      padding-bottom: 15px;
+  }
+
+
+  /* اضافه کردن عنوان ستون (Label) در موبایل */
+  .table td::before {
+    content: attr(data-label) ": ";
+    font-weight: 600;
+    color: #6c757d;
+    min-width: 120px; /* برای تراز کردن بهتر */
+    text-align: right;
+    margin-left: 10px;
+  }
+  
+  /* شناسه را در بالا به صورت عنوان نمایش می‌دهد */
+  .table td:nth-child(1) {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* تغییر ظاهر دکمه ها در موبایل */
+  .edit_btn, .delete_btn {
+      width: auto;
+  }
 }

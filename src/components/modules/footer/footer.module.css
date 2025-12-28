@@ -1,154 +1,216 @@
-/* =================== Base Styles =================== */
-.description {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  align-items: center;
-}
-.descriptions {
-  width: 300px;
-  padding: 10px;
-  font-size: 15px;
-  direction: rtl;
-}
-.description:nth-child(3) p {
-  font-size: 15px;
-}
-.descriptions_title {
-  margin-bottom: 30px;
-  margin-top: 20px;
-}
-.footer main {
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  padding-bottom: 40px;
-  flex-direction: row-reverse;
-  text-align: right;
-  flex-wrap: wrap; /* اجازه می‌ده آیتم‌ها به خط بعد برن */
-}
+/* ================================================= 
+   ۱. تنظیمات پایه و کانتینر اصلی
+   ================================================= */
+
 .footer {
-  background-color: rgb(17, 17, 17);
-  padding-top: 40px;
-  color: white;
-}
-.footer_article div div {
-  display: flex;
-  justify-content: right;
-  gap: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  padding-top: 0.5rem;
-}
-.footer_article {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  flex-direction: row-reverse;
-  margin: 20px 0px;
-  flex-wrap: wrap; /* برای ریسپانسیو */
-}
-
-.footer h4 {
-  margin-bottom: 15px;
-}
-.links li {
-  list-style: none;
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.links {
-  display: flex;
-  gap: 80px;
-  margin-right: 1rem;
-  flex-wrap: wrap; /* ریسپانسیو برای لینک‌ها */
-}
-
-.licenses img:nth-child(4) {
-  margin-left: 1rem;
-}
-.licenses img {
-  cursor: pointer;
-}
-.licenses {
-  height: 200px;
-  gap: 10px;
-  display: grid;
-  grid-template-columns: auto auto;
-}
-.copyRight {
+  background-color: #222; /* پس زمینه تیره */
+  color: #ccc;
+  width: 100%;
   direction: rtl;
-  padding: 20px 0px;
-  font-size: 12px;
-  text-align: right;
 }
 
-.footer hr {
-  border-color: #676767;
-}
-.copyRight svg {
-  position: relative;
-  top: 3.9px;
-  right: 1px;
-  font-size: 1.3rem;
+.container {
+  max-width: 1300px;
 }
 
-/* =================== Media Queries =================== */
+/* ================================================= 
+   ۲. بخش بالایی فوتر (اطلاعات و لینک‌ها)
+   ================================================= */
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 30px;
+}
+
+/* ----- بخش درباره ما (About) ----- */
+
+.about {
+  flex: 0 0 350px; /* فضای ثابت بیشتر در دسکتاپ */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.logo {
+  width: 150px; /* اندازه مناسب برای لوگو */
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.info svg {
+  color: #d4af37; /* رنگ طلایی برای آیکون‌ها */
+  font-size: 1.1rem;
+}
+
+.info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ----- بخش لینک‌ها (Links) ----- */
+
+.linksWrapper {
+  display: flex;
+  gap: 60px;
+  flex-grow: 1;
+  justify-content: flex-end; /* هل دادن به سمت راست در طرح RTL */
+}
+
+.linkGroup {
+  min-width: 120px;
+}
+
+.linkGroup h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #333;
+}
+
+.linkGroup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkGroup li {
+  margin-bottom: 10px;
+}
+
+.linkGroup a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.linkGroup a:hover {
+  color: #d4af37; /* افکت هاور با رنگ طلایی */
+}
+
+/* ================================================= 
+   ۳. جداکننده و بخش کپی‌رایت
+   ================================================= */
+
+.divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 20px 0;
+}
+
+.bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+  padding-top: 10px;
+}
+
+.bottom p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.bottom svg {
+  font-size: 1rem;
+}
+
+.bottom strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+
+/* ================================================= 
+   ۴. ریسپانسیو (برای تبلت و موبایل)
+   ================================================= */
+
+/* تبلت (ماکزیمم عرض ۱۰۲۴ پیکسل) */
 @media (max-width: 1024px) {
-  .links {
-    gap: 40px;
-  }
-  .licenses {
-    grid-template-columns: auto auto;
-  }
-  .footer main {
-    padding-bottom: 30px;
-  }
+    .about {
+        flex: 0 0 300px; /* کاهش عرض بخش about */
+    }
+    
+    .linksWrapper {
+        gap: 30px;
+    }
 }
 
+/* موبایل و تبلت کوچک (ماکزیمم عرض ۷۶۸ پیکسل) */
 @media (max-width: 768px) {
-  .footer main {
-    flex-direction: column-reverse; /* ستون برای موبایل */
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-  }
+    .topSection {
+        flex-direction: column; /* چینش ستونی */
+        gap: 30px;
+    }
 
-  .footer_article {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+    .about {
+        flex: 1;
+        min-width: 100%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #333; /* اضافه کردن جداکننده بصری */
+    }
 
-  .links {
-    flex-direction: column;
-    gap: 15px;
-    margin-right: 0;
-    text-align: center;
-  }
-
-  .licenses {
-    grid-template-columns: auto auto;
-    justify-content: center;
-  }
-
-  .descriptions {
-    width: 100%;
-  }
+    .linksWrapper {
+        justify-content: space-between; /* پخش کردن گروه‌های لینک */
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .linkGroup {
+        min-width: 45%; /* تضمین می‌کند که در کنار هم بمانند */
+    }
 }
 
+/* موبایل کوچک (ماکزیمم عرض ۴۸۰ پیکسل) */
 @media (max-width: 480px) {
-  .links {
-    gap: 10px;
-    font-size: 14px;
-  }
+    .footer {
+        padding: 30px 0 15px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
 
-  .licenses {
-    grid-template-columns: auto;
-    height: auto;
-    gap: 10px;
-  }
+    .linksWrapper {
+        flex-direction: column; /* لینک‌ها زیر هم می‌آیند */
+        gap: 20px;
+    }
+    
+    .linkGroup {
+        min-width: 100%;
+    }
 
-  .descriptions {
-    font-size: 14px;
-  }
+    .linkGroup h4 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    
+    .linkGroup a, .subtitle, .info p {
+        font-size: 0.85rem;
+    }
+    
+    .bottom p {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
 }

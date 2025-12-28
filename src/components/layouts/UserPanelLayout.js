@@ -17,7 +17,6 @@ const Layout = async ({ children }) => {
       <section className={styles.section}>
         <Sidebar />
         <div className={styles.contents}>
-          <Topbar Detail={JSON.parse(JSON.stringify(...UserDetail))} />
           {children}
         </div>
       </section>

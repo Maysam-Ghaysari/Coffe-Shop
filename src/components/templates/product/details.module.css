@@ -1,4 +1,4 @@
-main {
+/* main {
   padding: 20px;
   background-color: #fff;
   border-radius: 12px;
@@ -6,14 +6,14 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
+} */
 
 /* عنوان محصول */
-h2 {
+/* h2 {
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
-}
+} */
 
 /* امتیازدهی */
 .rating {
@@ -169,18 +169,18 @@ h2 {
 }
 
 /* خط جداکننده */
-hr {
+/* hr {
   border: none;
   border-top: 1px solid #eee;
   margin: 15px 0;
-}
+} */
 
 /* === رسپانسیو === */
 @media (max-width: 992px) {
-  main {
+  /* main {
     width: 100% !important;
     padding: 15px;
-  }
+  } */
 
   .cart {
     flex-direction: column;
@@ -194,9 +194,9 @@ hr {
 }
 
 @media (max-width: 576px) {
-  h2 {
+  /* h2 {
     font-size: 1.4rem;
-  }
+  } */
 
   .price {
     font-size: 1.3rem;

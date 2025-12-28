@@ -3,12 +3,12 @@ import React from "react";
 import styles from "./table.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
+
 export default function DataTable({ users, title }) {
   const router = useRouter();
 
   const changeRole = async (userID) => {
-    // Validation (You)
-
+    // Confirmation is usually done inside the swal but we'll stick to the current logic
     const res = await fetch("/api/user/role", {
       method: "PUT",
       headers: {
@@ -28,9 +28,6 @@ export default function DataTable({ users, title }) {
   };
 
   const removeUser = async (userID) => {
-    // Confirm ✅
-    // Validation (You) ✅
-
     swal({
       title: "آیا از حذف کاربر اطمینان دارین؟",
       icon: "warning",
@@ -82,12 +79,18 @@ export default function DataTable({ users, title }) {
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email ? user.email : "ایمیل یافت نشد"}</td>
-                <td>{user.role === "USER" ? "کاربر عادی" : "مدیر"}</td>
+                <td data-label="شناسه">{index + 1}</td>
+                <td data-label="نام">{user.name}</td>
+                <td data-label="ایمیل">{user.email ? user.email : "ایمیل یافت نشد"}</td>
+                <td data-label="نقش">
+                  {user.role === "USER" ? (
+                    <span className={styles.role_user}>کاربر عادی</span>
+                  ) : (
+                    <span className={styles.role_admin}>مدیر</span>
+                  )}
+                </td>
                 <td>
-                  <button type="button" className={styles.edit_btn}>
+                  <button type="button" className={styles.edit_btn} data-label="ویرایش">
                     ویرایش
                   </button>
                 </td>
@@ -96,8 +99,9 @@ export default function DataTable({ users, title }) {
                     type="button"
                     className={styles.edit_btn}
                     onClick={() => changeRole(user._id)}
+                    data-label="تغییر سطح"
                   >
-                    تغییر نقش
+                    {user.role === "USER" ? "ارتقا به مدیر" : "تنزل به کاربر"}
                   </button>
                 </td>
                 <td>
@@ -105,12 +109,13 @@ export default function DataTable({ users, title }) {
                     type="button"
                     className={styles.delete_btn}
                     onClick={() => removeUser(user._id)}
+                    data-label="حذف"
                   >
                     حذف
                   </button>
                 </td>
                 <td>
-                  <button type="button" className={styles.delete_btn}>
+                  <button type="button" className={styles.delete_btn} data-label="بن">
                     بن
                   </button>
                 </td>

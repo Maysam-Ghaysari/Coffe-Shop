@@ -1,0 +1,103 @@
+.wrapper {
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* کارت اصلی */
+.card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+/* تصویر */
+.imageWrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* محتوا */
+.content {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7rem;
+}
+
+/* لینک */
+.link {
+  margin-top: auto;
+  display: inline-block;
+  padding: 8px 12px;
+  background: #4b4bff;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: 0.25s ease;
+}
+
+.link:hover {
+  background: #2a2adf;
+}
+
+/* رسپانسیو */
+@media (max-width: 900px) {
+  .container {
+    gap: 20px;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+}

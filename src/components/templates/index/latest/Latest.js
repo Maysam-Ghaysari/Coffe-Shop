@@ -4,15 +4,13 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Product from "@/components/modules/product/Product";
 
 const Latest = ({ products }) => {
-console.log("products",products)
   return (
     <div className={styles.container}>
       <section className={styles.title}>
         <div>
-          <p>آخرین محصولات</p>
-          <span>Latest products</span>
+          <span>آخرین محصولات</span>
         </div>
-        <Link className={styles.link} href={"/category"}>
+        <Link className={styles.link} href={"/all-product"}>
           مشاهده همه <FaChevronLeft />{" "}
         </Link>
       </section>

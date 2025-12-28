@@ -34,6 +34,7 @@ const Details = ({ product }) => {
           name: product.name,
           price: product.price,
           count,
+        img: product.img,
         };
 
         cart.push(cartItem);
@@ -47,6 +48,7 @@ const Details = ({ product }) => {
         name: product.name,
         price: product.price,
         count,
+        img: product.img,
       };
 
       cart.push(cartItem);
@@ -87,7 +89,7 @@ const Details = ({ product }) => {
       <div className={styles.cart}>
         <button onClick={addToCart}>افزودن به سبد خرید</button>
         <div>
-          <span onClick={() => setCount(count - 1)}>-</span>
+         <span onClick={() => count > 1 && setCount(count - 1)}>-</span>
           {count}
           <span onClick={() => setCount(count + 1)}>+</span>
         </div>

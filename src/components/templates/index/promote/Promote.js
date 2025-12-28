@@ -31,14 +31,14 @@ const Promote = () => {
               برخورداری از تجربه و قدمت کافی و آگاهی از ذایقه مصرف کنندگان
               راهنمای ما در برآورده ساختن نیاز مشتریان قهوه تخصصی (موج سوم) است
               .تجربه ای به قدمت چهار نسل و ارتباط مستمر با مصرف کنندگان قهوه
-              ضامن این ویژگیها است.
+              ضامن این ویژگی ها است.
             </p>
             <div>
               <Link href="/about-us">
                 <button className={styles.red_btn}>بیشتر بخوانید</button>
               </Link>
               <Link href="/category">
-                <button>فروشگاه</button>
+                <button className={styles.red_btn}>فروشگاه</button>
               </Link>
             </div>
           </section>

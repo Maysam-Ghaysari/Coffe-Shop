@@ -1,247 +1,445 @@
-
-.cart_layout {
+/* ===== Main Wrapper ===== */
+.main_wrapper {
   display: grid;
-  grid-template-columns: 1fr; /* Default: 1 column for mobile */
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  align-items: flex-start;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 20px;
   direction: rtl;
 }
 
-/* On desktop screens, switch to a 2-column layout */
-@media (min-width: 992px) {
-  .cart_layout {
-    /* Table takes 2 parts, Totals takes 1 part */
-    grid-template-columns: 2fr 1fr;
-  }
-}
-
-/* === 3. استایل جدول محصولات === */
-.tabel_container {
-  width: 100%;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-  border-radius: var(--border-radius);
+/* ===== Cart Container ===== */
+.cart_container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
 }
 
-.table thead {
-  background-color: var(--bg-light);
-}
-
-.table th {
-  padding: 1rem 1.5rem;
-  text-align: right;
+/* ===== Cart Header (Desktop Only) ===== */
+.cart_header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 80px;
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #8b4513, #6b3410);
+  color: white;
   font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
+  font-size: 15px;
+  border-bottom: 3px solid #6b3410;
 }
 
-.table tbody tr {
-  border-bottom: 1px solid var(--border-color);
+.cart_header > div {
+  display: flex;
+  align-items: center;
 }
-.table tbody tr:last-child {
+
+.col_product {
+  justify-content: flex-start;
+}
+
+.col_count,
+.col_total {
+  justify-content: center;
+}
+
+.col_action {
+  justify-content: center;
+}
+
+/* ===== Cart Items List ===== */
+.cart_items_list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Cart Item ===== */
+.cart_item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 80px;
+  gap: 16px;
+  padding: 24px;
+  border-bottom: 1px solid #e8e8e8;
+  align-items: center;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.cart_item:hover {
+  background: #faf9f7;
+}
+
+.cart_item:last-child {
   border-bottom: none;
 }
 
-.table td {
-  padding: 1.5rem;
-  vertical-align: middle;
-  text-align: right;
-}
-
-.product {
+/* ===== Product Meta ===== */
+.product_meta {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
-.product img {
+
+.product_meta img {
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: var(--border-radius);
-}
-.product a {
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.product a:hover {
-  color: var(--primary-color);
+  border-radius: 8px;
+  border: 2px solid #e8e8e8;
+  transition: all 0.3s ease;
 }
 
-.counter div {
+.product_meta img:hover {
+  border-color: #8b4513;
+  transform: scale(1.05);
+}
+
+.product_meta a {
+  color: #2c2c2c;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.product_meta a:hover {
+  color: #8b4513;
+}
+
+/* ===== Counter Box ===== */
+.counter_box {
   display: flex;
   align-items: center;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  width: fit-content;
-}
-.counter span {
-  width: 35px;
-  height: 35px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  font-size: 1.5rem;
-  user-select: none;
-}
-.counter p {
-  padding: 0 1rem;
-  font-weight: 700;
+  justify-content: center;
+  gap: 12px;
+  background: #faf9f7;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: 1px solid #e8e8e8;
 }
 
-.delete_icon {
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.delete_icon:hover {
-  color: var(--danger-color);
-}
-
-/* === 4. بخش کوپن و بروزرسانی === */
-.tabel_container section {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.tabel_container section div {
-  display: flex;
-}
-.update_btn, .set_off_btn {
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-light);
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.update_btn:hover {
-  background-color: #e2e6ea;
-}
-.set_off_btn {
-  background-color: var(--text-primary);
+.counter_box button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #8b4513;
   color: white;
-  border-color: var(--text-primary);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-}
-.set_off_btn:hover {
-  background-color: #111;
-}
-.tabel_container section input {
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-left: none; /* For seamless connection with button */
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
-  direction: rtl;
-}
-.tabel_container section input:focus {
-  outline: 2px solid var(--primary-color);
-  z-index: 1;
-}
-
-/* === 5. استایل بخش جمع کل (برای کامپوننت Total) === */
-.totals {
-  background-color: var(--bg-light);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
-  width: 100%;
-  height: fit-content; /* Adjusts height based on content */
-}
-
-.totals_title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.subtotal, .total {
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.total {
-  font-size: 1.2rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--text-primary);
-  font-weight: 700;
+.counter_box button:hover {
+  background: #6b3410;
+  transform: translateY(-2px);
 }
 
-.checkout_btn {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--success-color);
+.counter_box button:active {
+  transform: translateY(0);
+}
+
+.counter_box span {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #2c2c2c;
+}
+
+/* ===== Total Column ===== */
+.col_total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #8b4513;
+}
+
+.col_total small {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 400;
+}
+
+/* ===== Remove Button ===== */
+.col_action {
+  display: flex;
+  justify-content: center;
+}
+
+.col_action svg {
+  width: 28px;
+  height: 28px;
+  color: #dc3545;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.col_action svg:hover {
+  background: #dc35451a;
+  transform: scale(1.15) rotate(90deg);
+}
+
+/* ===== Coupon Box ===== */
+.coupon_box {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+  background: #faf9f7;
+  border-top: 2px solid #e8e8e8;
+}
+
+.coupon_box input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.coupon_box input:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.coupon_box input::placeholder {
+  color: #666666;
+}
+
+.coupon_box button {
+  padding: 14px 32px;
+  background: #8b4513;
   color: white;
   border: none;
-  border-radius: var(--border-radius);
-  font-size: 1.2rem;
-  font-weight: 700;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  text-align: center;
-  transition: background-color 0.2s;
-}
-.checkout_btn:hover {
-  background-color: #1e7e34;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-/* === 6. بخش کلیدی: ریسپانسیوسازی جدول برای موبایل === */
-@media (max-width: 820px) {
-  .table thead {
+.coupon_box button:hover {
+  background: #6b3410;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.coupon_box button:active {
+  transform: translateY(0);
+}
+
+/* ===== Empty Cart ===== */
+.empty_cart {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 20px;
+  color: #666666;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px dashed #e8e8e8;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .main_wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 16px;
+  }
+
+  .cart_header {
+    font-size: 14px;
+    padding: 16px 20px;
+  }
+
+  .cart_item {
+    padding: 20px;
+  }
+
+  .product_meta img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main_wrapper {
+    padding: 16px 12px;
+  }
+
+  /* مخفی کردن هدر در موبایل */
+  .cart_header {
     display: none;
   }
 
-  .table, .table tbody, .table tr {
-    display: block;
-    width: 100%;
+  /* تبدیل به لی‌اوت کارتی */
+  .cart_item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 450px;
   }
 
-  .table tr {
-    border: none; /* Remove border from tr */
-    border-bottom: 2px solid var(--bg-light); /* Add separator between cards */
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-  }
-  .table tr:last-child {
+  .cart_item:last-child {
     margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
   }
-  
-  .table td {
+
+  /* محصول در بالا */
+  .col_product {
+    grid-row: 1;
+  }
+
+  .product_meta {
+    gap: 12px;
+  }
+
+  .product_meta img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .product_meta a {
+    font-size: 14px;
+  }
+
+  /* تعداد، قیمت و حذف در یک ردیف */
+  .col_count,
+  .col_total,
+  .col_action {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 0;
-    border-bottom: 1px dashed var(--border-color);
-    text-align: left;
-  }
-  .table tr td:last-child {
-    border-bottom: none;
+    padding: 12px 0;
+    border-top: 1px solid #e8e8e8;
   }
 
-  .table td::before {
+  /* اضافه کردن لیبل‌ها در موبایل */
+  .col_count::before,
+  .col_total::before {
     content: attr(data-label);
     font-weight: 600;
-    color: var(--text-primary);
+    color: #666666;
+    font-size: 13px;
   }
 
-  .product { padding: 0.5rem 0; }
-  .product::before { content: '' !important; }
+  .col_count {
+    border-top: none;
+    padding-top: 16px;
+  }
+
+  .counter_box {
+    flex: 0 0 auto;
+  }
+
+  .col_total {
+    padding: 12px 0;
+  }
+
+  .col_action {
+    justify-content: flex-end;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .col_action svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Coupon Box */
+  .coupon_box {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .coupon_box button {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .empty_cart {
+    padding: 60px 20px;
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .main_wrapper {
+    padding: 12px 8px;
+  }
+
+  .cart_item {
+    padding: 16px;
+    width: 350px;
+  }
+
+  .product_meta img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .product_meta a {
+    font-size: 13px;
+  }
+
+  .counter_box {
+    gap: 8px;
+    padding: 6px 12px;
+  }
+
+  .counter_box button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .counter_box span {
+    min-width: 35px;
+    font-size: 15px;
+  }
+
+  .col_total {
+    font-size: 15px;
+  }
+
+  .coupon_box {
+    padding: 16px;
+  }
+
+  .coupon_box input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .coupon_box button {
+    padding: 12px;
+    font-size: 14px;
+  }
 }

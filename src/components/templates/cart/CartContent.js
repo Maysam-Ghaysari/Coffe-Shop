@@ -6,6 +6,7 @@ import Table from "@/components/templates/cart/Table";
 import styles from "@/styles/cart.module.css";
 
 const CartContent = () => {
+ 
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const CartContent = () => {
       {cartItems.length > 0 ? (
         <main className={styles.cart} data-aos="fade-up">
           {/* پاس دادن setCartItems به Table */}
-          <Table cartItems={cartItems} setCartItems={setCartItems} />
+          <Table cartItems={cartItems} setCartItems={setCartItems}  />
         </main>
       ) : (
         <div className={styles.cart_empty} data-aos="fade-up">

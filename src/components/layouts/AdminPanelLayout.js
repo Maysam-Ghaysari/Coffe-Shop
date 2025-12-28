@@ -20,7 +20,6 @@ const Layout = async ({ children }) => {
       <section className={styles.section}>
         <Sidebar />
         <div className={styles.contents}>
-          <Topbar />
           {children}
         </div>
       </section>
