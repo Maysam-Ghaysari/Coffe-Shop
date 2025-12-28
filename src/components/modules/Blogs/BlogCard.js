@@ -12,7 +12,7 @@ export default function BlogCard({ blogs }) {
           <article key={blog._id} className={styles.card}>
             <div className={styles.imageWrapper}>
               <img
-                src={blog.image || "/images/blogs/blog-image.jpg"}
+                src={blog.image}
                 alt={blog.title}
                 className={styles.image}
               />
