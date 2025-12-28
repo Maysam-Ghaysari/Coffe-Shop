@@ -17,7 +17,7 @@ const Articles = ({blogs}) => {
         
          breakpoints={{
            360:{
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 0,
 
           },
@@ -40,7 +40,7 @@ const Articles = ({blogs}) => {
           slidesPerView={3}
           spaceBetween={30}
           dir="rtl"
-          autoplay={{ delay: 1500, disableOnInteraction: false }}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           //   rewind={true}
           loop={true}
           navigation={true}

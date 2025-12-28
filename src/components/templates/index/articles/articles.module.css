@@ -16,3 +16,8 @@
 .container main {
   margin: 40px 0 90px;
 }
+@media (max-width: 480px) {
+  .SwiperSlide{
+gap: 30px;
+  }
+}
