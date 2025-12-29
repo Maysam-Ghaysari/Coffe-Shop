@@ -5,9 +5,10 @@
 }
 
 .title {
+  margin: 0 auto;
+  padding: 0 20px;
   color: black;
   flex-direction: row-reverse;
-  width: 100%;
   justify-content: space-between;
   display: flex;
   text-align: center;
@@ -21,7 +22,6 @@
 .title span {
   color: #114639;
   font-size: 30px;
-  padding: 30px;
 }
 
 .link {
@@ -32,7 +32,7 @@
   white-space: nowrap; /* جلوگیری از شکستن متن لینک */
   text-decoration: none;
   color: white;
-  padding: 8px 16px;
+  padding: 8px 15px;
   background: rgba(165, 159, 159, 0.7);
   backdrop-filter: blur(5px);
   border-radius: 50px; /* حالت کپسولی */
@@ -115,5 +115,5 @@
     flex-flow: row;
     flex-direction: row-reverse;
   }
- 
+
 }
