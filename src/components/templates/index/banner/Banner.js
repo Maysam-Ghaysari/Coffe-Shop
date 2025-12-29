@@ -23,10 +23,10 @@ function Banner() {
         <SwiperSlide>
           <div className={styles.slideWrapper}>
             <Image 
-              src="/images/Banner/slide1.jpg"
+              src="/images/Banner/a2.jpg"
               alt="Slide 1"
-              fill
-              priority
+              width={1920}
+              height={850}
             />
           </div>
         </SwiperSlide>
@@ -34,22 +34,24 @@ function Banner() {
         <SwiperSlide>
           <div className={styles.slideWrapper}>
             <Image
-              src="/images/Banner/slide3.jpg"
+              src="/images/Banner/b4.jpg"
               alt="Slide 2"
-              fill
+                 width={1920}
+              height={850}
+              
             />
           </div>
         </SwiperSlide>
 
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div className={styles.slideWrapper}>
             <Image
-              src="/images/Banner/slide3.jpg"
+              src="/images/Banner/slide1.jpg"
               alt="Slide 3"
               fill
             />
           </div>
-        </SwiperSlide>  */}
+        </SwiperSlide> 
       </Swiper>
     </div>
   );
