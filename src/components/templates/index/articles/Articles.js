@@ -13,39 +13,18 @@ const Articles = ({blogs}) => {
       <span className={styles.description}>دانستنی های جذاب دنیای قهوه</span>
       <main>
         <Swiper
-        
-        
-         breakpoints={{
-           360:{
-            slidesPerView: 2,
-            spaceBetween: 0,
-
-          },
-          480:{
-            slidesPerView: 2,
-            spaceBetween: 0,
-
-          },
-          // برای صفحه‌های با عرض ۷۶۸ پیکسل و بیشتر
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
-          // برای صفحه‌های با عرض ۱۰۲۴ پیکسل و بیشتر
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
-        }}
-          slidesPerView={3}
-          spaceBetween={30}
+          breakpoints={{
+            320: { slidesPerView: 1.2, spaceBetween: 15 },
+            480: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 25 },
+            1024: { slidesPerView: 4, spaceBetween: 30 },
+          }}
           dir="rtl"
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
-          //   rewind={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
           navigation={true}
           modules={[Navigation, Autoplay]}
-          className="mySwiper articles_slider"
+          className={`mySwiper ${styles.articles_slider}`}
         >
          {blogs.map((blog) => (
     <SwiperSlide key={blog.slug}>

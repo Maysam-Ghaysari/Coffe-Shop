@@ -1,20 +1,33 @@
+.container {
+  max-width: 1380px;
+  direction: rtl; /* تضمین راست‌چین بودن */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+}
+
 .title {
-  color: #114639;
-  font-size: 36px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000; /* رنگ قهوه‌ای تیره */
+  margin-bottom: 10px;
+  padding: 0 20px;
+
 }
 
 .description {
-  color: gray;
+  color: #000;
+  font-size: 1rem;
+  padding: 0 30px;
+
 }
 
-.container {
-  max-width: 1380px;
-  margin: 0 auto;
-  direction: rtl;
+.mainContent {
+  padding: 0 5%;
 }
 
-.container main {
-  margin: 40px 0 90px;
-}
-@media (max-width: 480px) {
-}
+
+

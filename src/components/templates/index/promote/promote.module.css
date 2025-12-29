@@ -4,12 +4,11 @@
   padding: 4rem 0; /* Add vertical spacing */
   background-color: var(--bg-light);
   direction: rtl; /* Set RTL direction for the whole component */
-
+  max-width: 1380px;
+margin: 0 auto;
 }
 
 .container {
-  max-width: 1380px;
-  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
