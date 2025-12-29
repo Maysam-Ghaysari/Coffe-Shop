@@ -1,216 +1,156 @@
-/* ================================================= 
-   ۱. تنظیمات پایه و کانتینر اصلی
-   ================================================= */
-
 .footer {
-  background-color: #222; /* پس زمینه تیره */
-  color: #ccc;
-  width: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #e0e0e0;
+  padding: 60px 0 20px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   direction: rtl;
+  text-align: right;
 }
+
 
 .container {
-  max-width: 1300px;
+  max-width: 1890px;
+  margin: 0 auto;
+  padding: 0px 50px;
 }
 
-/* ================================================= 
-   ۲. بخش بالایی فوتر (اطلاعات و لینک‌ها)
-   ================================================= */
-
-.topSection {
-  display: flex;
-  justify-content: space-between;
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
-  padding-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-/* ----- بخش درباره ما (About) ----- */
+/* بخش برندینگ */
+.logo {
+  height: 60px;
+  margin-bottom: 20px;
+  filter: brightness(1.2);
+}
 
-.about {
-  flex: 0 0 350px; /* فضای ثابت بیشتر در دسکتاپ */
+.description {
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  color: #b0b0b0;
+}
+
+.contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
-.logo {
-  width: 150px; /* اندازه مناسب برای لوگو */
-  height: auto;
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  color: #aaa;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.info {
+.infoItem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 0.9rem;
+  color: #d1d1d1;
+}
+
+.infoItem svg {
+  color: #d4a373; /* رنگ طلایی قهوه‌ای برای آیکون‌ها */
+}
+
+/* ستون‌های لینک */
+.linksColumn h4 {
   color: #fff;
-}
-
-.info svg {
-  color: #d4af37; /* رنگ طلایی برای آیکون‌ها */
+  margin-bottom: 25px;
   font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-.info p {
-  margin: 0;
-  line-height: 1.4;
+.linksColumn h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #d4a373;
 }
 
-/* ----- بخش لینک‌ها (Links) ----- */
-
-.linksWrapper {
-  display: flex;
-  gap: 60px;
-  flex-grow: 1;
-  justify-content: flex-end; /* هل دادن به سمت راست در طرح RTL */
-}
-
-.linkGroup {
-  min-width: 120px;
-}
-
-.linkGroup h4 {
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #333;
-}
-
-.linkGroup ul {
+.linksColumn ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.linkGroup li {
-  margin-bottom: 10px;
+.linksColumn ul li {
+  margin-bottom: 15px;
 }
 
-.linkGroup a {
-  color: #aaa;
+.linksColumn ul li a {
   text-decoration: none;
+  color: #b0b0b0;
   font-size: 0.9rem;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
 }
 
-.linkGroup a:hover {
-  color: #d4af37; /* افکت هاور با رنگ طلایی */
+.linksColumn ul li a:hover {
+  color: #d4a373;
+  padding-right: 8px;
 }
 
-/* ================================================= 
-   ۳. جداکننده و بخش کپی‌رایت
-   ================================================= */
-
-.divider {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 20px 0;
-}
-
-.bottom {
-  text-align: center;
+/* نوار پایین فوتر */
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.85rem;
-  color: #999;
-  padding-top: 10px;
+  color: #888;
 }
 
-.bottom p {
+.copyright {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 5px;
 }
 
-.bottom svg {
-  font-size: 1rem;
+.developer a {
+  color: #d4a373;
+  text-decoration: none;
 }
 
-.bottom strong {
-  color: #fff;
-  font-weight: 600;
+/* --- رسپانسیو (Responsive) --- */
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .brandSection {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .infoItem {
+    justify-content: center;
+  }
+  .linksColumn h4::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .linksColumn {
+    text-align: center;
+  }
 }
 
-
-/* ================================================= 
-   ۴. ریسپانسیو (برای تبلت و موبایل)
-   ================================================= */
-
-/* تبلت (ماکزیمم عرض ۱۰۲۴ پیکسل) */
-@media (max-width: 1024px) {
-    .about {
-        flex: 0 0 300px; /* کاهش عرض بخش about */
-    }
-    
-    .linksWrapper {
-        gap: 30px;
-    }
-}
-
-/* موبایل و تبلت کوچک (ماکزیمم عرض ۷۶۸ پیکسل) */
-@media (max-width: 768px) {
-    .topSection {
-        flex-direction: column; /* چینش ستونی */
-        gap: 30px;
-    }
-
-    .about {
-        flex: 1;
-        min-width: 100%;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #333; /* اضافه کردن جداکننده بصری */
-    }
-
-    .linksWrapper {
-        justify-content: space-between; /* پخش کردن گروه‌های لینک */
-        gap: 20px;
-        width: 100%;
-    }
-    
-    .linkGroup {
-        min-width: 45%; /* تضمین می‌کند که در کنار هم بمانند */
-    }
-}
-
-/* موبایل کوچک (ماکزیمم عرض ۴۸۰ پیکسل) */
-@media (max-width: 480px) {
-    .footer {
-        padding: 30px 0 15px 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-
-    .linksWrapper {
-        flex-direction: column; /* لینک‌ها زیر هم می‌آیند */
-        gap: 20px;
-    }
-    
-    .linkGroup {
-        min-width: 100%;
-    }
-
-    .linkGroup h4 {
-        margin-bottom: 10px;
-        font-size: 1rem;
-    }
-    
-    .linkGroup a, .subtitle, .info p {
-        font-size: 0.85rem;
-    }
-    
-    .bottom p {
-        flex-direction: column;
-        gap: 5px;
-        text-align: center;
-    }
+@media (max-width: 576px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .brandSection {
+    grid-column: span 1;
+  }
+  .bottomBar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
 }

@@ -1,72 +1,67 @@
-"use client";
-import styles from "./footer.module.css";
-import { MdOutlineCopyright } from "react-icons/md";
-import { FaRegHeart } from "react-icons/fa";
-import Link from "next/link";
+import Link from 'next/link';
+import { FaRegEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { MdOutlineCopyright } from 'react-icons/md';
+import styles from './footer.module.css';
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.container}`}>
-        {/* بخش بالا */}
-        <div className={styles.topSection}>
-          {/* توضیحات و آدرس */}
-          <div className={styles.about}>
-            <img src="/images/logo_light.png" alt="لوگوی قهوه ست" className={styles.logo} />
-            <p className={styles.subtitle}>
-              شرکت فنجان داغ خوارزمی، فروشگاه اینترنتی قهوه سِت
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          
+          {/* بخش برندینگ و درباره ما */}
+          <div className={styles.brandSection}>
+            <img src="/images/logo_light.png" alt="لوگو" className={styles.logo} />
+            <p className={styles.description}>
+              شرکت فنجان داغ خوارزمی، ارائه‌دهنده تخصصی‌ترین دانه‌های قهوه و تجهیزات دم‌آوری با استانداردهای جهانی.
             </p>
-
-            <div className={styles.info}>
-              <FaRegHeart />
-              <p>
-                تهران،  
-              </p>
-            </div>
-
-            <div className={styles.info}>
-              <FaRegHeart />
-              <p>پیگیری سفارشات: ۲۱-۸۸۲۷</p>
-            </div>
-
-            <div className={styles.info}>
-              <FaRegHeart />
-              <p>maysamghaysari80@gmail.com</p>
+            <div className={styles.contactInfo}>
+              <div className={styles.infoItem}>
+                <FaMapMarkerAlt />
+                <span>تهران، خیابان ولیعصر، نرسیده به میدان ونک</span>
+              </div>
+              <div className={styles.infoItem}>
+                <FaPhoneAlt />
+                <span dir="ltr">۰۲۱-۸۸۲۷</span>
+              </div>
+              <div className={styles.infoItem}>
+                <FaRegEnvelope />
+                <span>info@setcoffee.com</span>
+              </div>
             </div>
           </div>
 
-          {/* لینک‌ها */}
-          <div className={styles.linksWrapper}>
-            <div className={styles.linkGroup}>
-              <h4>منوی فوتر</h4>
-              <ul>
-                <li><Link href="/contact-us">تماس با ما</Link></li>
-                <li><Link href="/about-us">درباره ما</Link></li>
-                <li><Link href="/rules">قوانین</Link></li>
-              </ul>
-            </div>
+          {/* لینک‌های سریع */}
+          <div className={styles.linksColumn}>
+            <h4>دسترسی سریع</h4>
+            <ul>
+              <li><Link href="/category">فروشگاه آنلاین</Link></li>
+              <li><Link href="/articles">مجله قهوه</Link></li>
+              <li><Link href="/cart">سبد خرید</Link></li>
+              <li><Link href="/wishlist">علاقه‌مندی‌ها</Link></li>
+            </ul>
+          </div>
 
-            <div className={styles.linkGroup}>
-              <h4>دسترسی سریع</h4>
-              <ul>
-                <li><Link href="/category">فروشگاه</Link></li>
-                <li><Link href="/articles">مقالات</Link></li>
-                <li><Link href="/cart">سبد خرید</Link></li>
-                <li><Link href="/wishlist">علاقه‌مندی‌ها</Link></li>
-              </ul>
-            </div>
+          {/* راهنمای مشتریان */}
+          <div className={styles.linksColumn}>
+            <h4>راهنمای مشتریان</h4>
+            <ul>
+              <li><Link href="/contact-us">تماس با ما</Link></li>
+              <li><Link href="/about-us">درباره ما</Link></li>
+              <li><Link href="/rules">قوانین و مقررات</Link></li>
+              <li><Link href="/faq">سوالات متداول</Link></li>
+            </ul>
           </div>
         </div>
 
-        <hr className={styles.divider} />
-
-        {/* بخش پایین */}
-        <div className={styles.bottom}>
-          <p>
+        <div className={styles.bottomBar}>
+          <div className={styles.copyright}>
             <MdOutlineCopyright />
-            <span> 2023 تمام حقوق متعلق است به </span>
-            <strong>قهوه ست</strong> | طراحی و اجرا <strong>میثم قیصری</strong>
-          </p>
+            <span> ۱۴۰۳ تمام حقوق متعلق است به <strong>قهوه سِت</strong></span>
+          </div>
+          <div className={styles.developer}>
+            طراحی و اجرا توسط <Link href="#">میثم قیصری</Link>
+          </div>
         </div>
       </div>
     </footer>
