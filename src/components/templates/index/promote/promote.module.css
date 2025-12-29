@@ -21,7 +21,10 @@ margin: 0 auto;
   align-items: center;
 }
 
+.title {
+  padding: 0 10px;
 
+}
 /* === First Row: Main Promotion & Club === */
 .main:first-of-type {
   display: grid;
@@ -197,6 +200,10 @@ margin: 0 auto;
   }
   .why_coffee .title {
     font-size: 1.8rem;
+    padding: 0 10px;
+  }
+  .why_coffee p {
+    padding: 0 10px;
   }
   .why_coffee div { /* Button container */
     flex-direction: column;
