@@ -25,8 +25,7 @@ function Banner() {
             <Image 
               src="/images/Banner/a2.jpg"
               alt="Slide 1"
-              width={1920}
-              height={850}
+            fill
             />
           </div>
         </SwiperSlide>
@@ -36,8 +35,7 @@ function Banner() {
             <Image
               src="/images/Banner/b4.jpg"
               alt="Slide 2"
-                 width={1920}
-              height={850}
+               fill 
               
             />
           </div>

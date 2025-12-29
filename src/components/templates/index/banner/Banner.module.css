@@ -47,16 +47,17 @@
 @media (max-width: 480px) {
   .bannerContainer {
     margin-top:90px ;
-    height: 380px;
+    height: 320px;
 
   }
   .mySwiper {
   width: 100%;
-  height: 380px;
-  object-fit:contain;
-
-
+  height: 300px;
+  object-fit:cover;
 }
-
+.slideWrapper{
+  object-fit: cover;
+ 
+}
   
 }
