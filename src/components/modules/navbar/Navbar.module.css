@@ -183,4 +183,7 @@
 .navbar_container {
   width: 90%;
 }
+.logo_container img {
+  width: 120px;
+}
 }
