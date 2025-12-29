@@ -12,6 +12,7 @@ export default async function Home() {
   const user = await authUser();
   const latestProducts = await ProductModel.find({}).populate("").sort({ _id:-1 }).limit(4);
   const Blogs = await BlogsModel.find({}).populate("").sort({id:-1}).limit(5)
+  
   return (
     <>
       <Navbar isLogin={user ? true : false} />

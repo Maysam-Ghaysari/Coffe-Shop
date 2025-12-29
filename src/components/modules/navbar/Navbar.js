@@ -42,12 +42,10 @@ function Navbar({ isLogin }) {
           <div className={styles.navbar_actions}>
             <Link href="/cart" className={styles.action_icon}>
               <FaShoppingCart />
-              <span>0</span>
             </Link>
 
             <Link href="/wishlist" className={styles.action_icon}>
               <FaRegHeart />
-              <span>0</span>
             </Link>
 
             <div className={styles.user_section}>

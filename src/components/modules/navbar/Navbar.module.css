@@ -74,6 +74,65 @@
   cursor: pointer;
 }
 
+.user_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* استایل دکمه ورود / عضویت */
+.login_desktop a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.login_desktop a:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* استایل آیکون پروفایل (زمانی که کاربر لاگین است) */
+.user_profile_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f1f5f9;
+  border-radius: 50%;
+  color: #475569;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.user_profile_link:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+/* استایل کلی دراپ‌داون (برای نگه داشتن آیکون) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* حذف استایل پیش‌فرض لینک برای آیکون */
+.dropdown a {
+  text-decoration: none;
+  display: block;
+}
+
 /* حالت موبایل */
 @media (max-width: 768px) {
   .navbar_container{
