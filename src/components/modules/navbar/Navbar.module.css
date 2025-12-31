@@ -1,19 +1,21 @@
 .navbar_container {
-  width: 100%;
   position: fixed;
-  top: 0;
+  top: 0; /* پیشنهاد می‌شود کمی از سقف فاصله داشته باشد تا Border Radius دیده شود */
+  left: 50%;
+  transform: translateX(-50%); /* این خط نوبار را دقیقاً وسط می‌برد */
+  width: 100%; /* به جای عرض ثابت، از درصد استفاده کنید تا رسپانسیو باشد */
+  max-width: 1380px; /* حداکثر عرض را محدود کنید */
+  height: 60px;
   z-index: 100;
   direction: rtl;
-  background: rgba(255, 255, 255, 0.35); /* شفاف واقعی */
-  backdrop-filter: blur(12px); 
-  -webkit-backdrop-filter: blur(12px); /* برای Safari */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   padding: 0.5rem 1rem;
-  transition: backdrop-filter 0.3s ease;
-  height: 60px;
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* حاشیه ظریف برای حس شیشه‌ای بهتر */
 }
-
 
 .navbar {
   display: flex;
