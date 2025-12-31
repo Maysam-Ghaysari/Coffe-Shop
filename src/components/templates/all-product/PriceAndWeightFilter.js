@@ -1,4 +1,3 @@
-// components/modules/filter/PriceAndWeightFilter.js
 
 "use client";
 import styles from "./PriceAndWeightFilter.module.css"
@@ -53,8 +52,7 @@ const PriceAndWeightFilter = ({ searchParams }) => {
 
   return (
  <div className={styles.sidebarFilter}>
-  {/* --- فیلتر قیمت --- */}
-  <h4 className={styles.filterTitle}>💰 فیلتر قیمت (تومان)</h4>
+  <h4 className={styles.filterTitle}> فیلتر قیمت (تومان)</h4>
   <div className={styles.filterGrid}>
     <div className={styles.filterGroup}>
       <label htmlFor="minPrice">از:</label>
@@ -79,7 +77,7 @@ const PriceAndWeightFilter = ({ searchParams }) => {
   </div>
 
   {/* --- فیلتر وزن --- */}
-  <h4 className={styles.filterTitle} style={{ marginTop: '30px' }}>⚖️ فیلتر وزن (به گرم/واحد)</h4>
+  <h4 className={styles.filterTitle} style={{ marginTop: '30px' }}> فیلتر وزن (به گرم/واحد)</h4>
   <div className={styles.filterGrid}>
     <div className={styles.filterGroup}>
       <label htmlFor="minWeight">از:</label>
