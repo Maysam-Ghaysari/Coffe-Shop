@@ -36,7 +36,7 @@
 }
 
 .input {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   border: 1.5px solid #eee;
   border-radius: 12px;
@@ -97,7 +97,7 @@
   background: #3d2b1f;
   color: #fff;
   border: none;
-  padding: 15px;
+  padding: 11px;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 700;
