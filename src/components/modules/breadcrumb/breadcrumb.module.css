@@ -1,56 +1,121 @@
-.breadcrumb {
-  position: relative;
+.wrapper {
+  width: 100%; /* تغییر از مقدار ثابت به 100% برای جلوگیری از اسکرول افقی */
+  max-width: 1380px; /* محدود کردن حداکثر عرض */
+  margin: 0 auto;
+  padding: 100px 15px 40px 15px; /* افزودن پدینگ چپ و راست برای موبایل */
+  direction: rtl;
+  box-sizing: border-box; /* برای محاسبه صحیح پدینگ در عرض */
+}
+
+.container {
   width: 100%;
-  text-align: center;
-  padding: 100px 20px 50px;
-  background: linear-gradient(to bottom, #f9f9fb, #f1f1f3);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 30px 40px;
 }
 
-/* عنوان اصلی */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .title {
-  font-size: 3rem;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #3d2b1f;
+  margin: 0;
 }
 
-/* مسیر ناوبری */
 .path {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  flex-wrap: wrap; /* در موبایل اگر مسیر طولانی بود به خط بعد برود */
   gap: 8px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  padding: 10px 20px;
-  border-radius: 40px;
   font-size: 0.95rem;
-  color: #444;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
 }
 
-/* لینک‌ها */
-.path a {
+.homeLink {
   text-decoration: none;
-  color: #0071e3; /* آبی اپل */
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-.path a:hover {
-  color: #005bb5;
+  color: #8d7765;
+  transition: color 0.3s;
+  white-space: nowrap; /* جلوگیری از شکستن کلمه */
 }
 
-/* جداکننده */
+.homeLink:hover {
+  color: #d4a373;
+}
+
 .separator {
-  color: #666;
-  opacity: 0.6;
-  font-weight: 400;
+  font-size: 0.7rem;
+  color: #ccc;
+  display: flex;
+  align-items: center;
 }
 
-/* مرحله فعال (صفحه جاری) */
 .active_step {
+  color: #3d2b1f;
   font-weight: 600;
-  color: #111;
+  overflow: hidden;
+  text-overflow: ellipsis; /* اگر متن خیلی طولانی بود سه نقطه بخورد */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* --- رسپانسیو تبلت و موبایل معمولی --- */
+@media (max-width: 992px) {
+  .container {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding-top: 90px;
+  }
+  
+  .container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .content {
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+/* --- رسپانسیو موبایل‌های بسیار کوچک (زیر 480px) --- */
+@media (max-width: 480px) {
+  .wrapper {
+    padding-top: 85px; /* کمی کمتر برای موبایل */
+    padding-bottom: 20px;
+  }
+
+  .container {
+    padding: 15px 10px;
+    border-radius: 15px; /* گوشه‌های تیزتر برای فضای بیشتر */
+  }
+
+  .title {
+    font-size: 1.2rem; /* کوچک‌تر کردن تیتر */
+    margin-bottom: 5px;
+  }
+
+  .path {
+    font-size: 0.85rem; /* کوچک‌تر کردن متن مسیر */
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .separator {
+    font-size: 0.6rem;
+  }
 }
