@@ -17,6 +17,7 @@
 /* کارت اصلی */
 .card {
   width: 300px;
+  height: 440px;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -61,12 +62,12 @@
 .text {
   font-size: 0.9rem;
   color: #555;
-  line-height: 1.7rem;
+  line-height: 1.4rem;
 }
 
 /* لینک */
 .link {
-  margin-top: auto;
+  margin-top: 40px;
   display: inline-block;
   padding: 8px 12px;
   background: #4b4bff;
@@ -100,4 +101,5 @@
   .imageWrapper {
     height: 200px;
   }
+
 }

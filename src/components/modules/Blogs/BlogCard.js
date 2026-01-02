@@ -24,10 +24,10 @@ export default function BlogCard({ blogs }) {
               <p className={styles.text}>
                 {blog.excerpt || "این مقاله توضیحات کوتاه ندارد."}
               </p>
-
-              <Link href={`/blogs/${blog.slug}`} className={styles.link}>
+<Link href={`/blogs/${blog.slug}`} className={styles.link}>
                 ادامه مطلب
               </Link>
+              
             </div>
           </article>
         ))}
