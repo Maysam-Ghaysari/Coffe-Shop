@@ -96,6 +96,7 @@ const Details = ({ product }) => {
       </div>
 
       <section className={styles.wishlist}>
+        
         <AddToWishlist productID={product._id} />
         <div>
           <TbSwitch3 />

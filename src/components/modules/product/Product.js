@@ -1,11 +1,66 @@
+"use client";
 import Link from "next/link";
+import { showSwal } from "@/utils/helpers";
+import React, { useEffect, useState } from "react";
 import styles from "./product.module.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { CiSearch, CiHeart } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci";
 
 const Card = ({ name, price, img,score,_id }) => {
 const safeScore = Math.max(0, Math.min(5, Number(score) || 0));
+ const [user, setUser] = useState({});
 
+  useEffect(() => {
+    const authUser = async () => {
+      const res = await fetch("/api/auth/me");
+      console.log(res);
+      if (res.status === 200) {
+        const data = await res.json();
+        console.log(data);
+        setUser({ ...data });
+      }
+    };
+
+    authUser();
+  }, []);
+
+  const addToWishlist = async (event) => {
+    event.preventDefault();
+    if (!user?._id) {
+      return showSwal(
+        "برای اضافه کردن به علاقه مندی‌ها لطفا ابتدا لاگین بکنین",
+        "error",
+        "فهمیدم"
+      );
+    }
+
+    const wish = {
+      user: user._id,
+      product: _id,
+    };
+
+    const res = await fetch("/api/wishlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(wish),
+    });
+
+    console.log("Response ->", res);
+    if (res.status === 421) {
+      return showSwal(
+        "محصول از قبل در لیست علاقه مندی وجود دارد",
+        "error",
+        "ok"
+      );
+    }
+    
+
+    if (res.status === 201) {
+      showSwal("محصول مورد نظر به علاقه‌مندی‌ها اضافه شد", "success", "فهمیدم");
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -19,16 +74,13 @@ const safeScore = Math.max(0, Math.min(5, Number(score) || 0));
           alt="عکس محصول"
         />
         <div className={styles.icons}>
-          <Link href="/">
-            <CiSearch />
-            <p className={styles.tooltip}>مشاهده سریع</p>
-          </Link>
-          <div>
+          
+          <div onClick={addToWishlist}>
             <CiHeart />
-            <p className={styles.tooltip}>افزودن به علاقه مندی ها </p>
+            <p  className={styles.tooltip}>افزودن به علاقه مندی ها </p>
           </div>
         </div>
-        <button>افزودن به سبد خرید</button>
+        <button>مشاهده محصول</button>
       </div>
    </Link>
       <div className={styles.details}>
