@@ -1,163 +1,108 @@
-/* کانتینر اصلی */
 .form_container {
-  background: linear-gradient(135deg, #101010, #1f1f1f);
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
   justify-content: center;
-  overflow: hidden;
-  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+  direction: rtl;
 }
 
-/* نورهای پس زمینه */
-.form_container::before,
-.form_container::after {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  filter: blur(120px);
-  z-index: 0;
-}
-.form_container::before {
-  top: -100px;
-  left: -100px;
-  background: rgba(255, 0, 150, 0.4);
-}
-.form_container::after {
-  bottom: -100px;
-  right: -100px;
-  background: rgba(0, 200, 255, 0.4);
-}
-
-/* باکس فرم */
-.form {
-  display: grid;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  padding: 25px 35px;
-  width: 330px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
+.form_card {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  border-radius: 25px;
   text-align: center;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  animation: fadeUp 0.8s ease;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+.title { color: #3d2b1f; font-size: 1.6rem; margin-bottom: 8px; }
+.subtitle { color: #888; font-size: 0.85rem; margin-bottom: 30px; }
 
-/* گروه اینپوت با لیبل شناور */
+/* Floating Labels */
 .input_group {
   position: relative;
-  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.input {
   width: 100%;
-}
-
-.input_group .input {
-  width: 90%;
-  padding: 13px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  padding: 14px;
+  border: 1.5px solid #eee;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  direction: rtl;
-  transition: all 0.3s ease;
-}
-
-.input_group .input:focus {
   outline: none;
-  border-color: #00c8ff;
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.4);
+  font-size: 0.95rem;
+  transition: 0.3s;
 }
 
-/* لیبل شناور */
 .floating_label {
   position: absolute;
-  right: 12px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
+  color: #aaa;
+  transition: 0.3s;
+  background: #fff;
+  padding: 0 5px;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
-/* وقتی کاربر تایپ کرد یا فوکوس شد */
-.input_group .input:focus + .floating_label,
-.input_group .input:not(:placeholder-shown) + .floating_label {
-  top: -14px;
-  right: 7px;
-  font-size: 12px;
-   background: rgba(121, 114, 114, 0.9);
-
-  padding: 0 6px;
-  border-radius: 6px;
-  color: #fff;
+.input:focus ~ .floating_label,
+.input:not(:placeholder-shown) ~ .floating_label {
+  top: 0;
+  font-size: 0.75rem;
+  color: #d4a373;
 }
 
-/* دکمه‌ها */
-.btn {
-  margin-top: 1rem;
-  font-size: 16px;
-  font-weight: 700;
+.input:focus { border-color: #d4a373; }
+
+/* Buttons */
+.btn_primary {
+  width: 100%;
+  background: #3d2b1f;
   color: #fff;
-  padding: 12px 28px;
-  border-radius: 30px;
-  transition: all 0.4s ease;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.1)
-  );
-  backdrop-filter: blur(12px);
   border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-}
-.btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 35px rgba(0, 200, 255, 0.45);
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
-/* لینک برگشت */
-.back_to_login {
-  margin-top: 1rem;
-  font-size: 14px;
+.btn_otp {
+  width: 100%;
+  background: #fff;
+  color: #3d2b1f;
+  border: 1px solid #3d2b1f;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
-  transition: all 0.3s ease;
-}
-.back_to_login:hover {
-  color: #00c8ff;
+  margin-bottom: 10px;
 }
 
-/* دکمه لغو */
-.redirect_to_home {
-  margin-top: 1rem;
-  font-size: 14px;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
-  transition: all 0.3s ease;
+.btn_primary:hover { background: #5a402e; }
+
+.footer_links {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #777;
 }
-.redirect_to_home:hover {
-  color: #ff006e;
+
+.btn_switch {
+  background: none;
+  border: none;
+  color: #d4a373;
+  font-weight: 800;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.cancel_text {
+  margin-top: 20px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.85rem;
 }

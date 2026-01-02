@@ -1,0 +1,98 @@
+.login_register_container {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth_box {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* افزایش عرض کل برای فضای بیشتر عکس */
+  height: 700px; /* افزایش ارتفاع برای جذابیت بیشتر */
+  background: #fff;
+  border-radius: 35px; /* گوشه‌های گردتر */
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(61, 43, 31, 0.35);
+  direction: rtl;
+}
+
+/* بخش تصویر - بزرگ‌تر (حدود 60 درصد عرض) */
+.image_section {
+  flex: 1.5; /* افزایش سهم عکس نسبت به فرم */
+  position: relative;
+  overflow: hidden;
+}
+
+.auth_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+/* افکت بزرگنمایی آرام هنگام لود شدن */
+.auth_box:hover .auth_img {
+  transform: scale(1.05);
+}
+
+.image_overlay {
+  position: absolute;
+  inset: 0;
+  /* ایجاد سایه تیره روی عکس برای خوانایی متن */
+  background: linear-gradient(to top, rgba(38, 28, 20, 0.9), rgba(0, 0, 0, 0.1));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px; /* فاصله بیشتر متن از لبه‌ها */
+  color: #fff;
+  z-index: 2;
+}
+
+.image_overlay h2 {
+  font-size: 3rem; /* متن بزرگتر */
+  margin-bottom: 15px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.image_overlay p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  opacity: 0.85;
+  max-width: 80%;
+}
+
+/* بخش فرم - متمرکز و جمع‌وجور (حدود 40 درصد عرض) */
+.form_section {
+  flex: 1; 
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 5;
+}
+
+/* --- تنظیمات موبایل و تبلت --- */
+@media (max-width: 1024px) {
+  .auth_box {
+    max-width: 900px;
+  }
+  .image_overlay h2 { font-size: 2.2rem; }
+}
+
+@media (max-width: 850px) {
+  .image_section {
+    display: none; /* در موبایل عکس را حذف می‌کنیم تا فرم به خوبی دیده شود */
+  }
+  
+  .auth_box {
+    max-width: 480px;
+    min-height: auto;
+  }
+
+  .form_section {
+    padding: 40px 25px;
+  }
+}

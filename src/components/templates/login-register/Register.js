@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "./register.module.css";
 import Sms from "./Sms";
 import { showSwal } from "@/utils/helpers";
@@ -12,71 +13,63 @@ import {
 const Register = ({ showloginForm }) => {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
-  const hideOtpForm = () => setIsRegisterWithOtp(false);
+  const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
 
+  const hideOtpForm = () => setIsRegisterWithOtp(false);
+
   const signUP = async () => {
-    // validation
-    const isValidatName = validateName(name);
-    if (!isValidatName) {
-      return showSwal("نام وارد شده اشتباه است", "error", "فهمیدم");
-    }
-    const isValidatephone = validatePhone(phone);
-    if (!isValidatephone) {
-      return showSwal("شماره وارد شده صحیح نمیباشد.", "error", "فهمیدم");
-    }
-    if (email) {
-      const isValidateEmail = valiadteEmail(email);
-      if (!isValidateEmail) {
-        return showSwal("ایمیل را به درستی وارد کنید", "error", "فهمیدم");
+    // Validation
+    if (!validateName(name)) return showSwal("نام وارد شده باید بیش از ۲ کاراکتر باشد", "error", "فهمیدم");
+    if (!validatePhone(phone)) return showSwal("شماره موبایل وارد شده صحیح نیست", "error", "فهمیدم");
+    if (email && !valiadteEmail(email)) return showSwal("ایمیل را به درستی وارد کنید", "error", "فهمیدم");
+    if (!valiadtePassword(password)) return showSwal("رمز عبور باید حداقل ۸ کاراکتر و ترکیبی باشد", "error", "فهمیدم");
+
+    setLoading(true);
+    try {
+      const user = { name, email, password, phone };
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+
+      if (res.status === 201) {
+        showSwal("ثبت نام با موفقیت انجام شد", "success", "ورود به پنل").then(() => {
+          showloginForm();
+        });
+      } else if (res.status === 422) {
+        showSwal("کاربری با این مشخصات (ایمیل یا شماره) از قبل وجود دارد", "error", "متوجه شدم");
       }
+    } catch (error) {
+      showSwal("خطایی در اتصال رخ داد", "error", "تلاش مجدد");
+    } finally {
+      setLoading(false);
     }
-
-    const isValidatePassword = valiadtePassword(password);
-    if (!isValidatePassword) {
-      return showSwal("رمز قابل حدس است", "error", "فهمیدم");
-    }
-
-    const user = { name, email, password, phone };
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    console.log(res);
-    if (res.status === 422) {
-      showSwal("کاربری با این مشخصات از قبل وجود دارد", "error", "متوجه شدم");
-    } else if (res.status === 201) {
-      showSwal("ثبت نام با موفقیت انجام شد", "success", "ورود به پنل کاربری");
-    }
-
-    setEmail("");
-    setName("");
-    setPassword("");
-    setPhone("");
   };
 
   return !isRegisterWithOtp ? (
-    <>
-      <div className={styles.form_container}>
-        <div className={styles.form}>
-          {/* نام */}
+    <div className={styles.form_container} data-aos="fade-right">
+      <div className={styles.form_card}>
+        <h2 className={styles.title}>ایجاد حساب کاربری</h2>
+        <p className={styles.subtitle}>به خانواده قهوه سِت خوش آمدید!</p>
+
+        <div className={styles.form_wrapper}>
+          {/* نام کاربری */}
           <div className={styles.input_group}>
             <input
               className={styles.input}
               value={name}
-              onChange={(event) => setName(event.target.value)}
+              onChange={(e) => setName(e.target.value)}
               type="text"
               required
-              placeholder=""
+              placeholder=" "
             />
-            <label className={styles.floating_label}> نام کاربری</label>
+            <label className={styles.floating_label}>نام و نام خانوادگی</label>
           </div>
 
           {/* شماره موبایل */}
@@ -84,10 +77,10 @@ const Register = ({ showloginForm }) => {
             <input
               className={styles.input}
               value={phone}
-              onChange={(event) => setPhone(event.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
               type="text"
               required
-              placeholder=""
+              placeholder=" "
             />
             <label className={styles.floating_label}>شماره موبایل</label>
           </div>
@@ -97,60 +90,53 @@ const Register = ({ showloginForm }) => {
             <input
               className={styles.input}
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder=""
+              placeholder=" "
             />
-            <label className={styles.floating_label}>ایمیل (دلخواه)</label>
+            <label className={styles.floating_label}>ایمیل (اختیاری)</label>
           </div>
 
-          {/* رمز عبور */}
+          {/* رمز عبور - نمایش شرطی */}
           {isRegisterWithPass && (
-            <div className={styles.input_group}>
+            <div className={styles.input_group} data-aos="zoom-in">
               <input
                 className={styles.input}
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 required
-                placeholder=""
+                placeholder=" "
               />
               <label className={styles.floating_label}>رمز عبور</label>
             </div>
           )}
 
-          {/* ثبت نام با کد تایید */}
-          <button
-            onClick={() => setIsRegisterWithOtp(true)}
-            className={styles.btn}
-          >
-            ثبت نام با کد تایید
-          </button>
+          {/* دکمه‌های عملیاتی */}
+          <div className={styles.action_buttons}>
+            {!isRegisterWithPass && (
+              <button onClick={() => setIsRegisterWithOtp(true)} className={styles.btn_otp}>
+                ثبت نام با کد تایید (SMS)
+              </button>
+            )}
 
-          {/* ثبت نام با رمز عبور */}
-          <button
-            onClick={() => {
-              if (isRegisterWithPass) {
-                signUP();
-              } else {
-                setIsRegisterWithPass(true);
-              }
-            }}
-            className={styles.btn}
-          >
-            ثبت نام با رمز عبور
-          </button>
+            <button
+              onClick={() => (isRegisterWithPass ? signUP() : setIsRegisterWithPass(true))}
+              className={styles.btn_primary}
+              disabled={loading}
+            >
+              {loading ? "در حال ثبت..." : isRegisterWithPass ? "تکمیل ثبت نام" : "ثبت نام با رمز عبور"}
+            </button>
+          </div>
 
-          {/* برگشت به ورود */}
-          <p onClick={showloginForm} className={styles.back_to_login}>
-            برگشت به ورود
-          </p>
+          <div className={styles.footer_links}>
+            <span>قبلاً ثبت نام کرده‌اید؟</span>
+            <button onClick={showloginForm} className={styles.btn_switch}>وارد شوید</button>
+          </div>
         </div>
-
-        {/* دکمه لغو */}
-        <p className={styles.redirect_to_home}>لغو</p>
       </div>
-    </>
+      <p className={styles.cancel_text}>لغو و بازگشت</p>
+    </div>
   ) : (
     <Sms hideOtpForm={hideOtpForm} />
   );
