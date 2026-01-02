@@ -1,93 +1,115 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdfaf7;
+  direction: rtl;
+  overflow: hidden;
+}
+
 .contents {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 700px;
+  justify-content: center;
+  gap: 20px;
 }
 
-.left_number {
-  margin-right: 2%;
-  z-index: -1;
-  font-size: 25em;
-  text-shadow: 28px 21px #34180e;
-  color: #e4e6b2;
+.number {
+  font-size: clamp(8rem, 20vw, 15rem);
+  font-weight: 900;
+  color: #3d2b1f;
+  line-height: 1;
 }
 
-.right_number {
-  margin-left: 2%;
-  font-size: 25em;
-  color: #e4e6b2;
-  z-index: -1;
-  text-shadow: 28px 21px #34180e;
+/* استایل ماگ قهوه */
+.mug_wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
 .mug {
-  background: #3f2616;
+  width: clamp(80px, 15vw, 140px);
+  height: clamp(70px, 13vw, 120px);
+  background: #d4a373;
+  border-radius: 0 0 50px 50px;
   position: relative;
-  margin: 0;
-  width: 170px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 10px #442918, 0 0 0 25px #3c2415, 0 0 0 42px #e4e6b2,
-    0 0 0 65px #eff0d1, 0 120px 0 -25px #3c2415, 100px 70px 0 -25px #3c2415,
-    80px 140px 0 -10px #3c2415, 0px 210px 0 -55px #3c2415,
-    20px 250px 0 -65px #3c2415;
 }
 
-.mug::before {
-  content: "";
-  position: absolute;
-  background: #eff0d1;
-  height: 80px;
-  width: 60px;
-  top: -85px;
-  right: -75px;
-  border-radius: 5px;
-  box-shadow: inset 0px 50px 0 0px #eff0d1;
-  transform: rotate(45deg);
-}
-
-.mug::after {
-  content: "";
-  width: 20px;
-  height: 20px;
+.handle {
+  width: 40px;
+  height: 50px;
+  border: 8px solid #d4a373;
   border-radius: 50%;
   position: absolute;
-  border: 3px solid #77665c;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-  opacity: 0.2;
-  animation: rings 3s ease-out infinite;
+  right: -25px;
+  top: 15px;
 }
 
-@keyframes rings {
-  to {
-    width: 150px;
-    height: 150px;
-    opacity: 0;
-  }
+/* انیمیشن بخار قهوه */
+.steam {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.steam span {
+  width: 5px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 10px;
+  animation: steamAnim 2s infinite ease-in-out;
+  opacity: 0;
+}
+
+.s2 { animation-delay: 0.4s !important; }
+.s3 { animation-delay: 0.8s !important; }
+
+@keyframes steamAnim {
+  0% { transform: translateY(0) scaleY(1); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-40px) scaleY(1.5); opacity: 0; }
 }
 
 .texts {
-  font-size: 1.5em;
-  margin-top: 40px;
   text-align: center;
-  direction: rtl;
-  color: #3c2415;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.texts h1 {
+  color: #3d2b1f;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
 .texts p {
-  margin-bottom: 10px;
+  color: #777;
+  margin-bottom: 30px;
 }
-.texts a {
-  border-bottom: 1px solid #414042;
-  color: #3c2415;
-  font-size: 1.2rem;
+
+.back_btn {
+  background: #3d2b1f;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back_btn:hover {
+  background: #d4a373;
+  transform: scale(1.05);
+}
+
+/* --- رسپانسیو --- */
+@media (max-width: 480px) {
+  .contents { gap: 10px; }
+  .texts h1 { font-size: 1.4rem; }
+  .texts p { font-size: 0.9rem; }
 }
