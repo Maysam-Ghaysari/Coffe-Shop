@@ -1,75 +1,119 @@
+.main {
+  width: 100%;
+  background-color: #f9f9f9; /* پس‌زمینه ملایم برای خوانایی بهتر */
+  padding: 40px 0;
+  direction: rtl;
+}
+
 .container {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2.5rem 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 0 25px rgba(255, 255, 255, 0.15);
-  line-height: 1.9;
-  font-size: 16px;
-  color: rgba(31, 25, 25, 0.95);
-  text-align: justify;
-  animation: fadeUp 0.8s ease;
-  position: relative;
-  z-index: 1;
+  max-width: 1380px;
+  width: 95%;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* پس زمینه نوری ملایم */
-.container::before,
-.container::after {
-  content: "";
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  filter: blur(150px);
-  z-index: -1;
-}
-.container::before {
-  top: -150px;
-  left: -150px;
-  background: rgba(0, 200, 255, 0.25);
-}
-.container::after {
-  bottom: -150px;
-  right: -150px;
-  background: rgba(255, 0, 150, 0.25);
+.section {
+  margin-bottom: 40px;
 }
 
-/* تیترها و تاکیدها */
-.container strong {
-  color: #00c8ff;
-  font-weight: bold;
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
 }
 
-/* پاراگراف‌ها */
+.icon {
+  color: #d4a373;
+  font-size: 1.5rem;
+}
+
+.titleWrapper h2 {
+  font-size: 1.6rem;
+  color: #3d2b1f;
+  margin: 0;
+}
+
 .container p {
-  margin-bottom: 1.6rem;
+  line-height: 2;
+  color: #555;
+  text-align: justify;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
 }
 
-/* لینک‌ها */
-.container a {
-  color: #00c8ff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.container a:hover {
-  text-decoration: underline;
-  color: #ff0080;
+.contactBox {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px dashed #eee;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-/* انیمیشن ورود */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.97);
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #fdfaf7;
+  padding: 20px;
+  border-radius: 15px;
+  color: #3d2b1f;
+  font-weight: 500;
+}
+
+.contactItem svg {
+  color: #d4a373;
+  font-size: 1.2rem;
+}
+
+/* --- رسپانسیو --- */
+
+@media (max-width: 1024px) {
+  .contactBox {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .titleWrapper h2 {
+    font-size: 1.3rem;
+  }
+
+  .container p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px 0;
+  }
+
+  .container {
+    width: 92%;
+    padding: 20px 15px;
+  }
+
+  .titleWrapper {
+    gap: 8px;
+  }
+
+  .contactItem {
+    padding: 15px;
+    font-size: 0.85rem;
+    flex-direction: column;
+    text-align: center;
   }
 }
