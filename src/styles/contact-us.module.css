@@ -1,27 +1,77 @@
-.maps {
-  display: flex;
-  gap: 25px;
-}
 .container {
-  color: black;
-  text-align: right;
-  max-width: 1222px;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-bottom: 4rem;
-  margin-left: auto;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  direction: rtl;
 }
+
+/* بخش نقشه‌ها */
+.maps {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* دو نقشه کنار هم در دسکتاپ */
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
 .maps section {
-  width: 50%;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
 }
+
+.maps section:hover {
+  transform: translateY(-5px);
+}
+
+/* بخش فرم و اطلاعات */
 .contents {
-  display: flex;
-  gap: 35px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* فرم کمی عریض‌تر از اطلاعات تماس */
+  gap: 40px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  align-items: start;
 }
-.contents section,
-.contents form {
-  width: 50%;
-  margin-top: 3rem;
+
+/* --- رسپانسیو برای تبلت و موبایل --- */
+
+@media (max-width: 1024px) {
+  .maps {
+    grid-template-columns: 1fr; /* نقشه‌ها زیر هم */
+  }
+
+  .contents {
+    grid-template-columns: 1fr; /* فرم و اطلاعات زیر هم */
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  .contents {
+    gap: 30px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 10px;
+  }
+
+  .maps section {
+    border-radius: 15px;
+  }
+
+  .contents {
+    padding: 20px 15px;
+  }
 }

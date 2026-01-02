@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "./form.module.css";
 import { showSwal } from "@/utils/helpers";
+import { FaPaperPlane } from "react-icons/fa";
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -9,91 +10,109 @@ const Form = () => {
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const submitMessage = async (event) => {
     event.preventDefault();
 
-    // Validation (You)
-
-    const contact = {
-      name,
-      email,
-      phone,
-      company,
-      message,
-    };
-
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(contact),
-    });
-
-    if (res.status === 201) {
-      setEmail("");
-      setName("");
-      setCompany("");
-      setPhone("");
-      setMessage("");
-      showSwal("پیغام شما با موفقیت ثبت شد", "success", "فهمیدم");
+    // اعتبارسنجی ساده
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      return showSwal("لطفاً فیلدهای ستاره‌دار را پر کنید", "error", "تلاش مجدد");
     }
-    console.log("Res ->", res);
+
+    setLoading(true);
+    const contact = { name, email, phone, company, message };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contact),
+      });
+
+      if (res.status === 201) {
+        setEmail("");
+        setName("");
+        setCompany("");
+        setPhone("");
+        setMessage("");
+        showSwal("پیغام شما با موفقیت ثبت شد", "success", "فهمیدم");
+      } else {
+        showSwal("خطایی در ارسال رخ داد", "error", "تلاش مجدد");
+      }
+    } catch (error) {
+      showSwal("اتصال برقرار نشد", "error", "تلاش مجدد");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form className={styles.form}>
-      <span>فرم تماس با ما</span>
-      <p>برای تماس با ما می توانید فرم زیر را تکمیل کنید</p>
+    <form className={styles.form} onSubmit={submitMessage}>
+      <span className={styles.badge}>فرم تماس با ما</span>
+      <h2 className={styles.title}>منتظر شنیدن نظرات شما هستیم</h2>
+      <p className={styles.description}>برای تماس با ما می‌توانید فرم زیر را تکمیل کنید</p>
+
       <div className={styles.groups}>
         <div className={styles.group}>
-          <label>نام و نام خانوادگی</label>
+          <label>نام و نام خانوادگی <span>*</span></label>
           <input
             type="text"
+            placeholder="مثلا: علی محمدی"
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className={styles.group}>
-          <label>آدرس ایمیل</label>
+          <label>آدرس ایمیل <span>*</span></label>
           <input
-            type="text"
+            type="email"
+            placeholder="example@mail.com"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </div>
+
       <div className={styles.groups}>
         <div className={styles.group}>
           <label>شماره تماس</label>
           <input
             type="text"
+            placeholder="۰۹۱۲xxxxxxx"
             value={phone}
-            onChange={(event) => setPhone(event.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </div>
         <div className={styles.group}>
           <label>نام شرکت</label>
           <input
             type="text"
+            placeholder="نام مجموعه شما"
             value={company}
-            onChange={(event) => setCompany(event.target.value)}
+            onChange={(e) => setCompany(e.target.value)}
           />
         </div>
       </div>
+
       <div className={styles.group}>
-        <label>درخواست شما</label>
+        <label>درخواست شما <span>*</span></label>
         <textarea
-          name=""
-          id=""
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          cols="30"
-          rows="3"
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="پیام خود را اینجا بنویسید..."
+          rows="5"
         ></textarea>
       </div>
-      <button onClick={submitMessage}>ارسال</button>
+
+      <button type="submit" className={styles.submitBtn} disabled={loading}>
+        {loading ? "در حال ارسال..." : (
+          <>
+            ارسال پیغام
+            <FaPaperPlane />
+          </>
+        )}
+      </button>
     </form>
   );
 };

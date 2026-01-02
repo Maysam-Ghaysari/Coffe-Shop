@@ -1,65 +1,112 @@
-.form input,
-.form textarea {
-  outline: 0;
-  border: 0;
-  background: white;
-  width: 100%;
-  direction: rtl;
-  font-size: 16px;
-  border-radius: 5px;
-  color: black;
-  resize: none;
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.199);
-}
-.groups {
-  display: flex;
-  gap: 15px;
-}
-.group {
-  width: 100%;
+.form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 14px;
-  gap: 7px;
+  gap: 20px;
+  direction: rtl;
 }
-.form p {
-  font-size: 22px;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
+
+.badge {
+  display: inline-block;
+  color: #d4a373;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: -10px;
 }
-.form button:hover {
-  background-color: #008979;
-  color: #ffffff;
+
+.title {
+  font-size: 1.8rem;
+  color: #3d2b1f;
+  margin: 0;
 }
-.form button {
-  padding: 12px 20px;
-  font-size: 13px;
-  line-height: 18px;
-  border-radius: 4px;
-  background-color: #f3f3f3;
-  color: #3e3e3e;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+
+.description {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.group label span {
+  color: #e74c3c;
+}
+
+.group input, 
+.group textarea {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fdfdfd;
+  font-family: inherit;
+  transition: all 0.3s ease;
   outline: none;
-  border: 0px solid transparent;
-  box-shadow: none;
-  vertical-align: middle;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-shadow: none;
+}
+
+.group input:focus, 
+.group textarea:focus {
+  border-color: #d4a373;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1);
+}
+
+.submitBtn {
+  margin-top: 10px;
+  background: #3d2b1f;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: color 0.25s ease, background-color 0.25s ease,
-    border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
-  width: 100%;
-  background-color: #34180e;
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
-.form span {
-  color: gray;
-  font-size: 14px;
+
+.submitBtn:hover {
+  background: #5a402e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(61, 43, 31, 0.2);
+}
+
+.submitBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* --- رسپانسیو --- */
+
+@media (max-width: 768px) {
+  .groups {
+    grid-template-columns: 1fr; /* در موبایل فیلدها زیر هم می‌آیند */
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .submitBtn {
+    width: 100%; /* در موبایل‌های کوچک دکمه تمام‌عرض می‌شود */
+  }
 }

@@ -1,26 +1,108 @@
-.Information p {
-  font-size: 22px;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-}
-.Information span {
-  color: gray;
-  font-size: 14px;
-}
-.Information div p {
-  font-size: 16px !important;
-}
-.Information div:nth-child(5) svg {
-  margin-top: 0.7rem;
-}
-.Information div {
+.info_section {
+  direction: rtl;
   display: flex;
-  justify-content: right;
-  gap: 14px;
-  flex-direction: row-reverse;
-  align-items: start;
-  color: gray;
+  flex-direction: column;
+  gap: 15px;
 }
-.Information div svg {
-  font-size: 2.2rem;
+
+.badge {
+  color: #d4a373;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #3d2b1f;
+  margin: 0;
+}
+
+.description {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.details_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info_card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  transition: background 0.3s ease;
+}
+
+.info_card:hover {
+  background: #fdfaf7;
+}
+
+.icon_box {
+  background: #3d2b1f;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(61, 43, 31, 0.15);
+}
+
+.texts strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #3d2b1f;
+  margin-bottom: 5px;
+}
+
+.texts p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.social_card {
+  background: #f0f7ff; /* رنگ ملایم متمایز برای شبکه‌های اجتماعی */
+  border: 1px dashed #0088cc;
+}
+
+.social_card .icon_box {
+  background: #0088cc;
+}
+
+/* --- رسپانسیو --- */
+
+@media (max-width: 768px) {
+  .info_section {
+    text-align: center;
+    align-items: center;
+  }
+
+  .info_card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+    background: #f9f9f9; /* در موبایل کارت‌ها متمایزتر شوند */
+  }
+
+  .details_container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.4rem;
+  }
 }
