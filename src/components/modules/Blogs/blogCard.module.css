@@ -67,19 +67,16 @@
 
 /* لینک */
 .link {
+  text-decoration:none;
   margin-top: 40px;
   display: inline-block;
   padding: 8px 12px;
-  background: #4b4bff;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #fff;
   border-radius: 6px;
   text-align: center;
   font-size: 0.9rem;
   transition: 0.25s ease;
-}
-
-.link:hover {
-  background: #2a2adf;
 }
 
 /* رسپانسیو */

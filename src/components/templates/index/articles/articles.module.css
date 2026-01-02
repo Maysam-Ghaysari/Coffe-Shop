@@ -28,5 +28,16 @@
 .mainContent {
   padding: 0 5%;
 }
+.articles_slider :global(.swiper-button-next),
+.articles_slider :global(.swiper-button-prev) {
+   color:#1a1a1a;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  border-radius: 50%;
+}
 
-
+.articles_slider :global(.swiper-button-next::after),
+.articles_slider :global(.swiper-button-prev::after) {
+  font-size: 20px;
+}
