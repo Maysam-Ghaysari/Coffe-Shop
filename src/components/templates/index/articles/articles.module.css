@@ -10,17 +10,27 @@
 }
 
 .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b3939 ;
+  border-radius: 50%;
+  box-shadow: #837d7d 2px 2px 2px 2px;
   font-size: 2rem;
   font-weight: bold;
-  color: #000; /* رنگ قهوه‌ای تیره */
+  color: #fff; /* رنگ قهوه‌ای تیره */
   margin-bottom: 10px;
   padding: 0 10px;
 
 }
 
 .description {
+    display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  margin-top: 20px;
   padding: 0 10px;
 
 }
