@@ -13,7 +13,7 @@ const Promote = () => {
           </section>
           <section className={styles.club}>
             <div>
-              <span>باشگاه مشتریان ست</span>
+              <span>باشگاه مشتریان </span>
               <p>برای مشتریان وفادار قهوه ست</p>
             </div>
           </section>
@@ -21,11 +21,7 @@ const Promote = () => {
         <main className={styles.main}>
           <img width={660} height={530} src="/images/Home32.jpg" alt="" />
           <section data-aos="fade-up" className={styles.why_coffee}>
-            <img
-              className={styles.logo}
-              src="/images/coffee-svg-2.svg"
-              alt=""
-            />
+          
             <p className={styles.title}>چرا قهوه ست</p>
             <p>
               برخورداری از تجربه و قدمت کافی و آگاهی از ذایقه مصرف کنندگان
@@ -35,10 +31,10 @@ const Promote = () => {
             </p>
             <div>
               <Link href="/about-us">
-                <button className={styles.red_btn}>بیشتر بخوانید</button>
+                <button className={styles.btn}>بیشتر بخوانید</button>
               </Link>
-              <Link href="/category">
-                <button className={styles.red_btn}>فروشگاه</button>
+              <Link href="/contact-us">
+                <button className={styles.btn}>تماس با ما</button>
               </Link>
             </div>
           </section>
