@@ -46,7 +46,6 @@
   display: grid;
   /* در دسکتاپ ۴ ستون مساوی داریم */
   grid-template-columns: repeat(4, 1fr); 
-  gap: 30px;
   padding: 20px 0;
 }
 
