@@ -1,0 +1,93 @@
+/* --- سبد خرید خالی --- */
+.cart_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.cart_empty svg {
+  color: #d4a373;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+
+.cart_empty p {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #3d2b1f;
+  margin-bottom: 10px;
+}
+
+.cart_empty span {
+  display: block;
+  color: #777;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 400px;
+}
+
+.cart_empty div {
+  margin-top: 30px;
+}
+
+.cart_empty a {
+  background: #3d2b1f;
+  color: #fff;
+  padding: 12px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cart_empty a:hover {
+  background: #d4a373;
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+}
+
+/* --- سبد خرید دارای محصول --- */
+.cart {
+  width: 100%;
+  background: #fff;
+  border-radius: 25px;
+  padding: 10px;
+  overflow: hidden; /* برای جلوگیری از بیرون زدن جداول */
+}
+
+/* --- رسپانسیو موبایل --- */
+@media (max-width: 768px) {
+  .cart_empty p {
+    font-size: 1.2rem;
+  }
+  
+  .cart_empty span {
+    font-size: 0.85rem;
+  }
+  
+  .cart {
+    padding: 5px;
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart_empty {
+    padding: 40px 15px;
+  }
+  
+  .cart_empty svg {
+    font-size: 50px; /* کوچک‌تر کردن آیکون در موبایل */
+  }
+}

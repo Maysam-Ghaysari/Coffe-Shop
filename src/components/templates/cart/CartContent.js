@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { TbShoppingCartX } from "react-icons/tb";
 import Table from "@/components/templates/cart/Table";
-import styles from "@/styles/cart.module.css";
+import styles from "./cartcontent.module.css";
 
 const CartContent = () => {
  

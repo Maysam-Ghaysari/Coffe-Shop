@@ -1,445 +1,152 @@
-/* ===== Main Wrapper ===== */
 .main_wrapper {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 24px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 32px 20px;
+  grid-template-columns: 1.5fr 1fr; /* دسکتاپ: جدول سمت راست، جمع کل سمت چپ */
+  gap: 30px;
   direction: rtl;
 }
 
-/* ===== Cart Container ===== */
 .cart_container {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  border: 1px solid #e8e8e8;
+  background: #fff;
+  border-radius: 20px;
 }
 
-/* ===== Cart Header (Desktop Only) ===== */
+/* هدر مخفی در موبایل */
 .cart_header {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 80px;
-  gap: 16px;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, #8b4513, #6b3410);
-  color: white;
-  font-weight: 600;
-  font-size: 15px;
-  border-bottom: 3px solid #6b3410;
-}
-
-.cart_header > div {
   display: flex;
-  align-items: center;
+  background: #fdfaf7;
+  padding: 15px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #3d2b1f;
+  margin-bottom: 15px;
 }
 
-.col_product {
-  justify-content: flex-start;
-}
-
-.col_count,
-.col_total {
-  justify-content: center;
-}
-
-.col_action {
-  justify-content: center;
-}
-
-/* ===== Cart Items List ===== */
-.cart_items_list {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===== Cart Item ===== */
+/* ردیف محصول */
 .cart_item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 80px;
-  gap: 16px;
-  padding: 24px;
-  border-bottom: 1px solid #e8e8e8;
+  display: flex;
   align-items: center;
-  transition: all 0.3s ease;
-  background: #ffffff;
+  padding: 20px 10px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
 }
 
 .cart_item:hover {
-  background: #faf9f7;
+  background: #f9f9f9;
 }
 
-.cart_item:last-child {
-  border-bottom: none;
-}
-
-/* ===== Product Meta ===== */
-.product_meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+/* ستون‌بندی داینامیک */
+.col_product { flex: 3; display: flex; align-items: center; gap: 15px; }
+.col_count { flex: 1.5; text-align: center; }
+.col_total { flex: 1.5; text-align: center; color: #3d2b1f; font-weight: 700; }
+.col_action { flex: 0.5; text-align: center; cursor: pointer; color: #e74c3c; font-size: 1.4rem; }
 
 .product_meta img {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #e8e8e8;
-  transition: all 0.3s ease;
-}
-
-.product_meta img:hover {
-  border-color: #8b4513;
-  transform: scale(1.05);
+  border-radius: 12px;
 }
 
 .product_meta a {
-  color: #2c2c2c;
-  font-weight: 500;
-  font-size: 15px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  line-height: 1.6;
+  color: #3d2b1f;
+  font-weight: 600;
 }
 
-.product_meta a:hover {
-  color: #8b4513;
-}
-
-/* ===== Counter Box ===== */
+/* باکس کنترل تعداد */
 .counter_box {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background: #faf9f7;
+  background: #f5f5f5;
+  padding: 5px;
   border-radius: 8px;
-  padding: 8px 16px;
-  border: 1px solid #e8e8e8;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .counter_box button {
-  width: 32px;
-  height: 32px;
   border: none;
-  background: #8b4513;
-  color: white;
-  border-radius: 6px;
+  background: none;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #d4a373;
 }
 
-.counter_box button:hover {
-  background: #6b3410;
-  transform: translateY(-2px);
-}
-
-.counter_box button:active {
-  transform: translateY(0);
-}
-
-.counter_box span {
-  min-width: 40px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 16px;
-  color: #2c2c2c;
-}
-
-/* ===== Total Column ===== */
-.col_total {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-weight: 600;
-  font-size: 16px;
-  color: #8b4513;
-}
-
-.col_total small {
-  font-size: 13px;
-  color: #666666;
-  font-weight: 400;
-}
-
-/* ===== Remove Button ===== */
-.col_action {
-  display: flex;
-  justify-content: center;
-}
-
-.col_action svg {
-  width: 28px;
-  height: 28px;
-  color: #dc3545;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 4px;
-  border-radius: 6px;
-}
-
-.col_action svg:hover {
-  background: #dc35451a;
-  transform: scale(1.15) rotate(90deg);
-}
-
-/* ===== Coupon Box ===== */
+/* بخش کوپن */
 .coupon_box {
   display: flex;
-  gap: 12px;
-  padding: 24px;
-  background: #faf9f7;
-  border-top: 2px solid #e8e8e8;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .coupon_box input {
-  flex: 1;
-  padding: 14px 18px;
-  border: 2px solid #e8e8e8;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  background: white;
-}
-
-.coupon_box input:focus {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 200px;
   outline: none;
-  border-color: #8b4513;
-  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
-}
-
-.coupon_box input::placeholder {
-  color: #666666;
 }
 
 .coupon_box button {
-  padding: 14px 32px;
-  background: #8b4513;
-  color: white;
+  background: #3d2b1f;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 0 25px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
 }
 
-.coupon_box button:hover {
-  background: #6b3410;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
+/* --- رسپانسیو جادویی موبایل --- */
 
-.coupon_box button:active {
-  transform: translateY(0);
-}
-
-/* ===== Empty Cart ===== */
-.empty_cart {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 80px 20px;
-  font-size: 20px;
-  color: #666666;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 2px dashed #e8e8e8;
-}
-
-/* ===== Responsive Design ===== */
-
-/* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .main_wrapper {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 24px 16px;
-  }
-
-  .cart_header {
-    font-size: 14px;
-    padding: 16px 20px;
-  }
-
-  .cart_item {
-    padding: 20px;
-  }
-
-  .product_meta img {
-    width: 70px;
-    height: 70px;
+    grid-template-columns: 1fr; /* زیر هم رفتن جدول و توتال */
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .main_wrapper {
-    padding: 16px 12px;
-  }
-
-  /* مخفی کردن هدر در موبایل */
   .cart_header {
-    display: none;
+    display: none; /* حذف هدر جدول در موبایل */
   }
 
-  /* تبدیل به لی‌اوت کارتی */
   .cart_item {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #e8e8e8;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    width: 450px;
+    flex-direction: column; /* تبدیل ردیف به کارت */
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    padding: 25px 15px;
   }
 
-  .cart_item:last-child {
-    margin-bottom: 0;
-  }
-
-  /* محصول در بالا */
-  .col_product {
-    grid-row: 1;
-  }
-
-  .product_meta {
-    gap: 12px;
-  }
-
-  .product_meta img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .product_meta a {
-    font-size: 14px;
-  }
-
-  /* تعداد، قیمت و حذف در یک ردیف */
-  .col_count,
-  .col_total,
-  .col_action {
-    display: flex;
+  .col_product, .col_count, .col_total {
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-top: 1px solid #e8e8e8;
+    display: flex;
+    text-align: right;
   }
 
-  /* اضافه کردن لیبل‌ها در موبایل */
-  .col_count::before,
-  .col_total::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: #666666;
-    font-size: 13px;
-  }
+  /* اضافه کردن برچسب با استفاده از دیتا سِت */
+  .col_count::before { content: "تعداد:"; font-weight: 700; }
+  .col_total::before { content: "جمع کل:"; font-weight: 700; }
 
-  .col_count {
-    border-top: none;
-    padding-top: 16px;
-  }
-
-  .counter_box {
-    flex: 0 0 auto;
-  }
-
-  .col_total {
-    padding: 12px 0;
-  }
+  .counter_box { margin: 0; }
 
   .col_action {
-    justify-content: flex-end;
-    border-top: none;
-    padding-top: 0;
+    position: absolute;
+    top: 15px;
+    left: 15px;
   }
 
-  .col_action svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  /* Coupon Box */
   .coupon_box {
     flex-direction: column;
-    padding: 20px;
-  }
-
-  .coupon_box button {
-    width: 100%;
-    padding: 14px;
-  }
-
-  .empty_cart {
-    padding: 60px 20px;
-    font-size: 18px;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-  .main_wrapper {
-    padding: 12px 8px;
-  }
-
-  .cart_item {
-    padding: 16px;
-    width: 350px;
-  }
-
-  .product_meta img {
-    width: 75px;
-    height: 75px;
-  }
-
-  .product_meta a {
-    font-size: 13px;
-  }
-
-  .counter_box {
-    gap: 8px;
-    padding: 6px 12px;
-  }
-
-  .counter_box button {
-    width: 28px;
-    height: 28px;
-    font-size: 16px;
-  }
-
-  .counter_box span {
-    min-width: 35px;
-    font-size: 15px;
-  }
-
-  .col_total {
-    font-size: 15px;
-  }
-
-  .coupon_box {
-    padding: 16px;
   }
 
   .coupon_box input {
-    padding: 12px 14px;
-    font-size: 14px;
+    width: 100%;
   }
 
   .coupon_box button {
     padding: 12px;
-    font-size: 14px;
   }
 }

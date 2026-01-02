@@ -1,449 +1,164 @@
-/* ===== Totals Card ===== */
 .totals_card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  padding: 28px;
-  border: 1px solid #e8e8e8;
-  position: sticky;
-  top: 24px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 25px;
   height: fit-content;
+  position: sticky;
+  top: 100px; /* فاصله از نوبار شیشه‌ای شما */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
   direction: rtl;
-  transition: all 0.3s ease;
 }
 
-.totals_card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* ===== Title ===== */
 .totals_title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2c2c2c;
-  margin: 0 0 24px 0;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #e8e8e8;
-  text-align: center;
+  font-size: 1.2rem;
+  color: #3d2b1f;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #fdfaf7;
+  padding-bottom: 15px;
 }
 
-/* ===== Summary Row ===== */
 .summary_row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
-  font-size: 15px;
-  color: #2c2c2c;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: #666;
 }
 
-.summary_row span:first-child {
-  font-weight: 500;
-  color: #666666;
-}
-
-.summary_row span:last-child {
-  font-weight: 600;
-  color: #2c2c2c;
-}
-
-/* ===== Price Text ===== */
 .price_text {
-  color: #8b4513 !important;
-  font-size: 16px;
+  color: #3d2b1f;
+  font-weight: 600;
 }
 
-/* ===== Shipping Section ===== */
 .shipping_section {
-  background: #f8f8f8;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 16px 0;
-  border: 1px solid #e8e8e8;
+  border-top: 1px dashed #eee;
+  padding-top: 15px;
+  margin-top: 15px;
 }
 
 .shipping_price {
-  color: #8b4513 !important;
-  font-weight: 600 !important;
+  color: #d4a373;
+  font-weight: 700;
 }
 
 .shipping_desc {
-  font-size: 13px;
-  color: #666666;
-  margin: 12px 0 16px 0;
-  padding: 12px;
-  background: #ffffff;
-  border-radius: 8px;
-  border-right: 3px solid #8b4513;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  color: #999;
+  margin: 5px 0 15px 0;
 }
 
-/* ===== Change Address Toggle ===== */
 .change_address_toggle {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
+  gap: 5px;
+  color: #3d2b1f;
+  font-size: 0.85rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  font-weight: 500;
-  color: #8b4513;
+  transition: color 0.3s;
 }
 
 .change_address_toggle:hover {
-  background: #8b4513;
-  color: white;
-  border-color: #8b4513;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: #d4a373;
 }
 
-.change_address_toggle svg {
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.change_address_toggle:hover svg {
-  transform: scale(1.2);
-}
-
-/* ===== Address Form ===== */
+/* فرم تغییر آدرس */
 .address_form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px dashed #e8e8e8;
-  animation: slideDown 0.3s ease;
+  gap: 12px;
+  margin-top: 15px;
+  padding: 15px;
+  background: #fdfaf7;
+  border-radius: 12px;
+  animation: slideDown 0.3s ease-out;
 }
 
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Select Box ===== */
-.select_box {
-  font-family: inherit;
-  font-size: 14px;
-}
-
-/* ===== Input Field ===== */
 .input_field {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #e8e8e8;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 14px;
   font-family: inherit;
-  transition: all 0.3s ease;
-  background: #ffffff;
+  font-size: 0.85rem;
+  outline: none;
 }
 
 .input_field:focus {
-  outline: none;
-  border-color: #8b4513;
-  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+  border-color: #d4a373;
 }
 
-.input_field::placeholder {
-  color: #666666;
-}
-
-/* ===== Update Button ===== */
 .update_btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #8b4513, #6b3410);
-  color: white;
+  background: #d4a373;
+  color: #fff;
   border: none;
+  padding: 10px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 4px;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 .update_btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  background: linear-gradient(135deg, #6b3410, #8b4513);
+  background: #3d2b1f;
 }
 
-.update_btn:active {
-  transform: translateY(0);
-}
-
-/* ===== Divider ===== */
 .divider {
-  height: 2px;
-  background: linear-gradient(to right, transparent, #e8e8e8, transparent);
-  margin: 24px 0;
+  height: 1px;
+  background: #eee;
+  margin: 20px 0;
 }
 
-/* ===== Total Row (Final Price) ===== */
+/* ردیف جمع کل نهایی */
 .total_row {
-  background: linear-gradient(135deg, #faf9f7, #f8f8f8);
-  padding: 18px 20px;
-  border-radius: 12px;
-  margin: 16px 0;
-  border: 2px solid #8b4513;
+  color: #3d2b1f;
+  font-size: 1.15rem;
+  font-weight: 800;
 }
 
-.total_row span {
-  font-size: 17px !important;
-  font-weight: 700 !important;
-}
-
-.total_row span:first-child {
-  color: #2c2c2c !important;
-}
-
-.total_row span:last-child {
-  color: #8b4513 !important;
-  font-size: 18px !important;
-}
-
-/* ===== Checkout Button ===== */
 .checkout_link {
-  display: block;
   text-decoration: none;
-  margin-top: 20px;
 }
 
 .checkout_btn {
   width: 100%;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #28a745, #218838);
-  color: white;
+  background: #3d2b1f;
+  color: #fff;
   border: none;
+  padding: 16px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  margin-top: 20px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .checkout_btn:hover {
-  background: linear-gradient(135deg, #218838, #1e7e34);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: #5a402e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(61, 43, 31, 0.2);
 }
 
-.checkout_btn:active {
-  transform: translateY(-1px);
-}
-
-/* ===== Responsive Design ===== */
-
-/* Tablet */
-@media (max-width: 1024px) {
+/* --- رسپانسیو --- */
+@media (max-width: 992px) {
   .totals_card {
-    position: relative;
-    top: 0;
-    padding: 24px;
-  }
-
-  .totals_title {
-    font-size: 18px;
-  }
-
-  .summary_row {
-    font-size: 14px;
-  }
-
-  .checkout_btn {
-    padding: 14px 20px;
-    font-size: 15px;
+    position: static;
+    margin-top: 20px;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .totals_card {
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .totals_title {
-    font-size: 17px;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-  }
-
-  .summary_row {
-    padding: 12px 0;
-    font-size: 14px;
-  }
-
-  .price_text {
-    font-size: 15px;
-  }
-
-  .shipping_section {
-    padding: 16px;
-    margin: 12px 0;
-  }
-
-  .shipping_desc {
-    font-size: 12px;
-    padding: 10px;
-    margin: 10px 0 14px 0;
-  }
-
-  .change_address_toggle {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-
-  .address_form {
-    gap: 12px;
-    margin-top: 14px;
-    padding-top: 14px;
-  }
-
-  .input_field {
-    padding: 11px 14px;
-    font-size: 13px;
-  }
-
-  .update_btn {
-    padding: 11px;
-    font-size: 13px;
-  }
-
-  .divider {
-    margin: 20px 0;
-  }
-
-  .total_row {
-    padding: 16px 18px;
-    margin: 14px 0;
-  }
-
-  .total_row span {
-    font-size: 16px !important;
-  }
-
-  .total_row span:last-child {
-    font-size: 17px !important;
-  }
-
-  .checkout_link {
-    margin-top: 16px;
-  }
-
-  .checkout_btn {
-    padding: 14px 20px;
-    font-size: 14px;
-  }
-}
-
-/* Small Mobile */
 @media (max-width: 480px) {
   .totals_card {
-    padding: 16px;
+    padding: 20px;
   }
-
-  .totals_title {
-    font-size: 16px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-  }
-
-  .summary_row {
-    padding: 10px 0;
-    font-size: 13px;
-  }
-
-  .price_text {
-    font-size: 14px;
-  }
-
-  .shipping_section {
-    padding: 14px;
-  }
-
-  .shipping_desc {
-    font-size: 11px;
-    padding: 8px;
-  }
-
-  .change_address_toggle {
-    padding: 9px 12px;
-    font-size: 12px;
-  }
-
-  .address_form {
-    gap: 10px;
-  }
-
-  .input_field {
-    padding: 10px 12px;
-    font-size: 12px;
-  }
-
-  .update_btn {
-    padding: 10px;
-    font-size: 12px;
-  }
-
   .total_row {
-    padding: 14px 16px;
-  }
-
-  .total_row span {
-    font-size: 15px !important;
-  }
-
-  .total_row span:last-child {
-    font-size: 16px !important;
-  }
-
-  .checkout_btn {
-    padding: 13px 18px;
-    font-size: 13px;
-    letter-spacing: 0.3px;
-  }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 360px) {
-  .totals_card {
-    padding: 14px;
-  }
-
-  .totals_title {
-    font-size: 15px;
-  }
-
-  .summary_row {
-    font-size: 12px;
-    padding: 9px 0;
-  }
-
-  .shipping_section {
-    padding: 12px;
-  }
-
-  .checkout_btn {
-    padding: 12px 16px;
-    font-size: 12px;
+    font-size: 1rem;
   }
 }

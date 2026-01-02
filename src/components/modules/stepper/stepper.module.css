@@ -1,120 +1,94 @@
-
 .stepper_bg {
-  margin-top: 100px;
-  border-bottom: 1px solid #e9ecef;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .stepper {
-  margin: 0 auto;
-  padding: 0 1rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  direction: rtl; /* For correct right-to-left flow */
+  gap: 20px;
+  background: #fff;
+  padding: 15px 40px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  direction: rtl;
 }
 
-/* === Common Styles for Steps (both Links and Paragraphs) === */
-.stepper a,
+.stepper a, 
 .stepper p {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem; /* Space between the number and text */
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px; /* Creates a pill shape */
-  font-weight: 600;
   font-size: 1rem;
+  font-weight: 600;
+  color: #ccc; /* رنگ مراحل غیرفعال */
   text-decoration: none;
+  margin: 0;
   transition: all 0.3s ease;
-  white-space: nowrap; /* Prevents text from wrapping to the next line */
-  border: 2px solid transparent;
+  white-space: nowrap;
 }
 
-/* === Step Numbers (using ::before pseudo-element) === */
-.stepper a::before,
-.stepper p::before {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 0.9rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
+/* استایل مرحله فعال */
+.active_step {
+  color: #3d2b1f !important; /* رنگ قهوه‌ای تیره برند */
+  position: relative;
 }
 
-/* Adding the number content to each step */
-.stepper > *:nth-child(1)::before { content: '1'; }
-.stepper > *:nth-child(3)::before { content: '2'; }
-.stepper > *:nth-child(5)::before { content: '3'; }
-
-
-/* === Styling for Inactive/Future Steps (p tags) === */
-.stepper p {
-  color: #adb5bd; /* Light gray text for inactive steps */
-  background-color: #e9ecef;
-}
-.stepper p::before {
-  background-color: #ced4da;
-  color: #fff;
+.active_step::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d4a373; /* رنگ کرم/طلایی برند */
+  border-radius: 2px;
 }
 
-
-/* === Styling for Completed Steps (a tags that are not active) === */
-.stepper a {
-  color: #495057;
-  background-color: #dee2e6; /* A slightly darker gray for completed steps */
-  cursor: pointer;
-}
-.stepper a:hover {
-  background-color: #ced4da;
-}
-.stepper a::before {
-  background-color: #868e96;
-  color: #fff;
-}
-
-
-/* === Styling for the CURRENTLY ACTIVE Step === */
-.active_step,
-.active_step:hover {
-  background-color: #007bff; /* A strong primary color for the active step */
-  color: white;
-  border-color: #0056b3;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.25);
-}
-.active_step::before {
-  background-color: white !important; /* White circle for the number */
-  color: #007bff !important; /* Primary color for the number text */
-}
-
-
-/* === Styling for the Arrow Separators === */
+/* استایل آیکون فلش */
 .stepper svg {
-  color: #ced4da; /* Neutral color for separators */
-  font-size: 1.5rem;
-  flex-shrink: 0; /* Prevents arrows from shrinking */
+  color: #eee;
+  font-size: 0.9rem;
 }
 
+/* --- رسپانسیو برای تبلت و موبایل --- */
 
-/* === Responsive Design === */
 @media (max-width: 768px) {
   .stepper {
-    gap: 0.75rem;
+    padding: 12px 25px;
+    gap: 15px;
   }
-  .stepper a,
+
+  .stepper a, 
   .stepper p {
-    padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .stepper {
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 15px; /* در موبایل حالت مستطیلی ملایم بهتر است */
   }
+
+  .stepper a, 
+  .stepper p {
+    font-size: 0.8rem;
+  }
+
   .stepper svg {
-    display: none; /* Hide arrows on small screens to save space */
+    font-size: 0.7rem;
   }
+}
+
+@media (max-width: 350px) {
+    /* برای موبایل‌های خیلی کوچک */
+    .stepper {
+        padding: 10px 8px;
+    }
+    .stepper a, .stepper p {
+        font-size: 0.75rem;
+    }
 }

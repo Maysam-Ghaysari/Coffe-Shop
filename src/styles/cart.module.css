@@ -1,58 +1,51 @@
-.cart_empty {
-  position: relative;
-  margin-top: 5vw;
-  margin-bottom: 54px;
-  text-align: center;
-  line-height: 1.2;
-  color: black;
+.cart_wrapper {
+  padding-top: 110px; /* فاصله برای نوبار شیشه‌ای شما */
+  padding-bottom: 60px;
+  min-height: 80vh;
+  background-color: #f9f9f9;
   direction: rtl;
 }
 
-.cart_empty svg {
-  font-size: 15.2em;
-  color: #f1f1f1;
+.container {
+  max-width: 1380px;
+  width: 95%;
+  margin: 0 auto;
 }
 
-.cart_empty p {
-  font-size: 48px;
-  margin-bottom: 1.5rem;
+.content_section {
+  margin-top: 40px;
+  background: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-.cart_empty span {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: gray;
+/* --- رسپانسیو --- */
+
+@media (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
 }
 
-.cart_empty a:hover {
-  background: rgb(113, 29, 28) !important;
+@media (max-width: 768px) {
+  .cart_wrapper {
+    padding-top: 90px;
+  }
+
+  .content_section {
+    padding: 20px 15px;
+    border-radius: 20px;
+    margin-top: 25px;
+  }
 }
 
-.cart_empty span:nth-child(4) {
-  margin-bottom: 2.8rem !important;
-}
-
-.cart_empty a {
-  padding: 14px 28px;
-  transition: 0.1s all ease-in;
-  font-size: 14px;
-  line-height: 20px;
-  margin-top: 4rem;
-  border-radius: 0.001px;
-  color: white;
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
-  background-color: rgb(0, 137, 121);
-}
-
-.cart {
-  display: flex;
-  max-width: 1222px;
-  width: 100%;
-  gap: 20px;
-  margin-bottom: 51px;
-  flex-direction: row-reverse;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+@media (max-width: 480px) {
+  .cart_wrapper {
+    padding-top: 85px;
+  }
+  
+  .container {
+    width: 95%;
+  }
 }
