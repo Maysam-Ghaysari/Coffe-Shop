@@ -9,6 +9,7 @@ import {
   valiadtePassword,
   validatePhone,
 } from "@/utils/auth";
+import Link from "next/link";
 
 const Register = ({ showloginForm }) => {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
@@ -135,7 +136,9 @@ const Register = ({ showloginForm }) => {
           </div>
         </div>
       </div>
+      <Link href={"/"}>
       <p className={styles.cancel_text}>لغو و بازگشت</p>
+      </Link>
     </div>
   ) : (
     <Sms hideOtpForm={hideOtpForm} />

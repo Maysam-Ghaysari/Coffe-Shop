@@ -1,64 +1,124 @@
-.btn {
-  padding: 0.8rem;
-  cursor: pointer;
-  background-color: rgb(52, 24, 14);
-}
-
-.form {
-  display: grid;
-  background-color: white;
-  padding: 50px 95px;
-  width: 380px;
-  margin: 7rem auto 2rem;
-  border-radius: 4px;
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
-  text-align: center;
-  color: black;
-}
-
-.input {
-  padding: 13px;
-  background-color: white;
-  color: black;
-  border-radius: 3px;
-  border: 1px solid black;
-  direction: ltr;
-  margin-top: 20px;
-}
-.back_to_login {
-  font-size: 13px;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-}
-
-.code_title {
-  font-size: 13px;
-  margin-top: 18px;
-  color: #6d6d6d;
-  opacity: 0.6;
-  white-space: nowrap;
-}
-.number {
-  font-size: 13px;
-  margin-top: 7px;
-  color: #6d6d6d;
-  opacity: 0.6;
-  white-space: nowrap;
-}
-.send_again_code {
-  font-size: 13px;
-  margin-top: 7px;
-  opacity: 0.6;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.redirect_to_home {
-  display: block;
-  width: max-content;
+.sms_wrapper {
+  width: 100%;
+  max-width: 380px;
   margin: 0 auto;
+  text-align: center;
+  direction: rtl;
+}
+
+.title {
+  color: #3d2b1f;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.phone_display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fdfaf7;
+  padding: 8px 15px;
+  border-radius: 50px;
+  width: fit-content;
+  margin: 0 auto 30px;
+  border: 1px solid #eee;
+}
+
+.phone_display span {
+  font-weight: 700;
+  color: #3d2b1f;
+  letter-spacing: 1px;
+}
+
+.edit_btn {
+  background: none;
+  border: none;
+  color: #d4a373;
+  font-size: 0.75rem;
   cursor: pointer;
-  font-size: 13px;
-  color: rgb(52, 24, 14);
+  font-weight: bold;
+}
+
+/* استایل اینپوت کد تایید */
+.otp_input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 10px;
+  outline: none;
+  transition: 0.3s;
+  color: #3d2b1f;
+}
+
+.otp_input:focus {
+  border-color: #d4a373;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1);
+}
+
+.btn_submit {
+  width: 100%;
+  background: #3d2b1f;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: 0.3s;
+}
+
+.btn_submit:hover {
+  background: #5a402e;
+  transform: translateY(-2px);
+}
+
+.footer {
+  margin-top: 20px;
+  height: 40px;
+}
+
+.timer_text {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.timer_text span {
+  color: #3d2b1f;
+  font-weight: bold;
+}
+
+.resend_btn {
+  background: none;
+  border: none;
+  color: #d4a373;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back_btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  margin-top: 30px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.back_btn:hover {
+  color: #3d2b1f;
 }

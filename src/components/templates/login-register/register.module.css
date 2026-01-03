@@ -101,8 +101,10 @@
   margin-right: 5px;
 }
 
-.cancel_text {
+.cancel_text  {
   margin-top: 20px;
+  text-decoration: none;
+
   color: #aaa;
   cursor: pointer;
   font-size: 0.85rem;

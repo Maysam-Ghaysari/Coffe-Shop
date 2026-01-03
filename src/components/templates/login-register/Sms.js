@@ -1,24 +1,58 @@
+"use client";
+import { useState, useEffect } from "react";
 import styles from "./sms.module.css";
 
-const Sms = ({ hideOtpForm }) => {
+const Sms = ({ hideOtpForm, phoneNumber = "09381234567" }) => {
+  const [timer, setTimer] = useState(60); // تایمر ۶۰ ثانیه‌ای
+
+  useEffect(() => {
+    if (timer > 0) {
+      const interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
+      return () => clearInterval(interval);
+    }
+  }, [timer]);
+
   return (
-    <>
-      <div className={styles.form}>
-        <p>کد تایید</p>
-        <span className={styles.code_title}>
-          لطفاً کد تأیید ارسال شده را تایپ کنید
-        </span>
-        <span className={styles.number}>09921558293</span>
-        <input className={styles.input} type="text" />
-        <button style={{ marginTop: "1rem" }} className={styles.btn}>
-          ثبت کد تایید
-        </button>
-        <p className={styles.send_again_code}>ارسال مجدد کد یکبار مصرف</p>
+    <div className={styles.sms_wrapper} data-aos="zoom-in">
+      <div className={styles.header}>
+        <h2 className={styles.title}>تأیید شماره موبایل</h2>
+        <p className={styles.subtitle}>
+          کد ۵ رقمی ارسال شده به شماره زیر را وارد کنید:
+        </p>
+        <div className={styles.phone_display}>
+          <span>{phoneNumber}</span>
+          <button onClick={hideOtpForm} className={styles.edit_btn}>ویرایش شماره</button>
+        </div>
       </div>
-      <p onClick={hideOtpForm} className={styles.redirect_to_home}>
-        لغو
-      </p>
-    </>
+
+      <div className={styles.input_container}>
+        <input 
+          className={styles.otp_input} 
+          type="text" 
+          maxLength="5" 
+          placeholder="- - - - -"
+          autoFocus
+        />
+      </div>
+
+      <button className={styles.btn_submit}>
+        تأیید و ادامه
+      </button>
+
+      <div className={styles.footer}>
+        {timer > 0 ? (
+          <p className={styles.timer_text}>
+            ارسال مجدد کد تا <span>{timer}</span> ثانیه دیگر
+          </p>
+        ) : (
+          <button className={styles.resend_btn}>ارسال مجدد کد</button>
+        )}
+      </div>
+
+      <button onClick={hideOtpForm} className={styles.back_btn}>
+        بازگشت به مرحله قبل
+      </button>
+    </div>
   );
 };
 
