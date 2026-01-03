@@ -1,96 +1,98 @@
+.form {
+  direction: rtl;
+}
 
 .title {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #3d2b1f;
+  margin-bottom: 10px;
 }
 
-.rate {
+.subtitle {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.required {
+  color: #e74c3c;
+}
+
+.rate_section {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.rate div {
+.stars {
   display: flex;
-  gap: 0.3rem;
+  flex-direction: row-reverse; /* برای ترتیب درست ستاره‌ها از راست به چپ */
+  gap: 5px;
   font-size: 1.5rem;
-  color: #ffb400;
   cursor: pointer;
 }
+
+.active_star { color: #f1c40f; transition: 0.2s; }
+.gray_star { color: #ccc; transition: 0.2s; }
 
 .group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .group label {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #444;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.group textarea,
-.group input {
-  width: 100%;
-  padding: 0.8rem 1rem;
+.group input, .group textarea {
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 0.95rem;
   outline: none;
-  transition: border 0.2s ease-in-out;
+  font-family: inherit;
+  transition: 0.3s;
 }
 
-.group textarea:focus,
-.group input:focus {
-  border: 1px solid #666;
+.group input:focus, .group textarea:focus {
+  border-color: #d4a373;
+  box-shadow: 0 0 5px rgba(212, 163, 115, 0.2);
 }
 
-.groups {
+.input_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.checkbox_wrapper {
   display: flex;
-  gap: 1rem;
-}
-
-.checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
   font-size: 0.85rem;
   color: #555;
 }
 
-.checkbox input {
-  margin-top: 0.2rem;
+.submit_btn {
+  background: #3d2b1f;
+  color: white;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* button {
-  background: #4caf50;
-  color: #fff;
-  padding: 0.9rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-} */
+.submit_btn:hover {
+  background: #d4a373;
+}
 
-
-
-/* 📱 رسپانسیو */
-@media (max-width: 768px) {
-  .groups {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .form {
-    padding: 1.2rem;
-  }
-
-  /* button {
-    width: 100%;
-  } */
+@media (max-width: 600px) {
+  .input_row { grid-template-columns: 1fr; gap: 0; }
 }

@@ -1,85 +1,91 @@
-
-.tabs {
+.tabs_container {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 80px;
+  background: #fff;
+  border-radius: 25px;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.02);
+}
+
+.tabs_header {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
   direction: rtl;
 }
 
-/* === 2. لیست تب‌ها (دکمه‌ها) === */
-.tabs ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-bottom: 2px solid #dee2e6; /* خط جداکننده پایین تب‌ها */
+.tabs_header li {
+  flex: 1;
 }
 
-.tabs li {
-  margin: 0;
-  padding: 0;
-}
-
-.tabs button {
-  font-family: inherit; /* ارث‌بری فونت */
+.tabs_header button {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  background: none;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 1rem 1.5rem;
-  border: none;
-  background-color: transparent;
+  color: #888;
   cursor: pointer;
-  color: #6c757d; /* رنگ متن تب‌های غیرفعال */
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px; /* برای همپوشانی با خط اصلی */
   transition: all 0.3s ease;
-  white-space: nowrap; /* جلوگیری از شکستن متن دکمه */
+  position: relative;
 }
 
-.tabs button:hover {
-  color: #212529; /* رنگ متن در حالت هاور */
+/* خط زیر تب فعال */
+.active_tab {
+  color: #3d2b1f !important;
+  background-color: #fff;
 }
 
-/* === 3. استایل تب فعال === */
-.active_tab,
-.active_tab:hover {
-  color: #007bff; /* رنگ متن تب فعال */
-  border-bottom-color: #007bff; /* خط رنگی زیر تب فعال */
+.active_tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #d4a373; /* رنگ تم قهوه ست */
 }
 
-/* === 4. کانتینر محتوای تب‌ها === */
-.contents {
-  background-color: #ffffff;
-  border: 1px solid #dee2e6;
-  border-top: none; /* حذف خط بالا برای اتصال به تب‌ها */
-  border-radius: 0 0 8px 8px;
-  padding: 2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.contents section {
-  /* استایل‌های مربوط به محتوای داخلی */
-  color: #212529;
+.tabs_content {
+  padding: 40px;
+  direction: rtl;
   line-height: 1.8;
+  color: #555;
 }
 
+/* --- Media Queries (رسپانسیو) --- */
 
-@media (max-width: 600px) {
-  /* در موبایل، لیست تب‌ها به صورت افقی اسکرول می‌شود */
-  .tabs ul {
-    overflow-x: auto;
-    /* مخفی کردن نوار اسکرول */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+@media (max-width: 768px) {
+  .tabs_header {
+    flex-wrap: wrap; /* در موبایل تب‌ها شکسته شوند */
   }
-  .tabs ul::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
+  
+  .tabs_header button {
+    padding: 15px 10px;
+    font-size: 0.95rem;
   }
+  
+  .tabs_content {
+    padding: 25px 15px;
+  }
+}
 
-  .tabs button {
-    font-size: 1rem;
-    padding: 0.8rem 1rem;
+@media (max-width: 480px) {
+  .tabs_header li {
+    flex: none;
+    width: 100%; /* در موبایل خیلی کوچک تب‌ها زیر هم باشند */
+    border-bottom: 1px solid #f0f0f0;
   }
-
-  .contents {
-    padding: 1.5rem;
+  
+  .active_tab::after {
+    left: auto;
+    right: 0;
+    width: 4px;
+    height: 100%; /* در حالت ستونی، خط بجای زیر، سمت راست قرار می‌گیرد */
   }
 }

@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 const MoreProducts = ({ relaitedProducts }) => {
+  // console.log("related",relaitedProducts) is ok
+console.log()
   return (
     <div data-aos="fade-right">
       <section>
@@ -30,7 +32,8 @@ const MoreProducts = ({ relaitedProducts }) => {
       >
         {relaitedProducts.map((item) => (
           <SwiperSlide key={item._id}>
-            <Product/>
+            <Product relaitedProducts={JSON.parse(JSON.stringify({relaitedProducts}))}/>
+            
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,49 +1,40 @@
+"use client";
 import { IoMdStar } from "react-icons/io";
 import styles from "./commentForm.module.css";
 import { useEffect, useState } from "react";
 import { showSwal } from "@/utils/helpers";
 import { valiadteEmail } from "@/utils/auth";
-const CommentForm = ({ productID,userID }) => {
-  const user=userID._id
 
+const CommentForm = ({ productID, userID }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
   const [score, setScore] = useState(5);
   const [isSaveUserInfo, setIsSaveUserInfo] = useState(false);
 
-  const setCommentScore = (score) => {
-    setScore(score);
-    showSwal("امتیاز شما با موفقیت ثبت شد", "success", "ادامه ثبت کامنت");
-  };
-
-useEffect(() => {
-  const savedUserInfo = localStorage.getItem("userInfo");
-  if (savedUserInfo) {
-    try {
+  useEffect(() => {
+    const savedUserInfo = localStorage.getItem("userInfo");
+    if (savedUserInfo) {
       const userInfo = JSON.parse(savedUserInfo);
       setUsername(userInfo?.username || "");
       setEmail(userInfo?.email || "");
-    } catch (err) {
-      console.error("Error parsing userInfo:", err);
+      setIsSaveUserInfo(true);
     }
-  }
-}, []);
+  }, []);
 
   const submitComment = async () => {
-    // Validation 
-    const isValidEmail = valiadteEmail(email);
+    if (!username.trim() || !email.trim() || !body.trim()) {
+      return showSwal("لطفا تمام فیلد‌های ستاره‌دار را پر کنید", "error", "فهمیدم");
+    }
 
-if (!isValidEmail) {
-  showSwal("ایمیل وارد شده معتبر نیست","error","فهمیدم")
-}
+    if (!valiadteEmail(email)) {
+      return showSwal("ایمیل وارد شده معتبر نیست", "error", "فهمیدم");
+    }
+
     if (isSaveUserInfo) {
-      const userInfo = {
-        username,
-        email,
-      };
-
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      localStorage.setItem("userInfo", JSON.stringify({ username, email }));
+    } else {
+      localStorage.removeItem("userInfo");
     }
 
     const comment = {
@@ -52,95 +43,86 @@ if (!isValidEmail) {
       body,
       score,
       productID,
-      user,
+      user: userID?._id || userID, // اطمینان از ارسال درست ID
     };
 
     const res = await fetch("/api/comments", {
       method: "POST",
-      headers: {
-       headers: {
-  "Content-Type": "application/json",
-},
-
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment),
     });
 
-    if (res.status === 201) {
-      showSwal("کامنت مورد نظر با موفقیت ثبت شد", "success", "فهمیدم");
+    if (res.ok) {
+      showSwal("دیدگاه شما پس از تایید مدیریت نمایش داده خواهد شد", "success", "فهمیدم");
+      setBody(""); // خالی کردن متن نظر پس از ارسال
+    } else {
+      showSwal("خطایی در ثبت نظر رخ داد", "error", "تلاش مجدد");
     }
   };
 
   return (
     <div className={styles.form}>
       <p className={styles.title}>دیدگاه خود را بنویسید</p>
-      <p>
+      <p className={styles.subtitle}>
         نشانی ایمیل شما منتشر نخواهد شد. بخش‌های موردنیاز علامت‌گذاری شده‌اند{" "}
-        <span style={{ color: "red" }}>*</span>
+        <span className={styles.required}>*</span>
       </p>
-      <div className={styles.rate}>
+
+      <div className={styles.rate_section}>
         <p>امتیاز شما :</p>
-        <div>
-          <IoMdStar onClick={() => setCommentScore(5)} />
-          <IoMdStar onClick={() => setCommentScore(4)} />
-          <IoMdStar onClick={() => setCommentScore(3)} />
-          <IoMdStar onClick={() => setCommentScore(2)} />
-          <IoMdStar onClick={() => setCommentScore(1)} />
+        <div className={styles.stars}>
+          {[5, 4, 3, 2, 1].map((num) => (
+            <IoMdStar
+              key={num}
+              onClick={() => setScore(num)}
+              className={score >= num ? styles.active_star : styles.gray_star}
+            />
+          ))}
         </div>
       </div>
+
       <div className={styles.group}>
-        <label htmlFor="">
-          دیدگاه شما
-          <span style={{ color: "red" }}>*</span>
-        </label>
+        <label>دیدگاه شما <span className={styles.required}>*</span></label>
         <textarea
           value={body}
-          onChange={(event) => setBody(event.target.value)}
-          id="comment"
-          name="comment"
-          cols="45"
-          rows="8"
-          required=""
-          placeholder=""
+          onChange={(e) => setBody(e.target.value)}
+          rows="6"
+          placeholder="نظرتان را اینجا بنویسید..."
         ></textarea>
       </div>
-      <div className={styles.groups}>
+
+      <div className={styles.input_row}>
         <div className={styles.group}>
-          <label htmlFor="">
-            نام
-            <span style={{ color: "red" }}>*</span>
-          </label>
+          <label>نام <span className={styles.required}>*</span></label>
           <input
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             type="text"
           />
         </div>
         <div className={styles.group}>
-          <label htmlFor="">
-            ایمیل
-            <span style={{ color: "red" }}>*</span>
-          </label>
+          <label>ایمیل <span className={styles.required}>*</span></label>
           <input
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
           />
         </div>
       </div>
-      <div className={styles.checkbox}>
+
+      <div className={styles.checkbox_wrapper}>
         <input
           type="checkbox"
-          value={isSaveUserInfo}
-          onChange={(event) => setIsSaveUserInfo((prevValue) => !prevValue)}
+          id="save-info"
+          checked={isSaveUserInfo}
+          onChange={() => setIsSaveUserInfo(!isSaveUserInfo)}
         />
-        <p>
-          {" "}
-          ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی
-          می‌نویسم.
-        </p>
+        <label htmlFor="save-info">ذخیره نام و ایمیل در مرورگر</label>
       </div>
-      <button onClick={submitComment}>ثبت</button>
+
+      <button className={styles.submit_btn} onClick={submitComment}>
+        ثبت دیدگاه
+      </button>
     </div>
   );
 };

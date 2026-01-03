@@ -1,62 +1,57 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./tabs.module.css";
-import { useState } from "react";
 import Description from "./Description";
 import MoreInfoes from "./MoreInfoes";
 import Comments from "./Comments";
-const Tabs = ({ product, userID }) => {
 
+const Tabs = ({ product, userID }) => {
   const [tab, setTab] = useState("description");
 
-  return (
-    <>
-      <div data-aos="fade-left" className={styles.tabs}>
-        <ul>
-          <li>
-            <button
-              className={tab === "description" ? styles.active_tab : ""}
-              onClick={() => setTab("description")}
-            >
-              توضیحات
-            </button>
-          </li>
-          <li>
-            <button
-              className={tab === "moreInfoes" ? styles.active_tab : ""}
-              onClick={() => setTab("moreInfoes")}
-            >
-              اطلاعات بیشتر
-            </button>
-          </li>
-          <li>
-            <button
-              className={tab === "comments" ? styles.active_tab : ""}
-              onClick={() => setTab("comments")}
-            >
-              نظرات (
-              {product.comments.filter((comment) => comment.isAccept).length})
-            </button>
-          </li>
-        </ul>
+  // محاسبه تعداد نظرات تایید شده
+  const acceptedCommentsCount = product.comments.filter((c) => c.isAccept).length;
 
-        <div className={styles.contents}>
-          <section>
-            {tab === "description" && <Description />}
-            {tab == "moreInfoes" && (
-              <MoreInfoes product={JSON.parse(JSON.stringify(product))} />
-            )}
-            {tab == "comments" && (
-              <Comments
-               userID={userID}
-                productID={product._id}
-                comments={JSON.parse(JSON.stringify(product.comments))}
-              />
-            )}
-          </section>
-        </div>
+  return (
+    <div data-aos="fade-up" className={styles.tabs_container}>
+      <ul className={styles.tabs_header}>
+        <li>
+          <button
+            className={tab === "description" ? styles.active_tab : ""}
+            onClick={() => setTab("description")}
+          >
+            توضیحات
+          </button>
+        </li>
+        <li>
+          <button
+            className={tab === "moreInfoes" ? styles.active_tab : ""}
+            onClick={() => setTab("moreInfoes")}
+          >
+            اطلاعات بیشتر
+          </button>
+        </li>
+        <li>
+          <button
+            className={tab === "comments" ? styles.active_tab : ""}
+            onClick={() => setTab("comments")}
+          >
+            نظرات ({acceptedCommentsCount})
+          </button>
+        </li>
+      </ul>
+
+      <div className={styles.tabs_content}>
+        {tab === "description" && <Description product={product} />}
+        {tab === "moreInfoes" && <MoreInfoes product={product} />}
+        {tab === "comments" && (
+          <Comments
+            userID={userID}
+            productID={product._id}
+            comments={product.comments}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

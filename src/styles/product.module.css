@@ -1,47 +1,36 @@
-.contents {
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 160px;
-  text-align: right;
-  padding-top: 25px;
-  color: black;
-  direction: rtl;
-  padding-bottom: 5rem;
+.container {
+  background-color: #fff;
+ direction: rtl;
+  min-height: 100vh;
+  margin-top: 150px;
 }
 
-.contents hr {
-  border-top-color: rgb(0 0 0 / 23%);
-  margin: 20px 0px;
+.contents {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .main {
-   gap: 50px;
   display: flex;
-  flex-direction: row-reverse; 
-}
- 
-  
-.container {
-  overflow: auto;
+  gap: 40px;
+  margin-bottom: 60px;
 }
 
+/* بخش عکس محصول */
+.main > div:first-child {
+  flex: 1;
+}
 
+/* بخش جزئیات و خرید */
+.main > div:last-child {
+  flex: 1.2;
+}
+
+/* رسپانسیو برای موبایل */
 @media (max-width: 992px) {
   .main {
     flex-direction: column;
-    gap: 30px; 
-  }
-
-  .contents {
-    margin-top: 100px;
-    padding-bottom: 3rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .contents {
-    margin-top: 80px;
-    padding-left: 15px;
-    padding-right: 15px;
+    gap: 20px;
   }
 }

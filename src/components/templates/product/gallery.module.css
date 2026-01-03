@@ -1,55 +1,103 @@
-.gallery {
-  width: 36%;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
+.gallery_wrapper {
+  width: 40%;
+  position: sticky;
 }
 
 /* اسلایدر اصلی */
-.gallery-slider {
-  border-radius: 12px;
+.main_slider {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* مربع نگه داشتن تصویر */
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid #f1f1f1;
   overflow: hidden;
-  margin-bottom: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
-/* اسلایدر کوچک (thumbnails) */
-.gallery-slider-2 {
-  display: flex;
-  gap: 8px;
+.main_slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* جلوگیری از کشیده شدن عکس */
+  padding: 20px;
 }
 
-.gallery-slider-2 img {
-  cursor: pointer;
-  border-radius: 8px;
+/* اسلایدر بندانگشتی */
+.thumb_slider {
+  margin-top: 15px;
+  padding: 5px 2px;
+}
+
+.thumb_box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border-radius: 12px;
   border: 2px solid transparent;
-  transition: border 0.2s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px;
 }
 
-.gallery-slider-2 img:hover {
-  border: 2px solid #007bff;
+.thumb_box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.6;
 }
 
-/* 📱 رسپانسیو */
+.thumb_box:hover img {
+  opacity: 1;
+}
+
+.activeThumb {
+  border-color: #d4a373 !important; /* رنگ طلایی/قهوه‌ای برند شما */
+}
+
+.activeThumb img {
+  opacity: 1;
+}
+
+/* --- Media Queries (رسپانسیو سازی) --- */
+
+/* تبلت‌ها و لپ‌تاپ‌های کوچک */
 @media (max-width: 1024px) {
-  .gallery {
-    width: 50%;
+  .gallery_wrapper {
+    position: relative; /* در حالت تبلت چسبان نباشد */
+    margin-bottom: 30px;
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
+/* موبایل‌های بزرگ */
 @media (max-width: 768px) {
-  .gallery {
+
+  .main_slider {
+    border-radius: 15px;
+  }
+  
+  .main_slide img {
+    padding: 10px;
+  }
+
+  .thumb_slider {
+    margin-top: 10px;
+  }
+}
+
+/* موبایل‌های کوچک */
+@media (max-width: 480px) {
+  .gallery_wrapper{
+  top: -50px;
     width: 100%;
   }
-
-  .gallery-slider-2 {
-    gap: 5px;
+  .main_slider {
+    aspect-ratio: 1.1 / 1; /* کمی عریض‌تر در موبایل برای فضای بیشتر */
   }
 
-  .gallery-slider-2 img {
-    border-radius: 6px;
+  .thumb_box {
+    border-radius: 8px;
+    padding: 3px;
   }
 }

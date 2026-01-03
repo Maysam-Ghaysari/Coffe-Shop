@@ -1,23 +1,55 @@
-.button,
-.buttonVisible {
+.scrollToTop {
   position: fixed;
-  bottom: 2rem;
-  left: 1rem;
-  border-radius: 100%;
-  background: white;
-  border: 0;
-  color: black;
-  cursor: pointer;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #3d2b1f; /* رنگ اصلی قهوه ست */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
-  outline: 0;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+  cursor: pointer;
+  z-index: 1000;
+  
+  /* انیمیشن مخفی بودن */
   opacity: 0;
-  padding: 0.7rem 0.8rem 0rem;
-  transition-duration: 200ms; 
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.buttonVisible {
-  opacity: 1 !important;
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scrollToTop:hover {
+  background-color: #d4a373; /* رنگ طلایی/کرم در هاور */
+  box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
+  transform: translateY(-5px);
+}
+
+/* --- رسپانسیو برای موبایل --- */
+@media (max-width: 768px) {
+  .scrollToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+/* جلوگیری از تداخل با دکمه‌های چت در موبایل */
+@media (max-width: 480px) {
+  .scrollToTop {
+    bottom: 80px; /* اگر دکمه چت دارید، این مقدار را بیشتر کنید */
+    right: 15px;
+  }
 }

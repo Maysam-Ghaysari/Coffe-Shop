@@ -2,66 +2,74 @@
 import { showSwal } from "@/utils/helpers";
 import React, { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa"; // برای نمایش حالت پر شده در صورت تمایل
+import styles from "./addwishlist.module.css"; // استفاده از استایل مشترک بخش جزئیات
 
 function AddToWishlist({ productID }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const authUser = async () => {
-      const res = await fetch("/api/auth/me");
-      console.log(res);
-      if (res.status === 200) {
-        const data = await res.json();
-        console.log(data);
-        setUser({ ...data });
+      try {
+        const res = await fetch("/api/auth/me");
+        if (res.status === 200) {
+          const data = await res.json();
+          setUser(data);
+        }
+      } catch (err) {
+        console.error("Auth error:", err);
       }
     };
-
     authUser();
   }, []);
 
   const addToWishlist = async (event) => {
     event.preventDefault();
+    
     if (!user?._id) {
       return showSwal(
-        "برای اضافه کردن به علاقه مندی‌ها لطفا ابتدا لاگین بکنین",
+        "برای اضافه کردن به علاقه‌مندی‌ها ابتدا وارد حساب کاربری شوید",
         "error",
         "فهمیدم"
       );
     }
 
-    const wish = {
-      user: user._id,
-      product: productID,
-    };
+    setLoading(true);
+    try {
+      const wish = {
+        user: user._id,
+        product: productID,
+      };
 
-    const res = await fetch("/api/wishlist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(wish),
-    });
+      const res = await fetch("/api/wishlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(wish),
+      });
 
-    console.log("Response ->", res);
-    if (res.status === 421) {
-      return showSwal(
-        "محصول از قبل در لیست علاقه مندی وجود دارد",
-        "error",
-        "ok"
-      );
-    }
-    
-
-    if (res.status === 201) {
-      showSwal("محصول مورد نظر به علاقه‌مندی‌ها اضافه شد", "success", "فهمیدم");
+      if (res.status === 421) {
+        showSwal("این محصول از قبل در لیست شما وجود دارد", "warning", "متوجه شدم");
+      } else if (res.status === 201) {
+        showSwal("محصول به لیست علاقه‌مندی‌ها اضافه شد", "success", "عالی");
+      }
+    } catch (error) {
+      showSwal("خطایی رخ داد، دوباره تلاش کنید", "error", "اوکی");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div onClick={addToWishlist}>
-      <CiHeart />
-      <a href="/">افزودن به علاقه مندی ها</a>
+    <div 
+      onClick={!loading ? addToWishlist : null} 
+      className={styles.wishlist_btn_container}
+      style={{ cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.6 : 1 }}
+    >
+      <CiHeart className={styles.wishlist_icon} />
+      <span className={styles.wishlist_text}>
+        {loading ? "در حال ثبت..." : "افزودن به علاقه‌مندی‌ها"}
+      </span>
     </div>
   );
 }

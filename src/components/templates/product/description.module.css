@@ -1,0 +1,73 @@
+.description_wrapper {
+  animation: fadeIn 0.5s ease;
+}
+
+.desc_title {
+  font-size: 1.4rem;
+  color: #3d2b1f;
+  margin-bottom: 15px;
+}
+
+.desc_hr {
+  border: none;
+  border-top: 2px solid #d4a373;
+  width: 50px;
+  margin-bottom: 30px;
+}
+
+.product_model {
+  font-size: 1.25rem;
+  color: #d4a373;
+  margin-bottom: 20px;
+}
+
+.specs_summary {
+  background: #fdfaf7;
+  padding: 15px;
+  border-right: 4px solid #d4a373;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+
+.specs_summary p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.specs_summary span {
+  font-weight: bold;
+  color: #3d2b1f;
+}
+
+.main_text {
+  line-height: 2;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.taste_note {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  font-style: italic;
+  color: #3d2b1f;
+  text-align: center;
+  position: relative;
+}
+
+.taste_note::before {
+  content: "“";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 4rem;
+  color: #d4a373;
+  opacity: 0.3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

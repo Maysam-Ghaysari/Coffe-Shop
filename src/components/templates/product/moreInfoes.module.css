@@ -1,0 +1,69 @@
+.more_info_container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.info_title {
+  font-size: 1.3rem;
+  color: #3d2b1f;
+  margin-bottom: 15px;
+}
+
+.info_hr {
+  border: none;
+  border-top: 2px solid #d4a373;
+  width: 50px;
+  margin-bottom: 30px;
+}
+
+.info_table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.info_row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  transition: 0.3s;
+}
+
+/* رنگ پس‌زمینه یکی در میان برای خوانایی بهتر */
+.info_row:nth-child(odd) {
+  background-color: #fdfaf7;
+}
+
+.info_row:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.info_row:hover {
+  background-color: #f5ede4;
+}
+
+.info_label {
+  font-weight: bold;
+  color: #3d2b1f;
+  font-size: 0.95rem;
+}
+
+.info_value {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* --- رسپانسیو سازی برای موبایل --- */
+@media (max-width: 480px) {
+  .info_row {
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 15px;
+  }
+  
+  .info_value {
+    color: #d4a373; /* در موبایل مقدار را با رنگ متمایز نشان می‌دهیم */
+    font-weight: 500;
+  }
+}

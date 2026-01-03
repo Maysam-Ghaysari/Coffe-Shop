@@ -1,32 +1,107 @@
+.comment_card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fdfaf7; /* رنگ ملایم متناسب با تم قهوه */
+  border-radius: 15px;
+  border: 1px solid #f1f1f1;
+  transition: transform 0.3s ease;
+  direction: rtl;
+  width: 100%;
+}
+
+.comment_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.avatar_wrapper {
+  flex-shrink: 0;
+}
+
 .avatar {
   width: 60px;
   height: 60px;
-  border-radius: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #d4a373;
+  padding: 2px;
 }
+
+.comment_content {
+  flex-grow: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.user_meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.username {
+  font-size: 1rem;
+  color: #3d2b1f;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
 .stars {
   display: flex;
-  gap: 4px;
-  color: orange;
+  gap: 2px;
+  font-size: 0.9rem;
 }
-.user_info {
-  display: flex;
-  gap: 5px;
-  align-items: baseline;
+
+.fill_star {
+  color: #f1c40f;
 }
-.comment {
-  display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.218);
-  margin-top: 1rem;
-  gap: 25px;
-  align-items: center;
-  padding-bottom: 25px;
+
+.empty_star {
+  color: #ccc;
 }
-.main_details {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+
+.body {
+  line-height: 1.7;
+  color: #555;
+  font-size: 0.95rem;
+  text-align: justify;
 }
-.comment p {
-  margin-bottom: 2px;
-  margin-top: 10px !important;
+
+
+/* --- رسپانسیو برای موبایل --- */
+@media (max-width: 576px) {
+
+  .comment_card {
+    flex-direction: row; /* در موبایل آواتار بالا قرار بگیرد */
+    gap: 15px;
+    padding: 15px;
+    max-width: 240%;
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .header {
+    flex-direction: row; /* اطلاعات نام و ستاره‌ها کنار هم بمانند */
+    align-items: center;
+  }
+
+  .username {
+    font-size: 0.9rem;
+  }
+
+  .body {
+    font-size: 0.85rem;
+  }
 }

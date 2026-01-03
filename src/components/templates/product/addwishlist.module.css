@@ -1,0 +1,32 @@
+.wishlist_btn_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #777;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.wishlist_btn_container:hover {
+  color: #d4a373; /* رنگ تم طلایی/قهوه‌ای */
+}
+
+.wishlist_icon {
+  font-size: 1.4rem;
+  stroke-width: 0.5px;
+}
+
+.wishlist_text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* انیمیشن چرخش ملایم برای حالت لودینگ */
+.wishlist_btn_container[style*="not-allowed"] .wishlist_icon {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.5; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1.05); }
+}

@@ -12,50 +12,51 @@ const Gallery = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const images = [product.img];
+  // اگر آرایه گالری ندارید، از عکس اصلی به صورت آرایه استفاده می‌کنیم
+  const images = product.gallery?.length > 0 ? product.gallery : [product.img];
 
   return (
-    <section className={styles.gallery}>
+    <section className={styles.gallery_wrapper}>
       {/* اسلایدر اصلی */}
       <Swiper
         style={{
-          "--swiper-navigation-color": "#333",
-          "--swiper-pagination-color": "#333",
+          "--swiper-navigation-color": "#fff",
+          "--swiper-navigation-size": "25px",
         }}
         spaceBetween={10}
         navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
+        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className={`mySwiper2 gallery-slider`}
+        className={styles.main_slider}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
         {images.map((img, index) => (
-          <SwiperSlide key={index}>
-            <img src={img} alt={`product-${index}`} />
+          <SwiperSlide key={index} className={styles.main_slide}>
+            <img src={img} alt={`product-${index}`} loading="lazy" />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* اسلایدر بندانگشتی‌ها */}
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={`gallery-slider-2`}
-      >
-        {images.map((img, index) => (
-          <SwiperSlide key={index}>
-            <img
-              src={img}
-              alt={`thumb-${index}`}
-              className={index === activeIndex ? styles.activeThumb : ""}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {/* اسلایدر بندانگشتی‌ها (فقط اگر بیش از یک عکس وجود داشت) */}
+      {images.length > 0 && (
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          spaceBetween={12}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.thumb_slider}
+        >
+          {images.map((img, index) => (
+            <SwiperSlide key={index} className={styles.thumb_slide}>
+              <div className={`${styles.thumb_box} ${index === activeIndex ? styles.activeThumb : ""}`}>
+                <img src={img} alt={`thumb-${index}`} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </section>
   );
 };

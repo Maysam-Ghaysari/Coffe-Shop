@@ -8,26 +8,26 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      window.scrollY > 120 ? setIsVisible(true) : setIsVisible(false);
+      // نمایش دکمه بعد از ۳۰۰ پیکسل اسکرول (استانداردتر است)
+      window.scrollY > 300 ? setIsVisible(true) : setIsVisible(false);
     };
 
     window.addEventListener("scroll", toggleVisibility);
-
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    isVisible &&
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
     <button
-      className={isVisible ? styles.buttonVisible : styles.button}
+      className={`${styles.scrollToTop} ${isVisible ? styles.visible : ""}`}
       onClick={scrollToTop}
+      aria-label="برو به بالا"
     >
       <MdKeyboardArrowUp />
     </button>

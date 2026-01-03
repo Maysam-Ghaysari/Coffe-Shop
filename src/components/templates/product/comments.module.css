@@ -1,59 +1,79 @@
-.comments {
+.comments_container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.comments_header h3 {
+  color: #3d2b1f;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #d4a373;
+  width: 60px;
+  margin-bottom: 40px;
+}
+
+.comments_wrapper {
   display: flex;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  gap: 50px;
+  align-items: flex-start;
 }
 
-/* ستون کامنت‌ها */
-.user_comments {
-  flex: 2;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* بخش نظرات کاربران */
+.user_comments_section {
+  flex: 1.5;
 }
 
-.user_comments .title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  color: #333;
+.comments_list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-/* فرم */
-.form_bg {
-  flex: 1.2;
-  background: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.no_comments {
+  padding: 40px;
+  background: #fdfaf7;
+  border-radius: 15px;
+  text-align: center;
+  color: #777;
+  border: 1px dashed #d4a373;
+}
+
+/* بخش فرم ثبت نظر */
+.form_section {
+  flex: 1;
+}
+
+.sticky_form {
   position: sticky;
-  top: 20px; /* برای ثابت موندن فرم هنگام اسکرول دسکتاپ */
-  height: fit-content;
+  top: 120px; /* فرم هنگام اسکرول کردن نظرات همراه کاربر می‌ماند */
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
 }
 
-/* استایل عمومی برای متن و کامنت‌ها */
-.user_comments p,
-.form_bg p {
-  line-height: 1.7;
-  color: #555;
-}
+/* --- رسپانسیو سازی --- */
 
-/* رسپانسیو */
-@media (max-width: 1024px) {
-  .comments {
-    gap: 1rem;
+@media (max-width: 992px) {
+  .comments_wrapper {
+    flex-direction: column; /* در تبلت و موبایل ابتدا نظرات و سپس فرم را نشان می‌دهیم */
+    gap: 40px;
   }
-}
-
-@media (max-width: 768px) {
-  .comments {
-    flex-direction: column;
-  }
-
-  .form_bg {
-    position: relative;
-    top: unset;
+  
+  .form_section {
     width: 100%;
   }
+  
+  .sticky_form {
+    position: static; /* در موبایل حالت چسبان را غیرفعال می‌کنیم */
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
