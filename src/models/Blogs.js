@@ -34,7 +34,7 @@ const schema = new mongoose.Schema(
             type: String,
       required: true,
     },
-      slug: { type: String }, 
+      slug: { type: String, unique: true }, 
 
     },
       {
@@ -55,7 +55,7 @@ schema.pre("validate", function (next) {
   next();
 
 });
-  schema.index({ slug: 1 },{ unique: true });
+  schema.index({ slug: 1 });
 
 
   const model = mongoose.models.Blogs || mongoose.model("Blogs", schema);
