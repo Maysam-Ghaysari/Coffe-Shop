@@ -1,0 +1,33 @@
+.search_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 280px;
+margin-bottom: 20px;
+}
+
+.search_box input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  transition: 0.3s;
+}
+
+.search_box input:focus {
+  border-color: #d4a373;
+}
+
+.search_box svg {
+  position: absolute;
+  left: 15px;
+  font-size: 1.5rem;
+  color: #aaa;
+}
+@media (max-width:480px) {
+    .search_box {
+        width: 100%;
+    }
+}
