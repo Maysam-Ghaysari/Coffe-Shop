@@ -1,95 +1,65 @@
-/* ================================================= 
-   تنظیمات عمومی صفحه
-   ================================================= */
-.dashboard_container {
+.main {
   padding: 20px;
-  background-color: #f8f9fa; /* رنگ پس‌زمینه روشن برای داشبورد */
-  min-height: 100vh;
+  direction: rtl;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-
-/* ================================================= 
-   ۱. بخش باکس‌های اطلاعاتی (.boxes)
-   ================================================= */
-
-.boxes {
-  margin-bottom: 40px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.box {
-  /* استفاده از Grid برای چیدمان خودکار و ریسپانسیو */
+/* کانتینر باکس‌های آماری */
+.boxes_container {
   display: grid;
-  /* ستون‌ها به صورت خودکار و یک اندازه تقسیم می‌شوند (تعداد ستون‌ها بر اساس سایز) */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* در موبایل: 1 ستون */
+  grid-template-columns: 1fr; 
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* کانتینر محتوای اصلی (تیکت‌ها و سفارشات) */
+.contents_container {
+  display: grid;
+  /* در موبایل: 1 ستون */
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
-/* استایل‌دهی داخل باکس (اگر کامپوننت Box نیاز به استایل خاصی دارد) */
-/* فرض بر این است که کامپوننت Box خودش استایل‌دهی شده */
-
-
-/* ================================================= 
-   ۲. بخش محتویات اصلی (.contents)
-   ================================================= */
-
-.contents {
-  display: grid;
-  /* در دسکتاپ، دو ستون با نسبت ۳ به ۲ (برای تیکت‌ها و سفارشات) */
-  grid-template-columns: 3fr 2fr; 
-  gap: 30px;
-}
-
-/* استایل‌دهی عمومی برای کامپوننت‌های داخلی (Tickets, Orders) */
-.contents > * {
-  background-color: #fff;
-  padding: 25px;
+.content_item {
+  background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  overflow-x: auto; /* برای جلوگیری از بهم ریختگی جداول در موبایل */
 }
 
-
-/* ================================================= 
-   ۳. ریسپانسیو (برای تبلت و موبایل)
-   ================================================= */
-
-/* تبلت (ماکزیمم عرض ۹۹۲ پیکسل) */
-@media (max-width: 992px) {
-  /* تنظیم فاصله کمتر در تبلت */
- 
-}
-
-/* موبایل و تبلت کوچک (ماکزیمم عرض ۷۶۸ پیکسل) */
-@media (max-width: 768px) {
-  /* تبدیل محتویات اصلی به حالت ستونی در موبایل */
-  .contents {
-    grid-template-columns: 1fr; /* یک ستون در موبایل */
+/* --- Media Queries برای تبلت (768px به بالا) --- */
+@media (min-width: 768px) {
+  .boxes_container {
+    /* در تبلت: 2 ستون */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
-  /* کاهش Padding برای فضای بیشتر */
-  .boxes, .contents > * {
-      padding: 15px;
-  }
-  
-  /* کاهش فاصله بین باکس‌ها */
-  .box {
-      gap: 15px;
+  .main {
+    padding: 30px;
   }
 }
 
-/* موبایل کوچک (ماکزیمم عرض ۴۸۰ پیکسل) */
-@media (max-width: 480px) {
-    /* کاهش حداقل عرض برای باکس‌های اطلاعاتی */
-    .box {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-        gap: 10px;
-    }
-    
-    .boxes {
-        margin-bottom: 25px;
-    }
+/* --- Media Queries برای دسکتاپ (1024px به بالا) --- */
+@media (min-width: 1024px) {
+  .boxes_container {
+    /* در دسکتاپ: 4 ستون */
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .contents_container {
+    /* در دسکتاپ: تیکت و سفارش کنار هم (2 ستون) */
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* --- رفع مشکل اسکرول افقی جداول در موبایل --- */
+.content_item :global(table) {
+  width: 100%;
+  min-width: 500px; /* اجازه می‌دهد جدول اسکرول افقی بخورد اما فشرده نشود */
 }

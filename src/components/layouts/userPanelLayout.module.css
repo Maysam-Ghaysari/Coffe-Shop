@@ -1,14 +1,40 @@
 .layout {
-  background: white;
-  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
   direction: rtl;
-  height: 100vh;
-  color: black;
+}
+
+/* بخش اصلی محتوا که در سمت چپ سایدبار قرار می‌گیرد */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* جلوگیری از بهم ریختگی گریدها در داخل */
 }
 
 .contents {
-  width: 100%;
+  padding: 30px;
+  flex: 1;
 }
-.section {
-  display: flex;
+
+/* --- Media Queries (رسپانسیو سازی) --- */
+
+/* تبلت‌ها و مانیتورهای کوچک */
+@media (max-width: 992px) {
+  .layout {
+    flex-direction: column; /* سایدبار به بالا یا منوی همبرگری تبدیل می‌شود */
+  }
+
+  .contents {
+    padding: 20px 15px;
+  }
+}
+
+/* موبایل‌ها */
+@media (max-width: 576px) {
+  .contents {
+    padding: 15px 10px;
+    background-color: #fff; /* در موبایل معمولا فضای سفید یکپارچه بهتر است */
+  }
 }

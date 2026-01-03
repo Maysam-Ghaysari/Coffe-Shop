@@ -10,31 +10,32 @@ import { authUser } from "@/utils/ServerHelpers";
 
 const page = async () => {
   const user = await authUser();
-  const tickets = await TicketModel.find({ user: user._id })
-    .limit(3)
-    .populate("department", "title")
-    .sort({ _id: -1 })
-    .lean();
 
-  const allTickets = await TicketModel.find({ user: user._id });
-  const comments = await CommentModel.find({ user: String(user._id) });
-  const wishes = await WishlistModel.find({ user: user._id });
+  // بهینه‌سازی کوئری‌ها برای سرعت بیشتر صفحه
+  const [tickets, ticketsCount, commentsCount, wishesCount] = await Promise.all([
+    TicketModel.find({ user: user._id }).limit(3).populate("department", "title").sort({ _id: -1 }).lean(),
+    TicketModel.countDocuments({ user: user._id }),
+    CommentModel.countDocuments({ user: String(user._id) }),
+    WishlistModel.countDocuments({ user: user._id }),
+  ]);
 
   return (
     <Layout>
-      <main>
-        <section className={styles.boxes} >
-          <div className={styles.box}>
-
-          <Box title="مجموع تیکت ها " value={allTickets.length} />
-          <Box title="مجموع کامنت ها " value={comments.length} />
-          <Box title="مجموع سفارشات" value="2" />
-          <Box title="مجموع علاقه مندی ها" value={wishes.length} />
-          </div>
+      <main className={styles.main}>
+        <section className={styles.boxes_container} data-aos="fade-down">
+            <Box title="مجموع تیکت‌ها" value={ticketsCount} unit="تیکت" />
+            <Box title="مجموع کامنت‌ها" value={commentsCount} unit="دیدگاه" />
+            <Box title="مجموع سفارشات" value="۲" unit="سفارش" />
+            <Box title="علاقه‌مندی‌ها" value={wishesCount} unit="محصول" />
         </section>
-        <section className={styles.contents}>
-          <Tickets tickets={JSON.parse(JSON.stringify(tickets))} />
-          <Orders />
+
+        <section className={styles.contents_container}>
+          <div className={styles.content_item} data-aos="fade-left">
+            <Tickets tickets={JSON.parse(JSON.stringify(tickets))} />
+          </div>
+          <div className={styles.content_item} data-aos="fade-right">
+            <Orders />
+          </div>
         </section>
       </main>
     </Layout>
