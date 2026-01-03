@@ -4,36 +4,36 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import styles from "./moreproduct.module.css"; // بهتر است استایل‌ها در فایل CSS باشند
 
 const MoreProducts = ({ relaitedProducts }) => {
-  // console.log("related",relaitedProducts) is ok
-console.log()
   return (
-    <div data-aos="fade-right">
-      <section>
+    <div data-aos="fade-right" className={styles.container}>
+      <section className={styles.title_section}>
         <h2>محصولات مرتبط</h2>
-        <div
-          style={{
-            height: "2px",
-            width: "70px",
-            background: "black",
-            marginTop: "10px",
-          }}
-        ></div>
+        <div className={styles.underline}></div>
       </section>
+
       <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
+        // تنظیمات رسپانسیو برای نمایش درست در موبایل و تبلت
+        breakpoints={{
+          320: { slidesPerView: 2, spaceBetween: 10 },
+          480: { slidesPerView: 2, spaceBetween: 20 },
+          768: { slidesPerView: 3, spaceBetween: 30 },
+          1024: { slidesPerView: 4, spaceBetween: 30 },
+        }}
         dir="rtl"
         rewind={true}
         navigation={true}
         modules={[Navigation]}
-        className="mySwiper "
+        className="mySwiper"
       >
-        {relaitedProducts.map((item) => (
-          <SwiperSlide key={item._id}>
-            <Product relaitedProducts={JSON.parse(JSON.stringify({relaitedProducts}))}/>
-            
+        {relaitedProducts.map((product) => (
+          <SwiperSlide key={product._id}>
+            {/* 
+               باید کل شیء محصول (item یا product) را به کامپوننت بفرستید
+            */}
+            <Product {...product} /> 
           </SwiperSlide>
         ))}
       </Swiper>

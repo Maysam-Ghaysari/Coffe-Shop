@@ -64,7 +64,7 @@ const safeScore = Math.max(0, Math.min(5, Number(score) || 0));
 
   return (
     <div className={styles.card}>
-          <Link href={`product/${_id}`}>
+          <Link href={`/product/${_id}`}>
       
       <div className={styles.details_container}>
         <img

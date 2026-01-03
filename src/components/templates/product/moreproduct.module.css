@@ -1,0 +1,27 @@
+.container {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.title_section {
+  margin-bottom: 30px;
+}
+
+.title_section h2 {
+  font-size: 1.5rem;
+  color: #3d2b1f;
+}
+
+.underline {
+  height: 2px;
+  width: 70px;
+  background: #d4a373; /* رنگ طلایی/قهوه‌ای */
+  margin-top: 10px;
+}
+
+/* استایل دهی به دکمه‌های ناوبری Swiper */
+/* :global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #3d2b1f !important;
+  transform: scale(0.7);
+} */
