@@ -23,7 +23,8 @@ const userid = await UserModel.findOne().populate("")
 
   const relaitedProducts = await ProductModel.find({
     smell: product.smell,
-  });
+    _id: { $ne: product._id }
+  }).limit(8);
 
   return (
     <div className={styles.container}>
