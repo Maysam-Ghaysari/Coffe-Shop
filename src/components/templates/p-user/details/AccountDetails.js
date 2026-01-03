@@ -2,8 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "@/styles/p-user/accountDetails.module.css";
 import swal from "sweetalert";
-import { IoCloudUploadOutline } from "react-icons/io5";
-import { MdOutlineDelete } from "react-icons/md";
+
 import { useState } from "react";
 
 function AccountDetails() {
@@ -89,22 +88,7 @@ function AccountDetails() {
             </div>
           </section>
           <section>
-            <div className={styles.uploader}>
-              <img src="/images/shahin.jpg" alt="" />
-              <div>
-                <div>
-                  <button>
-                    <IoCloudUploadOutline />
-                    تغییر
-                  </button>
-                  <input type="file" name="" id="" />
-                </div>
-                <button>
-                  <MdOutlineDelete />
-                  حذف
-                </button>
-              </div>
-            </div>
+          
             <div>
               <label>رمز عبور</label>
               <div className={styles.password_group}>

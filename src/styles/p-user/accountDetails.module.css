@@ -1,153 +1,172 @@
-/* کانتینر اصلی */
 .details {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: linear-gradient(rgb(137, 218, 224), rgb(255, 255, 255));
-
+  background-color: #fff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(19, 180, 220, 0.3);
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  direction: rtl;
 }
 
-/* عنوان */
 .title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #111;
-  text-align: center;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: #3d2b1f;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
 }
 
-/* بخش اصلی فرم */
+.title span {
+  position: relative;
+}
+
+.title span::after {
+  content: "";
+  position: absolute;
+  bottom: -17px;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #d4a373;
+}
+
 .details_main {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* دو ستونه در دسکتاپ */
+  gap: 40px;
 }
 
-/* بخش‌های فرم */
 .details_main section {
-  flex: 1;
-  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* لیبل‌ها */
 .details_main label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #333;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
 }
 
-/* اینپوت‌ها */
-.details_main input[type="text"],
-.details_main input[type="number"],
-.details_main input[type="password"] {
+.details_main input {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 12px 15px;
+  border: 1px solid #eee;
   border-radius: 12px;
-  border: 1px solid #0ae6d4;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  outline: none;
+  background-color: #fafafa;
+  transition: 0.3s;
 }
 
 .details_main input:focus {
-  border-color: #0071e3;
-  box-shadow: 0 0 8px rgba(0, 113, 227, 0.3);
-  outline: none;
+  border-color: #d4a373;
+  background-color: #fff;
 }
 
-/* گروه تغییر رمز عبور */
-.password_group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.password_group input {
-  flex: 1;
-}
-
-.password_group button {
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  border: none;
-  background: #0071e3;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.password_group button:hover {
-  background: #005bb5;
-}
-
-/* آپلودر تصویر */
+/* بخش آپلودر آواتار */
 .uploader {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 20px;
+  background: #fdfaf7;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #f1ece4;
 }
 
 .uploader img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  border: 2px solid #ddd;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.uploader div {
+.uploader > div {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .uploader button {
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-size: 0.8rem;
   cursor: pointer;
-  background: #0071e3;
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .uploader button:hover {
-  background: #005bb5;
-}
-
-.uploader input[type="file"] {
-  display: none;
-}
-
-/* دکمه ثبت تغییرات */
-.submit_btn {
-  width: 100%;
-  padding: 0.8rem 0;
-  margin-top: 1rem;
-  border-radius: 15px;
-  border: none;
-  background: #0071e3;
+  background: #3d2b1f;
   color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
+}
+
+/* بخش رمز عبور */
+.password_group {
+  display: flex;
+  gap: 10px;
+}
+
+.password_group button {
+  background-color: #d4a373;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  white-space: nowrap;
   cursor: pointer;
-  transition: all 0.3s ease;
+}
+
+/* دکمه ثبت نهایی */
+.submit_btn {
+  margin-top: 40px;
+  background-color: #3d2b1f;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: auto;
 }
 
 .submit_btn:hover {
-  background: #005bb5;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(0, 113, 227, 0.2);
+  background-color: #d4a373;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
 }
 
-/* واکنش‌گرا */
-@media (max-width: 768px) {
+/* --- Responsive --- */
+@media (max-width: 992px) {
   .details_main {
+    grid-template-columns: 1fr; /* تک ستونه در تبلت و موبایل */
+  }
+}
+
+@media (max-width: 576px) {
+  .details {
+    padding: 20px;
+  }
+  
+
+
+  .password_group {
     flex-direction: column;
   }
+  
+  .submit_btn {
+    width: 100%;
+  }
+  .password_group button {
+    height: 50px;
+  }
+
 }

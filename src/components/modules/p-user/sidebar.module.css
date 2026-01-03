@@ -1,14 +1,14 @@
 /* ۱. استایل دسکتاپ (سایدبار کناری) */
 .sidebar {
   width: 260px; /* عرض سایدبار */
-  height: 100vh; /* ارتفاع کامل صفحه */
+  height: 90vh; /* ارتفاع کامل صفحه */
   position: sticky; /* در زمان اسکرول ثابت می‌ماند */
-  buttom: 0;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-left: 1px solid #e0e0e0;
   transition: width 0.3s ease; /* انیمیشن نرم */
+  overflow:hidden;
 }
 
 .sidebar_header {

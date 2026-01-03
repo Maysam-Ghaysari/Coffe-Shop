@@ -4,22 +4,27 @@ import Card from "@/components/templates/p-user/wishlist/Card";
 import connectToDB from "@/configs/db";
 import WishlistModel from "@/models/Wishlist";
 import { authUser } from "@/utils/ServerHelpers";
+import { redirect } from "next/navigation";
 
 const page = async () => {
-  connectToDB();
+  await connectToDB();
   const user = await authUser();
-  const wishlist = await WishlistModel.find({ user: user._id }).populate(
-    "product"
-  );
+  
+  if (!user) return redirect("/login-register");
+
+  const wishlist = await WishlistModel.find({ user: user._id })
+    .populate("product")
+    .lean();
 
   return (
     <UserPanelLayout>
-      <main>
+      <main className={styles.main}>
         <h1 className={styles.title}>
-          <span>علاقه مندی ها</span>
+          <span>علاقه‌مندی‌ها</span>
         </h1>
+        
         <div className={styles.container}>
-          {wishlist.length &&
+          {wishlist.length > 0 ? (
             wishlist.map((wish) => (
               <Card
                 productID={String(wish.product._id)}
@@ -29,12 +34,13 @@ const page = async () => {
                 price={wish.product.price}
                 img={wish.product.img}
               />
-            ))}
+            ))
+          ) : (
+            <div className={styles.empty_wrapper}>
+              <p className={styles.empty}>لیست علاقه‌مندی‌های شما خالی است.</p>
+            </div>
+          )}
         </div>
-
-        {wishlist.length === 0 && (
-          <p className={styles.empty}>محصولی وجود ندارد</p>
-        )}
       </main>
     </UserPanelLayout>
   );

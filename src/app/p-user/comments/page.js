@@ -7,26 +7,29 @@ import styles from "@/styles/p-user/dataTable.module.css";
 import { authUser } from "@/utils/ServerHelpers";
 
 const page = async () => {
-  connectToDB();
+  await connectToDB();
   const user = await authUser();
+  
   const comments = await CommentModel.find(
     { user: String(user._id) },
     "-__v"
-  ).populate("productID", "name");
-
-
+  )
+    .populate("productID", "name")
+    .sort({ _id: -1 }) // نمایش جدیدترین‌ها در ابتدا
+    .lean();
 
   return (
     <Layout>
-      <main>
+      <main className={styles.container}>
         <DataTable
           comments={JSON.parse(JSON.stringify(comments))}
           title="لیست کامنت‌ها"
         />
         {comments.length === 0 && (
-          <p className={styles.empty}>کامنتی وجود ندارد</p>
+          <div className={styles.empty_wrapper}>
+            <p className={styles.empty}>هنوز دیدگاهی ثبت نکرده‌اید.</p>
+          </div>
         )}
-        {/*  */}
       </main>
     </Layout>
   );
