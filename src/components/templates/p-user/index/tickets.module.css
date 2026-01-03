@@ -1,65 +1,78 @@
-.content {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  margin: 2rem auto;
-  width: 45%;
-  color: #fff;
+.container {
+  background: #fff;
+  border-radius: 15px;
+  width: 100%;
 }
 
-.content_details {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
 }
 
-.content_details p {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #000;
-}
-
-.content_details a {
+.title_section {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #000;
-  font-weight: 500;
+  gap: 10px;
+}
+
+.title_section h3 {
+  font-size: 1.1rem;
+  color: #3d2b1f;
+  margin: 0;
+}
+
+.icon {
+  color: #d4a373;
+  font-size: 1.2rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #d4a373;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.content_details a:hover {
-  color: #ff4081;
+.link:hover {
+  color: #3d2b1f;
+  transform: translateX(-5px);
 }
 
-.ticket_list {
+.list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 12px;
 }
 
-/* پیام خالی */
-.empty {
+.empty_wrapper {
+  padding: 40px 0;
   text-align: center;
-  color: #000;
-  margin-top: 2rem;
-  font-size: 1rem;
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px dashed #ddd;
 }
 
-/* واکنش‌گرا */
-@media (max-width: 768px) {
-  .content {
-    padding: 1.5rem;
-    margin: 1rem;
+.empty {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 576px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .content_details p {
-    font-size: 1.2rem;
+  
+  .link {
+    align-self: flex-end;
   }
 }

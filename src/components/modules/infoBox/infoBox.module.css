@@ -1,67 +1,67 @@
 .box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
-  padding: 20px 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  color: #fff;
+  align-items: center;
+  border: 1px solid #f0f0f0;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  width: 160px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 
 .box:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 70px rgba(0, 200, 255, 0.4),
-    inset 0 0 25px rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(61, 43, 31, 0.08); /* سایه با تناژ قهوه‌ای */
+  border-color: #d4a373;
 }
 
-.box span {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #0a8880;
-}
-
-.box div {
+.box_content {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.box_title {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+.box_value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #3d2b1f; /* رنگ قهوه‌ای تیره */
+  margin: 0;
+}
+
+.icon_wrapper {
+  width: 50px;
+  height: 50px;
+  background-color: #fdfaf7; /* رنگ پس‌زمینه ملایم */
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
+  color: #d4a373; /* رنگ طلایی/قهوه‌ای آیکون */
 }
 
-.box p {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #000;
+.default_icon {
+  font-size: 1.5rem;
 }
 
-.box_chart_icon {
-  font-size: 1.8rem;
-  color: #ff4d6d;
-  transition: all 0.3s ease;
-}
-
-.box:hover .box_chart_icon {
-  color: #00c8ff;
-  transform: scale(1.2);
-}
-
-/* واکنش‌گرا */
-@media (max-width: 768px) {
+/* --- Responsive --- */
+@media (max-width: 480px) {
   .box {
-    padding: 15px 20px;
+    padding: 15px;
   }
-  .box span {
-    font-size: 1.6rem;
+  
+  .box_value {
+    font-size: 1.3rem;
   }
-  .box_chart_icon {
-    font-size: 1.5rem;
+  
+  .icon_wrapper {
+    width: 40px;
+    height: 40px;
   }
 }
