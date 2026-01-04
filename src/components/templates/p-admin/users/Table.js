@@ -78,48 +78,44 @@ export default function DataTable({ users, title }) {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr key={user._id}>
-                <td data-label="شناسه">{index + 1}</td>
-                <td data-label="نام">{user.name}</td>
-                <td data-label="ایمیل">{user.email ? user.email : "ایمیل یافت نشد"}</td>
-                <td data-label="نقش">
-                  {user.role === "USER" ? (
-                    <span className={styles.role_user}>کاربر عادی</span>
-                  ) : (
-                    <span className={styles.role_admin}>مدیر</span>
-                  )}
-                </td>
-                <td>
-                  <button type="button" className={styles.edit_btn} data-label="ویرایش">
-                    ویرایش
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className={styles.edit_btn}
-                    onClick={() => changeRole(user._id)}
-                    data-label="تغییر سطح"
-                  >
-                    {user.role === "USER" ? "ارتقا به مدیر" : "تنزل به کاربر"}
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className={styles.delete_btn}
-                    onClick={() => removeUser(user._id)}
-                    data-label="حذف"
-                  >
-                    حذف
-                  </button>
-                </td>
-                <td>
-                  <button type="button" className={styles.delete_btn} data-label="بن">
-                    بن
-                  </button>
-                </td>
-              </tr>
+           <tr key={user._id}>
+  <td data-label="شناسه">{index + 1}</td>
+  <td data-label="نام">{user.name}</td>
+  <td data-label="ایمیل" style={{ wordBreak: "break-all" }}>
+    {user.email ? user.email : "ایمیل یافت نشد"}
+  </td>
+  <td data-label="نقش">
+    {user.role === "USER" ? (
+      <span className={styles.role_user}>کاربر عادی</span>
+    ) : (
+      <span className={styles.role_admin}>مدیر</span>
+    )}
+  </td>
+  <td data-label="ویرایش">
+    <button type="button" className={styles.edit_btn}>ویرایش</button>
+  </td>
+  <td data-label="تغییر سطح">
+    <button
+      type="button"
+      className={styles.edit_btn}
+      onClick={() => changeRole(user._id)}
+    >
+      {user.role === "USER" ? "ارتقا به مدیر" : "تنزل به کاربر"}
+    </button>
+  </td>
+  <td data-label="حذف">
+    <button
+      type="button"
+      className={styles.delete_btn}
+      onClick={() => removeUser(user._id)}
+    >
+      حذف
+    </button>
+  </td>
+  <td data-label="بن">
+    <button type="button" className={styles.delete_btn}>بن</button>
+  </td>
+</tr>
             ))}
           </tbody>
         </table>
