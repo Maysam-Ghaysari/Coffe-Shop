@@ -41,6 +41,7 @@ const adminLinks = [
     icon: <MdOutlineAttachMoney />,
   },
   { href: "/p-admin/blogs", text: "بلاگ ها", icon: <TbListDetails /> }, // آیکون را اصلاح کردم
+
 ];
 
 // --- کامپوننت اصلی ---
@@ -108,12 +109,13 @@ const Sidebar = () => {
             </Link>
           </li>
         ))}
+        <li className={styles.mobile_logout} onClick={logoutHandler}>
+      <MdLogout />
+      <span>خروج</span>
+  </li>
       </ul>
 
-      <div className={styles.logout} onClick={logoutHandler}>
-        <MdLogout />
-        <span>خروج</span>
-      </div>
+    
     </aside>
   );
 };

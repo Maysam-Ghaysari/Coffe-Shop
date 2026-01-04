@@ -1,14 +1,34 @@
 .layout {
-  background: white;
-  width: 100%;
+  display: flex;
+  min-height: 100vh;
   direction: rtl;
-  height: 100vh;
-  color: black;
+  background-color: #f8f9fa; /* رنگ پس‌زمینه ملایم برای کل پنل */
+}
+
+.section {
+  display: flex;
+  width: 100%;
 }
 
 .contents {
+  flex-grow: 1;
+  padding: 30px;
   width: 100%;
+  overflow-y: auto;
+  transition: all 0.3s ease;
 }
-.section {
-  display: flex;
+
+/* --- تنظیمات مخصوص موبایل --- */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column; /* سایدبار بالا، محتوا پایین */
+  }
+
+  .contents {
+    padding: 20px;
+    /* چون سایدبار در حالت موبایل fixed است، 
+       به اندازه ارتفاع سایدبار (حدود 70px) فاصله از بالا می‌دهیم */
+    margin-top: 75px; 
+    min-height: calc(100vh - 75px);
+  }
 }
