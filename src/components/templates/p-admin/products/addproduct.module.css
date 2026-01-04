@@ -1,0 +1,90 @@
+.discount {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  direction: rtl;
+}
+
+.discount > p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3d2b1f;
+  margin-bottom: 25px;
+  border-right: 4px solid #d4a373;
+  padding-right: 15px;
+}
+
+.discount_main {
+  display: grid;
+  /* ایجاد دو ستون در دسکتاپ */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.discount_main > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.discount_main label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.discount_main input {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background-color: #fdfaf7;
+  outline: none;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+.discount_main input:focus {
+  border-color: #d4a373;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
+}
+
+.discount button {
+  width: 100%;
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3d2b1f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.discount button:hover {
+  background-color: #d4a373;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+}
+
+/* --- Responsive Settings --- */
+
+@media (max-width: 768px) {
+  .discount_main {
+    /* تغییر به یک ستون در موبایل */
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .discount {
+    padding: 15px;
+  }
+
+  .discount button {
+    margin-top: 20px;
+  }
+}

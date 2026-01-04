@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./table.module.css";
+import styles from "./addproduct.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 
