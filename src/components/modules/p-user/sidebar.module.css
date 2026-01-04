@@ -76,14 +76,13 @@
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
-    bottom: -1px;
+    bottom: 0px;
     top: auto;
     right: 0;
     width: 100%;
     height: 50px;
     flex-direction: row;
     padding: 0;
-    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
   }
 
   .sidebar_header,
@@ -93,9 +92,8 @@
   }
 
   .nav {
-    display: flex;
-    align-items: center;
     width: 100%;
+    margin:-15px auto;
   }
 
   .nav_list {
