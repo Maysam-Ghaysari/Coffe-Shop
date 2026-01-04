@@ -2,7 +2,7 @@ import Layout from "@/components/layouts/UserPanelLayout";
 import styles from "@/styles/p-user/index.module.css";
 import Box from "@/components/modules/infoBox/InfoBox";
 import Tickets from "@/components/templates/p-user/index/Tickets";
-import Orders from "@/components/templates/p-user/index/Orders";
+// import Orders from "@/components/templates/p-user/index/Orders";
 import TicketModel from "@/models/Ticket";
 import CommentModel from "@/models/Comment";
 import WishlistModel from "@/models/Wishlist";
@@ -25,7 +25,7 @@ const page = async () => {
         <section className={styles.boxes_container} data-aos="fade-down">
             <Box title="مجموع تیکت‌ها" value={ticketsCount} unit="تیکت" />
             <Box title="مجموع کامنت‌ها" value={commentsCount} unit="دیدگاه" />
-            <Box title="مجموع سفارشات" value="۲" unit="سفارش" />
+            {/* <Box title="مجموع سفارشات" value="۲" unit="سفارش" /> */}
             <Box title="علاقه‌مندی‌ها" value={wishesCount} unit="محصول" />
         </section>
 
@@ -33,9 +33,9 @@ const page = async () => {
           <div className={styles.content_item} data-aos="fade-left">
             <Tickets tickets={JSON.parse(JSON.stringify(tickets))} />
           </div>
-          <div className={styles.content_item} data-aos="fade-right">
+          {/* <div className={styles.content_item} data-aos="fade-right">
             <Orders />
-          </div>
+          </div> */}
         </section>
       </main>
     </Layout>

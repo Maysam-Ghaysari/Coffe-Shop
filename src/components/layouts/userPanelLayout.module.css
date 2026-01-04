@@ -1,40 +1,48 @@
+
 .layout {
   display: flex;
-  min-height: 100vh;
-  background-color: #f8f9fa;
   direction: rtl;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -8px;
+  margin-left: 8px;
 }
 
-/* بخش اصلی محتوا که در سمت چپ سایدبار قرار می‌گیرد */
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0; /* جلوگیری از بهم ریختگی گریدها در داخل */
+  min-width: 0; 
+  /* اسکرول اصلی باید اینجا مدیریت شود اگر سایدبار فیکس است */
+  height: auto;
+  overflow-y: hidden; 
 }
 
 .contents {
-  padding: 30px;
   flex: 1;
 }
 
-/* --- Media Queries (رسپانسیو سازی) --- */
+/* --- Responsive Settings --- */
 
-/* تبلت‌ها و مانیتورهای کوچک */
-@media (max-width: 992px) {
+@media (max-width: 1440px) {
   .layout {
-    flex-direction: column; /* سایدبار به بالا یا منوی همبرگری تبدیل می‌شود */
+    max-width: 100%; /* در سایزهای کوچکتر از مانیتور بزرگ، عرض کامل شود */
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main {
+    height: auto; /* در موبایل اجازه دهید ارتفاع بر اساس محتوا زیاد شود */
+    overflow-y: hidden;
   }
 
   .contents {
     padding: 20px 15px;
-  }
-}
-
-/* موبایل‌ها */
-@media (max-width: 576px) {
-  .contents {
-    padding: 15px 10px;
-    background-color: #fff; /* در موبایل معمولا فضای سفید یکپارچه بهتر است */
+    padding-bottom: 90px; /* فضا برای Bottom Nav موبایل */
   }
 }

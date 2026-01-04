@@ -10,7 +10,10 @@ function Tickets({ tickets }) {
     <main className={styles.container}>
       <h1 className={styles.title}>
         <span>همه تیکت ها</span>
+        <span className={styles.btnSend} >
+
         <Link href="/p-user/tickets/sendTicket"> ارسال تیکت جدید </Link>
+        </span>
       </h1>
 
       <div>

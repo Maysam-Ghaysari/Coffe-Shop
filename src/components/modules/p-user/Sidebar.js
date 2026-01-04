@@ -1,77 +1,45 @@
 "use client";
+import React, { useMemo } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./sidebar.module.css";
+import swal from "sweetalert";
+
+// آیکون‌ها
 import { ImReply } from "react-icons/im";
-import {
-  FaComments,
-  FaHeart,
-  FaShoppingBag,
-  FaUsers,
-} from "react-icons/fa";
+import { FaComments, FaHeart, FaShoppingBag, FaUsers,FaHome,FaChartBar } from "react-icons/fa";
 import { MdOutlineAttachMoney, MdSms, MdLogout } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
-import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
-import swal from "sweetalert";
-import { useMemo } from "react"; // برای بهینه‌سازی
 
-// --- لیست لینک‌های کاربر ---
-const userLinks = [
-  { href: "/p-user", text: "پیشخوان", icon: <ImReply /> },
-  { href: "/p-user/orders", text: "سفارش ها", icon: <FaShoppingBag /> },
-  { href: "/p-user/tickets", text: "تیکت های پشتیبانی", icon: <MdSms /> },
-  { href: "/p-user/comments", text: "کامنت ها", icon: <FaComments /> },
-  { href: "/p-user/wishlist", text: "علاقه مندی", icon: <FaHeart /> },
-  {
-    href: "/p-user/account-details",
-    text: "جزئیات اکانت",
-    icon: <TbListDetails />,
-  },
-];
-
-// --- لیست لینک‌های ادمین ---
-const adminLinks = [
-  { href: "/p-admin", text: "پیشخوان", icon: <ImReply /> },
-  { href: "/p-admin/products", text: "محصولات", icon: <FaShoppingBag /> },
-  { href: "/p-admin/users", text: "کاربران", icon: <FaUsers /> },
-  { href: "/p-admin/comments", text: "کامنت ها", icon: <FaComments /> },
-  { href: "/p-admin/tickets", text: "تیکت ها", icon: <MdSms /> },
-  {
-    href: "/p-admin/discounts",
-    text: "تخفیفات",
-    icon: <MdOutlineAttachMoney />,
-  },
-  { href: "/p-admin/blogs", text: "بلاگ ها", icon: <TbListDetails /> }, // آیکون را اصلاح کردم
-];
-
-// --- کامپوننت اصلی ---
 const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
-
-  // تشخیص نوع پنل (ادمین یا کاربر)
   const isAdminPanel = pathname.includes("/p-admin");
 
-  // انتخاب لیست لینک‌ها بر اساس نوع پنل
-  // useMemo از رندرهای غیرضروری جلوگیری می‌کند
-  const links = useMemo(
-    () => (isAdminPanel ? adminLinks : userLinks),
-    [isAdminPanel]
-  );
+  // تعریف لینک‌ها
+  const links = useMemo(() => {
+    const userLinks = [
+      { href: "/", text: "صحفه اصلی", icon: <FaHome /> },
+      { href: "/p-user", text: "پیشخوان", icon: <FaChartBar /> },
+      // { href: "/p-user/orders", text: "سفارش‌ها", icon: <FaShoppingBag /> },
+      { href: "/p-user/comments", text: "کامنت‌ها", icon: <FaComments /> },
+      { href: "/p-user/wishlist", text: "علاقه‌مندی", icon: <FaHeart /> },
+      { href: "/p-user/tickets", text: "تیکت‌ها", icon: <MdSms /> },
+      { href: "/p-user/account-details", text: "جزئیات اکانت", icon: <TbListDetails /> },
+    ];
 
-  // تابع داینامیک برای اعمال کلاس active
-  const getLinkClass = (href) => {
-    const baseClass = styles.link;
+    const adminLinks = [
+      { href: "/p-admin", text: "پیشخوان", icon: <ImReply /> },
+      { href: "/p-admin/products", text: "محصولات", icon: <FaShoppingBag /> },
+      { href: "/p-admin/users", text: "کاربران", icon: <FaUsers /> },
+      { href: "/p-admin/comments", text: "دیدگاه‌ها", icon: <FaComments /> },
+      { href: "/p-admin/tickets", text: "تیکت‌ها", icon: <MdSms /> },
+      { href: "/p-admin/discounts", text: "تخفیفات", icon: <MdOutlineAttachMoney /> },
+    ];
 
-    // برای صفحات اصلی پنل، مطابقت دقیق می‌خواهیم
-    const isDashboard = href === "/p-user" || href === "/p-admin";
-    const isActive = isDashboard
-      ? pathname === href
-      : pathname.startsWith(href); // برای زیرمجموعه‌ها، مطابقت با شروع آدرس
+    return isAdminPanel ? adminLinks : userLinks;
+  }, [isAdminPanel]);
 
-    return isActive ? `${baseClass} ${styles.active}` : baseClass;
-  };
-
-  // تابع خروج (بدون تغییر)
   const logoutHandler = () => {
     swal({
       title: "آیا از خروج اطمینان دارید؟",
@@ -81,13 +49,7 @@ const Sidebar = () => {
       if (result) {
         const res = await fetch("/api/auth/signout", { method: "POST" });
         if (res.status === 200) {
-          swal({
-            title: "با موفقیت از اکانت خارج شدین",
-            icon: "success",
-            buttons: "فهمیدم",
-          }).then(() => {
-            router.replace("/");
-          });
+          router.replace("/");
         }
       }
     });
@@ -96,24 +58,34 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar_header}>
-        <p>خوش آمدید.</p>
+        <p>خوش آمدید</p>
       </div>
 
-      <ul className={styles.sidebar_main}>
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} className={getLinkClass(link.href)}>
-              {link.icon}
-              <span>{link.text}</span>
-            </Link>
+      <nav className={styles.nav}>
+        <ul className={styles.nav_list}>
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Link 
+                  href={link.href} 
+                  className={`${styles.nav_link} ${isActive ? styles.active : ""}`}
+                >
+                  {link.icon}
+                  <span>{link.text}</span>
+                </Link>
+              </li>
+            );
+          })}
+          {/* دکمه خروج مخصوص لیست */}
+          <li className={styles.logout_item} onClick={logoutHandler}>
+            <div className={styles.nav_link}>
+              <MdLogout />
+              <span>خروج</span>
+            </div>
           </li>
-        ))}
-      </ul>
-
-      <div className={styles.logout} onClick={logoutHandler}>
-        <MdLogout />
-        <span>خروج</span>
-      </div>
+        </ul>
+      </nav>
     </aside>
   );
 };

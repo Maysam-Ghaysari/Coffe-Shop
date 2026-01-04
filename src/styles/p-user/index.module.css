@@ -1,7 +1,5 @@
 .main {
-  padding: 20px;
   direction: rtl;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -11,7 +9,6 @@
   /* در موبایل: 1 ستون */
   grid-template-columns: 1fr; 
   gap: 15px;
-  margin-bottom: 30px;
 }
 
 /* کانتینر محتوای اصلی (تیکت‌ها و سفارشات) */
@@ -23,6 +20,7 @@
 }
 
 .content_item {
+  margin-top: 150px;
   background: #fff;
   border-radius: 12px;
   padding: 20px;
