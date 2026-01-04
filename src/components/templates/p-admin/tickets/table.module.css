@@ -1,150 +1,86 @@
 .title {
-  margin-top: 30px;
-  text-align: right;
-  text-transform: uppercase;
-  position: relative;
-  font-size: 30px;
-  z-index: 1;
-  font-weight: 500;
-}
-
-.title:before {
-  border-top: 2px solid #dfdfdf;
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: 52%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 95%;
-  z-index: -1;
-}
-
-.title span {
-  background: #fff;
-  padding: 0 15px;
-  margin-right: 4rem;
-}
-
-.title:before {
-  border-top: none;
-}
-
-.title:after {
-  border-bottom: 1px solid #711d1c;
-  -webkit-box-shadow: 0 1px 0 0 #711d1c;
-  -moz-box-shadow: 0 1px 0 0 #711d1c;
-  box-shadow: 0 1px 0 0 #711d1c;
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: 51%;
-  left: 0;
-  right: 0;
-  width: 95%;
-  z-index: -1;
-}
-
-.table {
-  width: 100%;
-}
-
-.table tbody tr {
-  background-color: rgb(255, 255, 255);
-}
-
-.table {
-  width: 100%;
-  background-color: #f2f7fd;
-}
-
-.table th {
-  border: none;
-  color: #000000;
-  text-align: center;
-}
-
-.table tr {
-  vertical-align: middle;
-}
-
-.table td,
-.table th {
-  padding: 8px 22px;
-  text-align: center;
-}
-
-.delete_btn {
-  font-size: 13px;
-  background: #711d1c;
-  padding: 0.4rem 0.7rem;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  width: -webkit-fill-available;
-}
-
-.edit_btn,
-.btn {
-  font-size: 13px;
-  background: #000000;
-  padding: 0.4rem 0.7rem;
-  cursor: pointer;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  width: -webkit-fill-available;
+  font-size: 1.5rem;
+  color: #3d2b1f;
+  margin-bottom: 25px;
+  border-right: 4px solid #d4a373;
+  padding-right: 15px;
+  direction: rtl;
 }
 
 .table_container {
-  padding: 40px 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  /* فعال کردن اسکرول افقی */
+  overflow-x: auto;
+  width: 100%;
+  direction: rtl;
 }
 
-.answer_contact {
-  color: rgb(0, 0, 0);
-  background-color: blue !important;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  /* عرض حداقلی برای اینکه در موبایل ستون‌ها فشرده نشوند */
+  min-width: 800px; 
 }
 
-.no_answer_contact {
-  color: white;
-  background-color: red !important;
-}
-.answer_comment {
-  color: rgb(255, 255, 255);
-  background-color: blue !important;
+.table thead tr {
+  background-color: #3d2b1f;
+  color: #fff;
 }
 
-.no_answer_comment {
-  color: white;
-  background-color: red !important;
+.table th {
+  padding: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  white-space: nowrap;
 }
-.check,
-.no_check {
-  font-size: 13px;
-  background: #000000;
-  padding: 0.4rem 0.7rem;
-  width: -webkit-fill-available;
+
+.table td {
+  padding: 15px;
+  font-size: 0.85rem;
+  color: #444;
+  border-bottom: 1px solid #f8f8f8;
+  text-align: center;
+  white-space: nowrap; /* جلوگیری از شکستن متن عنوان تیکت */
+}
+
+/* استایل دکمه‌ها */
+.edit_btn, .delete_btn {
+  padding: 6px 15px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
-  border: 0;
-  border-radius: 3px;
-  color: white;
+  font-family: inherit;
+  transition: 0.3s;
 }
-.no_check {
-  background: #711d1c;
+
+.edit_btn {
+  background-color: #d4a373;
+  color: #fff;
 }
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.delete_btn {
+  background-color: #ef4444;
+  color: #fff;
 }
-.empty {
-  color: white;
-  background-color: #711d1c;
-  padding: 0.7rem 2rem;
-  width: max-content;
-  margin: 15rem auto;
-  font-size: 1.7rem;
-  border-radius: 5px;
+
+.edit_btn:hover, .delete_btn:hover {
+  opacity: 0.8;
+}
+
+/* زیباسازی نوار اسکرول */
+.table_container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table_container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.table_container::-webkit-scrollbar-thumb {
+  background: #d4a373;
+  border-radius: 10px;
 }
