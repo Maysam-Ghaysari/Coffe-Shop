@@ -1,0 +1,100 @@
+.container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 1000px;
+  margin: 20px auto;
+  direction: rtl;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: #3d2b1f;
+  margin-bottom: 30px;
+  border-right: 5px solid #d4a373;
+  padding-right: 15px;
+  font-weight: 800;
+}
+
+.form_wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* فیلد متن کامل و تصویر را در دسکتاپ تمام‌عرض می‌کنیم */
+.full_width {
+  grid-column: span 2;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.input_field {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #f1ece4;
+  background-color: #fdfaf7;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input_field:focus {
+  border-color: #d4a373;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.1);
+}
+
+/* استایل مخصوص Textarea بدون خطای Pure Selector */
+.text_area {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.btn_submit {
+  width: 100%;
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3d2b1f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn_submit:hover {
+  background-color: #d4a373;
+  transform: translateY(-2px);
+}
+
+/* --- تنظیمات موبایل --- */
+@media (max-width: 768px) {
+  .form_wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .full_width {
+    grid-column: span 1;
+  }
+
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+}

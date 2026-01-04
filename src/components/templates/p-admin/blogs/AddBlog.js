@@ -34,7 +34,9 @@ export default function AddBlog() {
     formData.append("content", content);
     formData.append("author", author);
 
-    tags.split("،").forEach((tag) => formData.append("tags", tag.trim()));
+    if (tags) {
+      tags.split("،").forEach((tag) => formData.append("tags", tag.trim()));
+    }
 
     if (image) {
       formData.append("image", image);
@@ -51,14 +53,7 @@ export default function AddBlog() {
         icon: "success",
         buttons: "باشه",
       }).then(() => {
-        router.push("/blogs"); // رفتن به صفحه بلاگ‌ها
-      });
-    } else {
-      swal({
-        title: "خطا",
-        text: "مشکلی در ذخیره بلاگ پیش آمد.",
-        icon: "error",
-        buttons: "باشه",
+        router.push("/p-admin/blogs"); 
       });
     }
   };
@@ -67,49 +62,56 @@ export default function AddBlog() {
     <section className={styles.container}>
       <h2 className={styles.title}>افزودن بلاگ جدید</h2>
 
-      <div className={styles.form}>
-        <div>
+      <div className={styles.form_wrapper}>
+        <div className={styles.form_group}>
           <label className={styles.label}>عنوان بلاگ</label>
-          <input  className={styles.input} value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
+          <input className={styles.input_field} value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="عنوان اصلی..." />
         </div>
 
-        <div>
-          <label className={styles.label}>Slug</label>
-          <input  className={styles.input} value={slug} onChange={(e) => setSlug(e.target.value)} type="text" />
+        <div className={styles.form_group}>
+          <label className={styles.label}>Slug (لینک یکتا)</label>
+          <input className={styles.input_field} value={slug} onChange={(e) => setSlug(e.target.value)} type="text" placeholder="blog-slug-here" />
         </div>
 
-        <div>
+        <div className={styles.form_group}>
           <label className={styles.label}>زیرعنوان</label>
-          <input className={styles.input}  value={mainTitle} onChange={(e) => setMainTitle(e.target.value)} type="text" />
+          <input className={styles.input_field} value={mainTitle} onChange={(e) => setMainTitle(e.target.value)} type="text" />
         </div>
 
-        <div>
-          <label className={styles.label}>خلاصه</label>
-          <input className={styles.input}  value={excerpt} onChange={(e) => setExcerpt(e.target.value)} type="text" />
-        </div>
-
-        <div>
-          <label className={styles.label}>متن کامل</label>
-          <textarea value={content} onChange={(e) => setContent(e.target.value)} rows={6}></textarea>
-        </div>
-
-        <div>
+        <div className={styles.form_group}>
           <label className={styles.label}>نویسنده</label>
-          <input className={styles.input}  value={author} onChange={(e) => setAuthor(e.target.value)} type="text" />
+          <input className={styles.input_field} value={author} onChange={(e) => setAuthor(e.target.value)} type="text" />
         </div>
 
-        <div>
-          <label className={styles.label}>تگ‌ها</label>
-          <input className={styles.input}  value={tags} onChange={(e) => setTags(e.target.value)} type="text" />
+        {/* فیلد تمام‌عرض */}
+        <div className={`${styles.form_group} ${styles.full_width}`}>
+          <label className={styles.label}>خلاصه بلاگ</label>
+          <input className={styles.input_field} value={excerpt} onChange={(e) => setExcerpt(e.target.value)} type="text" />
         </div>
 
-        <div>
-          <label className={styles.label}>تصویر</label>
-          <input className={styles.input}  onChange={(e) => setImage(e.target.files[0])} type="file" />
+        {/* فیلد تمام‌عرض */}
+        <div className={`${styles.form_group} ${styles.full_width}`}>
+          <label className={styles.label}>متن کامل بلاگ</label>
+          <textarea 
+            className={`${styles.input_field} ${styles.text_area}`} 
+            value={content} 
+            onChange={(e) => setContent(e.target.value)} 
+            rows={8}
+          ></textarea>
+        </div>
+
+        <div className={styles.form_group}>
+          <label className={styles.label}>تگ‌ها (با ، جدا کنید)</label>
+          <input className={styles.input_field} value={tags} onChange={(e) => setTags(e.target.value)} type="text" placeholder="قهوه، آموزش، بلاگ" />
+        </div>
+
+        <div className={styles.form_group}>
+          <label className={styles.label}>تصویر اصلی بلاگ</label>
+          <input className={styles.input_field} onChange={(e) => setImage(e.target.files[0])} type="file" />
         </div>
       </div>
 
-      <button className={styles.btn} onClick={BlogAdd}>افزودن بلاگ</button>
+      <button className={styles.btn_submit} onClick={BlogAdd}>ثبت و انتشار بلاگ</button>
     </section>
   );
 }
