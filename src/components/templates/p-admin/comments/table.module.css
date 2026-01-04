@@ -1,189 +1,104 @@
-/* ================================================= 
-   ۱. تنظیمات عنوان و کانتینر اصلی
-   ================================================= */
-
 .title {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #eee;
+  color: #3d2b1f;
+  margin-bottom: 25px;
+  direction: rtl;
+  padding-right: 10px;
+  border-right: 4px solid #d4a373;
 }
 
 .table_container {
-  overflow-x: auto; /* برای جدول در دسکتاپ، اسکرول افقی در صورت لزوم */
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  /* فعال‌سازی اسکرول افقی */
+  overflow-x: auto;
+  width: 100%;
+  direction: rtl;
 }
-
-/* ================================================= 
-   ۲. استایل جدول (Desktop Default)
-   ================================================= */
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1100px; /* حداقل عرض برای نمایش راحت ۱۲ ستون */
+  /* عرض حداقل زیاد به دلیل تعداد بالای ستون‌ها (۱۲ ستون) */
+  min-width: 1200px; 
 }
 
 .table thead tr {
-  background-color: #f8f9fa;
-  color: #555;
-  font-size: 0.9rem;
-  text-align: right;
+  background-color: #3d2b1f;
+  color: #fff;
 }
 
-.table th,
-.table td {
-  padding: 12px 10px;
-  border: 1px solid #eee;
-  text-align: center;
+.table th {
+  padding: 15px 10px;
   font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap; /* جلوگیری از شکستن متن سرتیتر */
+}
+
+.table td {
+  padding: 15px 10px;
+  font-size: 0.85rem;
+  color: #555;
+  border-bottom: 1px solid #f8f8f8;
+  text-align: center;
+  white-space: nowrap; /* منظم نگه داشتن محتوا */
   vertical-align: middle;
 }
 
-.table tbody tr:hover {
-  background-color: #f5f5f5;
-}
-
-/* ----- استایل‌های وضعیت و دکمه‌ها ----- */
-
-/* وضعیت تایید/رد */
+/* کلاس‌های وضعیت تایید/رد */
 .accept {
-  background-color: #e6ffed; /* سبز روشن */
-  color: #28a745;
-  font-weight: 600;
+  border-right: 4px solid #27ae60 !important;
+  background-color: #f0fff4;
 }
 
 .reject {
-  background-color: #fff0f0; /* قرمز روشن */
-  color: #dc3545;
-  font-weight: 600;
+  border-right: 4px solid #eb5757 !important;
+  background-color: #fff5f5;
 }
 
-/* دکمه‌های عملیاتی */
-.edit_btn,
-.delete_btn {
-  padding: 6px 10px;
-  border: none;
+/* دکمه‌های عملیات */
+.edit_btn, .delete_btn {
+  padding: 6px 12px;
   border-radius: 6px;
+  border: none;
   cursor: pointer;
+  font-family: inherit;
   font-size: 0.75rem;
-  font-weight: 500;
-  transition: background-color 0.2s;
-  white-space: nowrap; /* جلوگیری از شکستن متن دکمه */
+  transition: 0.3s;
 }
 
 .edit_btn {
-  background-color: #007bff;
-  color: white;
-}
-.edit_btn:hover {
-  background-color: #0056b3;
+  background-color: #d4a373;
+  color: #fff;
 }
 
 .delete_btn {
-  background-color: #dc3545;
-  color: white;
-}
-.delete_btn:hover {
-  background-color: #c82333;
+  background-color: #ef4444;
+  color: #fff;
 }
 
-/* ================================================= 
-   ۳. ریسپانسیو (تبدیل به لیست کارتی برای موبایل)
-   ================================================= */
+.edit_btn:hover, .delete_btn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
 
-@media (max-width: 900px) {
-  .table_container {
-    overflow-x: hidden; /* حذف اسکرول افقی در موبایل */
-    padding: 0;
-    box-shadow: none; /* حذف سایه کلی برای چیدمان کارتی */
-    background-color: transparent;
-  }
+/* شخصی‌سازی اسکرول‌بار */
+.table_container::-webkit-scrollbar {
+  height: 8px;
+}
 
-  .table {
-    display: block; /* تبدیل جدول به بلوک */
-    min-width: 100%;
-  }
+.table_container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
 
-  .table thead {
-    display: none; /* حذف هدر جدول */
-  }
+.table_container::-webkit-scrollbar-thumb {
+  background: #d4a373;
+  border-radius: 10px;
+}
 
-  .table tbody {
-    display: block;
-  }
-
-  .table tr {
-    display: flex;
-    flex-direction: column; /* هر ردیف (آیتم) به یک ستون عمودی تبدیل می‌شود */
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    padding: 10px;
-  }
-
-  .table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-    padding: 10px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
-  }
-  
-  .table tr:last-child {
-      border-bottom: none;
-  }
-
-  /* اضافه کردن عنوان ستون در موبایل با استفاده از :before */
-  .table td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: #6c757d;
-    min-width: 100px;
-    text-align: right;
-    margin-left: 10px;
-  }
-
-  /* استایل‌دهی خاص برای دکمه‌ها و وضعیت‌ها */
-  .table td:nth-child(1) { /* شناسه */
-    font-size: 1.1rem;
-    padding-top: 15px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    justify-content: flex-start;
-  }
-  
-  .table td:nth-child(1)::before {
-      content: 'شناسه: ';
-  }
-
-  .table td:nth-child(7), /* مشاهده */
-  .table td:nth-child(8), /* ویرایش */
-  .table td:nth-child(9), /* حذف */
-  .table td:nth-child(10), /* تایید/رد */
-  .table td:nth-child(11), /* پاسخ */
-  .table td:nth-child(12) { /* بن */
-    /* گروه‌بندی دکمه‌ها در یک سطر برای موبایل */
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px;
-    border-bottom: none;
-    padding-bottom: 5px;
-  }
-
-  .table td:last-child {
-    border-bottom: none;
-    padding-bottom: 15px;
-  }
+.table_container::-webkit-scrollbar-thumb:hover {
+  background: #3d2b1f;
 }
