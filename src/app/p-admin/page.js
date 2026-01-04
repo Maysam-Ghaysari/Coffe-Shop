@@ -14,9 +14,12 @@ import connectToDB from "@/configs/db";
 
 async function AdminHomePage() {
   connectToDB();
-  const tickets = await TicketModel.find({}).lean();
-  const users = await UserModel.find({}).lean();
-  const products = await ProductModel.find({}).lean();
+  const [tickets, users, products] = await Promise.all([
+    TicketModel.find({}).lean(),
+    UserModel.find({}).lean(),
+    ProductModel.find({}).lean(),
+  ]);
+ 
 
   return (
     <AdminPanelLayout>

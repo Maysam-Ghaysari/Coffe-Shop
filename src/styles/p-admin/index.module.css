@@ -1,23 +1,60 @@
 .dashboard_contents {
+  display: grid;
+  /* در دسکتاپ ۴ ستون، در تبلت ۲ و در موبایل ۱ ستون */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin-top: 3rem;
-  padding: 0 40px;
-  display: flex;
-  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding: 10px;
 }
+
 .dashboard_charts {
-  display: flex;
-  gap: 10px;
-  padding: 0px 42px;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* دو نمودار کنار هم در دسکتاپ */
+  gap: 25px;
+  padding: 10px;
 }
-.dashboard_charts section p {
-  margin-bottom: 10px;
-}
+
 .dashboard_charts section {
-  background: #711d1c0f;
-  padding: 20px;
-  border-radius: 4px;
-  text-align: right;
-  width: 50%;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.3s ease;
+}
+
+.dashboard_charts section:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard_charts p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #3d2b1f;
+  margin-bottom: 25px;
+  padding-right: 10px;
+  border-right: 4px solid #d4a373; /* خط رنگی کنار عنوان نمودار */
+}
+
+/* --- Responsive Media Queries --- */
+
+@media (max-width: 1100px) {
+  .dashboard_charts {
+    grid-template-columns: 1fr; /* در تبلت نمودارها زیر هم می‌روند */
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard_contents {
+    grid-template-columns: 1fr; /* در موبایل هر باکس تمام عرض */
+    gap: 15px;
+  }
+
+  .dashboard_charts section {
+    padding: 15px; /* پدینگ کمتر در موبایل */
+  }
+
+  .dashboard_charts p {
+    font-size: 1rem;
+  }
 }
