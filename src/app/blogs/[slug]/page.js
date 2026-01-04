@@ -4,6 +4,8 @@ import BlogModel from "@/models/Blogs";
 import styles from "./blogPage.module.css";
 import Image from "next/image"; // برای بهینه‌سازی عکس
 import { FaUserEdit, FaCalendarAlt } from "react-icons/fa"; // افزودن آیکون
+import Navbar from "@/components/modules/navbar/Navbar";
+import Footer from "@/components/modules/footer/Footer";
 
 const BlogPage = async ({ params }) => {
   const { slug } = params;
@@ -20,6 +22,8 @@ const BlogPage = async ({ params }) => {
   }
 
   return (
+    <>
+    <Navbar/>
     <article className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>{blog.title}</h1>
@@ -52,6 +56,9 @@ const BlogPage = async ({ params }) => {
         <div dangerouslySetInnerHTML={{ __html: blog.content }} />
       </div>
     </article>
+    <Footer/>
+    </>
+
   );
 };
 
